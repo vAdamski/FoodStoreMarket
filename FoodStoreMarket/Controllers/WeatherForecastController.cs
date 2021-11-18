@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ namespace FoodStoreMarket.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("MyAllowSecificOrigins")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -23,7 +26,13 @@ namespace FoodStoreMarket.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get weather forecast
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
