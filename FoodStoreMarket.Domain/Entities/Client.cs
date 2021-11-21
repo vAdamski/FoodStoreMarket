@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FoodStoreMarket.Domain.Common;
+using FoodStoreMarket.Domain.ValueObjects;
 
 namespace FoodStoreMarket.Domain.Entities
 {
-    public class Client
+    public class Client : AuditableEntity
     {
-        public int Id { get; set; }
-
+        public PersonName PersonName { get; set; }
+        public Adres Adres { get; set; }
     }
 }

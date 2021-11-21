@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="ValueObjects\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ValueObjects\" />
+  </ItemGroup>
 </Project>
