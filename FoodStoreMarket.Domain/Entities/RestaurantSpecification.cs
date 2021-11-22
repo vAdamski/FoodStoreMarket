@@ -15,7 +15,21 @@ namespace FoodStoreMarket.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public Adres Adres { get; set; }
-        public DateTime OpeningHours { get; set; }
-        public DateTime ClosingHours { get; set; }
+
+        //Date of closing and opening restaurant
+        public DateTime? MondayOpening { get; set; }
+        public DateTime? MondayClosing { get; set; }
+        public DateTime? TuesdayOpening { get; set; }
+        public DateTime? TuesdayClosing { get; set; }
+        public DateTime? WednesdayOpening { get; set; }
+        public DateTime? WednesdayClosing { get; set; }
+        public DateTime? ThursdayOpening { get; set; }
+        public DateTime? ThursdayClosing { get; set; }
+        public DateTime? FridayOpening { get; set; }
+        public DateTime? FridayClosing { get; set; }
+        public DateTime? SaturdayOpening { get; set; }
+        public DateTime? SaturdayClosing { get; set; }
+        public DateTime? SundayOpening { get; set; }
+        public DateTime? SundayClosing { get; set; }
     }
 }

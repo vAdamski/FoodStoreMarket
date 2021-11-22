@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FoodStoreMarket.Domain.Common;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,28 @@ namespace FoodStoreMarket.Persistance
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
-
+                switch (entry.State)
+                {
+                    case EntityState.Deleted:
+                        entry.Entity.ModifiedBy = String.Empty;
+                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.InactivatedBy = String.Empty;
+                        entry.Entity.StatusId = 0;
+                        entry.State = EntityState.Modified;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.ModifiedBy = String.Empty;
+                        entry.Entity.Modified = DateTime.Now;
+                        break;
+                    case EntityState.Added:
+                        entry.Entity.CreatedBy = String.Empty;
+                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.StatusId = 1;
+                        break;
+                    default:
+                        break;
+                }
             }
             return base.SaveChangesAsync(cancellationToken);
         }

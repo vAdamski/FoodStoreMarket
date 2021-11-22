@@ -11,6 +11,6 @@ namespace FoodStoreMarket.Domain.Entities
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public ICollection<ProductSpecification> ProductSpecifications { get; set; }
+        public List<ProductSpecification> ProductSpecifications { get; private set; } = new List<ProductSpecification>();
     }
 }

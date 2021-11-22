@@ -13,6 +13,6 @@ namespace FoodStoreMarket.Domain.Entities
         public Menu Menu { get; set; }
         public int ProductSpecificationId { get; set; }
         public ProductSpecification ProductSpecification { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public List<Order> Orders { get; private set; } = new List<Order>();
     }
 }
