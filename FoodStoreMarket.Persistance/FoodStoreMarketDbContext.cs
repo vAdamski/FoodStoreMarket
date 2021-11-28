@@ -40,6 +40,46 @@ namespace FoodStoreMarket.Persistance
             modelBuilder.Entity<OpeningClosingHours>().OwnsOne(p => p.OpeningTime);
             modelBuilder.Entity<RestaurantSpecification>().OwnsOne(p => p.Adres);
             modelBuilder.Entity<Order>().OwnsOne(p => p.Adres);
+
+            modelBuilder.Entity<Restaurant>()
+                .HasOne(r => r.Menu)
+                .WithOne(m => m.Restaurant)
+                .HasForeignKey<Menu>(m => m.RestaurantId);
+
+            modelBuilder.Entity<Menu>()
+                .HasOne(m => m.Restaurant)
+                .WithOne(r => r.Menu)
+                .HasForeignKey<Restaurant>(r => r.MenuId);
+
+            modelBuilder.Entity<Restaurant>()
+                .HasOne(r => r.RestaurantSpecification)
+                .WithOne(rs => rs.Restaurant)
+                .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId);
+
+            modelBuilder.Entity<RestaurantSpecification>()
+                .HasOne(rs => rs.Restaurant)
+                .WithOne(r => r.RestaurantSpecification)
+                .HasForeignKey<Restaurant>(r => r.RestaurantSpecificationId);
+
+            modelBuilder.Entity<RestaurantSpecification>()
+                .HasOne(rs => rs.OpeningClosingSpecification)
+                .WithOne(ocs => ocs.RestaurantSpecification)
+                .HasForeignKey<OpeningClosingSpecification>(ocs => ocs.RestaurantSpecificationId);
+
+            modelBuilder.Entity<OpeningClosingSpecification>()
+                .HasOne(ocs => ocs.RestaurantSpecification)
+                .WithOne(rs => rs.OpeningClosingSpecification)
+                .HasForeignKey<RestaurantSpecification>(rs => rs.OpeningClosingSpecificationId);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.ProductSpecification)
+                .WithOne(ps => ps.Product)
+                .HasForeignKey<ProductSpecification>(ps => ps.ProductId);
+
+            modelBuilder.Entity<ProductSpecification>()
+                .HasOne(ps => ps.Product)
+                .WithOne(p => p.ProductSpecification)
+                .HasForeignKey<Product>(p => p.ProductSpecificationId);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

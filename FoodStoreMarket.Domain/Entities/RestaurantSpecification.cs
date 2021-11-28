@@ -17,7 +17,7 @@ namespace FoodStoreMarket.Domain.Entities
         public string Description { get; set; }
         public Adres Adres { get; set; }
 
-        public List<Employee> Employees { get; set; } = new List<Employee>(); 
+        public List<Employee> Employees { get; private set; } = new List<Employee>(); 
 
         public int OpeningClosingSpecificationId{ get; set; }
         public OpeningClosingSpecification OpeningClosingSpecification { get; set; }

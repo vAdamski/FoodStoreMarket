@@ -12,7 +12,7 @@ namespace FoodStoreMarket.Domain.Entities
     {
         public PersonName PersonName { get; set; }
         public Adres Adres { get; set; }
-        public List<WorkingHours> WorkingHours { get; set; } = new List<WorkingHours>();
+        public List<WorkingHours> WorkingHours { get; private set; } = new List<WorkingHours>();
         public int RestaurantSpecificationId { get; set; }
         public RestaurantSpecification RestaurantSpecification { get; set; }
     }

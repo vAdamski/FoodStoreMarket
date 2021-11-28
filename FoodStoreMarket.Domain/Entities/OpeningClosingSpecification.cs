@@ -8,7 +8,7 @@ namespace FoodStoreMarket.Domain.Entities
     {
         public int RestaurantSpecificationId { get; set; }
         public RestaurantSpecification RestaurantSpecification { get; set; }
-        public List<OpeningClosingHours> OpeningClosingHours { get; set; } = new List<OpeningClosingHours>();
+        public List<OpeningClosingHours> OpeningClosingHours { get; private set; } = new List<OpeningClosingHours>();
     }
 }
 
