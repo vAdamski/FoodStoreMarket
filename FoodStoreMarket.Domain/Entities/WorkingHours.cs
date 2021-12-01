@@ -12,7 +12,7 @@ namespace FoodStoreMarket.Domain.Entities
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
         public DateTime DateOfStartWork { get; set; }
-        public DateTime DateOfEndWork { get; set; }
+        public DateTime? DateOfEndWork { get; set; }
         public decimal? WorkHours { get; set; }
     }
 }

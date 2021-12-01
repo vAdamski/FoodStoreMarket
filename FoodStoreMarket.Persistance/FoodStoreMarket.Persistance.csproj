@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FoodStoreMarket.Domain\FoodStoreMarket.Domain.csproj" />
+    <ProjectReference Include="..\FoodStoreMarket.Application\FoodStoreMarket.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,5 +34,9 @@
     <None Remove="Microsoft.Extensions.Configuration.EnvironmentVariables" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
 </Project>
