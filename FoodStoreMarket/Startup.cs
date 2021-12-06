@@ -1,3 +1,4 @@
+using FoodStoreMarket.Infrastructure;
 using FoodStoreMarket.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace FoodStoreMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddPersistance(Configuration);
+            services.AddInfrastructure(Configuration);
 
 
 

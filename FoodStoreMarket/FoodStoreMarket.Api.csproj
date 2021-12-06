@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodStoreMarket.Infrastructure\FoodStoreMarket.Infrastructure.csproj" />
     <ProjectReference Include="..\FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

@@ -15,6 +15,10 @@ namespace FoodStoreMarket.Persistance
     public class FoodStoreMarketDbContext : DbContext
     {
         private readonly IDateTime _dateTime;
+        public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options) : base(options)
+        {
+
+        }
         public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options, IDateTime dateTime) : base(options)
         {
             _dateTime = dateTime;

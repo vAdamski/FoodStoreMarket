@@ -10,6 +10,7 @@ namespace FoodStoreMarket.Domain.Entities
         public OpeningClosingSpecification OpeningClosingSpecification { get; set; }
 
         public string Day { get; set; }
+        public bool IsOpen { get; set; }
         public Time? OpeningTime { get; set; }
         public Time? ClosingTime { get; set; }
     }

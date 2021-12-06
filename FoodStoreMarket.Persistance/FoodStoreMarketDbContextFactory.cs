@@ -1,4 +1,5 @@
 ﻿using System;
+using FoodStoreMarket.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Persistance
