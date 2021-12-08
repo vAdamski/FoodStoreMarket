@@ -1,20 +1,15 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Api.Controllers
 {
-    /// <summary>
-    /// End-point to managing restaurant orders
-    /// </summary>
-    [Route("api/orders")]
-    [EnableCors("MyAllowSecificOrigins")]
-    public class OrdersController : BaseController
+    [Route("api/restaurants")]
+    public class RestaurantsController : BaseController
     {
-
         /// <summary>
-        /// Get order by id
+        /// Get restaurant by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -26,11 +21,13 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetByIdAsync(int id)
         {
-            return null;
+            var vm = await Mediator.Send(new GetRestaurantDetailQuery() { RestaurantId = id });
+
+            return Ok(vm);
         }
 
         /// <summary>
-        /// Get all oredrs in restaurant
+        /// Get all restaurants in resturant
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -45,7 +42,7 @@ namespace FoodStoreMarket.Api.Controllers
         }
 
         /// <summary>
-        /// Add new order
+        /// Add restaurant
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -59,7 +56,7 @@ namespace FoodStoreMarket.Api.Controllers
         }
 
         /// <summary>
-        /// Update order
+        /// Update restaurant
         /// </summary>
         /// <returns></returns>
         [HttpPatch]
@@ -73,7 +70,7 @@ namespace FoodStoreMarket.Api.Controllers
         }
 
         /// <summary>
-        /// Delete order by id
+        /// Delete restaurant by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

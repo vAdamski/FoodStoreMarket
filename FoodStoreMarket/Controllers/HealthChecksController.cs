@@ -1,4 +1,5 @@
-﻿using FoodStoreMarket.Models;
+﻿using FoodStoreMarket.Api.Controllers;
+using FoodStoreMarket.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 namespace FoodStoreMarket.Controllers
 {
     [Route("api/hc")]
-    [ApiController]
-    public class HealthChecksController : ControllerBase
+    public class HealthChecksController : BaseController
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -9,9 +9,8 @@ namespace FoodStoreMarket.Api.Controllers
     /// End-point to manageing products/dishes in restaurant
     /// </summary>
     [Route("api/products")]
-    [ApiController]
     [EnableCors("MyAllowSecificOrigins")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
         /// <summary>
         /// Get product by id
@@ -24,7 +23,7 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAllAsync(int id)
+        public async Task<ActionResult> GetByIdAsync(int id)
         {
             return null;
         }

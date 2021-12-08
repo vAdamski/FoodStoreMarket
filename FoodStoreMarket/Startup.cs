@@ -1,3 +1,4 @@
+using FoodStoreMarket.Application;
 using FoodStoreMarket.Infrastructure;
 using FoodStoreMarket.Persistance;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace FoodStoreMarket
         {
             services.AddPersistance(Configuration);
             services.AddInfrastructure(Configuration);
+            services.AddApplication();
 
 
 

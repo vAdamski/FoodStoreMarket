@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Persistance
 {
-    public class FoodStoreMarketDbContext : DbContext
+    public class FoodStoreMarketDbContext : DbContext, IFoodStoreMarketDbContext
     {
         private readonly IDateTime _dateTime;
         public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options) : base(options)

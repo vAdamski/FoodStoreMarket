@@ -8,8 +8,7 @@ namespace FoodStoreMarket.Api.Controllers
     /// End-point to manageing tables on hall
     /// </summary>
     [Route("api/tables")]
-    [ApiController]
-    public class TablesController : ControllerBase
+    public class TablesController : BaseController
     {
         /// <summary>
         /// Get table in restaurant by id
@@ -22,7 +21,7 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAllAsync(int id)
+        public async Task<ActionResult> GetByIdAsync(int id)
         {
             return null;
         }
