@@ -4,6 +4,7 @@ using FoodStoreMarket.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodStoreMarket.Persistance.Migrations
 {
     [DbContext(typeof(FoodStoreMarketDbContext))]
-    partial class FoodStoreMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211215220859_SeedRestuarantSpec")]
+    partial class SeedRestuarantSpec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,24 +95,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("RestaurantSpecificationId");
 
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(2723),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(2915),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Indegriment", b =>
@@ -193,16 +177,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("Menus");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(4003),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingHours", b =>
@@ -250,78 +224,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("OpeningClosingSpecificationId");
 
                     b.ToTable("OpeningClosingHours");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3136),
-                            Day = "Monday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3323),
-                            Day = "Tuesday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3472),
-                            Day = "Wednesday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3673),
-                            Day = "Thursday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3821),
-                            Day = "Friday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3972),
-                            Day = "Saturday",
-                            IsOpen = false,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3980),
-                            Day = "Sunday",
-                            IsOpen = false,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", b =>
@@ -362,16 +264,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("OpeningClosingSpecifications");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(3113),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Order", b =>
@@ -559,7 +451,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(2422),
+                            Created = new DateTime(2021, 12, 15, 23, 8, 58, 608, DateTimeKind.Local).AddTicks(282),
                             MenuId = 0,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantSpecificationId = 0,
@@ -618,7 +510,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 15, 23, 14, 47, 441, DateTimeKind.Local).AddTicks(2566),
+                            Created = new DateTime(2021, 12, 15, 23, 8, 58, 608, DateTimeKind.Local).AddTicks(410),
                             Description = "Best Kebab in Lodz",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "BestKebab",
@@ -836,30 +728,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    EmployeeId = 1,
-                                    City = "Lodz",
-                                    Email = "mateusz.nowak@gmail.com",
-                                    FlatNumber = "1",
-                                    HouseNumber = "10",
-                                    PhoneNumber = "112233445",
-                                    PostCode = "94-042",
-                                    Street = "Rajdowa"
-                                },
-                                new
-                                {
-                                    EmployeeId = 2,
-                                    City = "Lodz",
-                                    Email = "mariusz.gruszka@gmail.com",
-                                    FlatNumber = "44",
-                                    HouseNumber = "80",
-                                    PhoneNumber = "987654321",
-                                    PostCode = "94-042",
-                                    Street = "Retkinska"
-                                });
                         });
 
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.PersonName", "PersonName", b1 =>
@@ -883,20 +751,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    EmployeeId = 1,
-                                    FirstName = "Mateusz",
-                                    LastName = "Nowak"
-                                },
-                                new
-                                {
-                                    EmployeeId = 2,
-                                    FirstName = "Mariusz",
-                                    LastName = "Gruszka"
-                                });
                         });
 
                     b.Navigation("Adres");
@@ -945,43 +799,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("OpeningClosingHoursId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OpeningClosingHoursId = 1,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 2,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 3,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 4,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 5,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                });
                         });
 
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Time", "OpeningTime", b1 =>
@@ -1004,43 +821,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("OpeningClosingHoursId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OpeningClosingHoursId = 1,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 2,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 3,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 4,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 5,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                });
                         });
 
                     b.Navigation("ClosingTime");
