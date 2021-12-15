@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodStoreMarket.Persistance.Migrations
 {
     [DbContext(typeof(FoodStoreMarketDbContext))]
-    [Migration("20211208221305_InitDatabase2")]
-    partial class InitDatabase2
+    [Migration("20211215132932_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
