@@ -9,6 +9,7 @@ namespace FoodStoreMarket.Persistance
     {
         public static void SeedData(this ModelBuilder modelBuilder)
         {
+            #region RestaurantSeed
             modelBuilder.Entity<Restaurant>(r =>
             {
                 r.HasData(new Restaurant()
@@ -18,7 +19,9 @@ namespace FoodStoreMarket.Persistance
                     Created = DateTime.Now
                 });
             });
+            #endregion
 
+            #region RestaurantSpecificationSeed
             modelBuilder.Entity<RestaurantSpecification>(rs =>
             {
                 rs.HasData(new RestaurantSpecification()
@@ -41,7 +44,9 @@ namespace FoodStoreMarket.Persistance
                     Email = "bestkebab@gmail.com"
                 });
             });
+            #endregion
 
+            #region EmployeeSeed
             modelBuilder.Entity<Employee>(e =>
             {
                 //First employee
@@ -96,7 +101,9 @@ namespace FoodStoreMarket.Persistance
                     Email = "mariusz.gruszka@gmail.com"
                 });
             });
+            #endregion
 
+            #region OpeningClosingSpecificationSeed
             modelBuilder.Entity<OpeningClosingSpecification>(ocs =>
             {
                 ocs.HasData(new OpeningClosingSpecification()
@@ -107,7 +114,9 @@ namespace FoodStoreMarket.Persistance
                     RestaurantSpecificationId = 1
                 });
             });
+            #endregion
 
+            #region OpeningClosingHoursSeed
             modelBuilder.Entity<OpeningClosingHours>(och =>
             {
                 //Monday
@@ -257,7 +266,9 @@ namespace FoodStoreMarket.Persistance
                     IsOpen = false,
                 });
             });
+            #endregion
 
+            #region MenuSeed
             modelBuilder.Entity<Menu>(m =>
             {
                 m.HasData(new Menu()
@@ -268,6 +279,7 @@ namespace FoodStoreMarket.Persistance
                     RestaurantId = 1
                 });
             });
+            #endregion
 
             //modelBuilder.Entity<Product>(p =>
             //{
