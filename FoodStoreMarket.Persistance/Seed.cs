@@ -281,75 +281,75 @@ namespace FoodStoreMarket.Persistance
             });
             #endregion
 
-            //modelBuilder.Entity<Product>(p =>
-            //{
-            //    p.HasData(new Product()
-            //    {
-            //        Id = 1,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        MenuId = 1
-            //    });
+            modelBuilder.Entity<Product>(p =>
+            {
+                p.HasData(new Product()
+                {
+                    Id = 1,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    MenuId = 1
+                });
 
-            //    p.HasData(new Product()
-            //    {
-            //        Id = 2,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        MenuId = 1
-            //    });
-            //});
+                p.HasData(new Product()
+                {
+                    Id = 2,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    MenuId = 1
+                });
+            });
 
-            //modelBuilder.Entity<ProductSpecification>(ps =>
-            //{
-            //    ps.HasData(new ProductSpecification()
-            //    {
-            //        Id = 1,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        ProductId = 1,
-            //        Name = "Kebab",
-            //        Description = "Kebab w Tortilli"
-            //    });
+            modelBuilder.Entity<ProductSpecification>(ps =>
+            {
+                ps.HasData(new ProductSpecification()
+                {
+                    Id = 1,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    ProductId = 1,
+                    Name = "Kebab",
+                    Description = "Kebab w Tortilli"
+                });
 
-            //    ps.HasData(new ProductSpecification()
-            //    {
-            //        Id = 2,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        ProductId = 2,
-            //        Name = "Pepsi",
-            //        Description = "Fizzy Drink"
-            //    });
-            //});
+                ps.HasData(new ProductSpecification()
+                {
+                    Id = 2,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    ProductId = 2,
+                    Name = "Pepsi",
+                    Description = "Fizzy Drink"
+                });
+            });
 
-            //modelBuilder.Entity<Indegriment>(i =>
-            //{
-            //    i.HasData(new Indegriment()
-            //    {
-            //        Id = 1,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        Name = "Mutton meat"
-            //    });
+            modelBuilder.Entity<Indegriment>(i =>
+            {
+                i.HasData(new Indegriment()
+                {
+                    Id = 1,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    Name = "Mutton meat"
+                });
 
-            //    i.HasData(new Indegriment()
-            //    {
-            //        Id = 2,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        Name = "Chicken meat"
-            //    });
+                i.HasData(new Indegriment()
+                {
+                    Id = 2,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    Name = "Chicken meat"
+                });
 
-            //    i.HasData(new Indegriment()
-            //    {
-            //        Id = 3,
-            //        StatusId = 1,
-            //        Created = DateTime.Now,
-            //        Name = "Salad"
-            //    });
+                i.HasData(new Indegriment()
+                {
+                    Id = 3,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    Name = "Salad"
+                });
 
-            //});
+            });
         }
     }
 }
