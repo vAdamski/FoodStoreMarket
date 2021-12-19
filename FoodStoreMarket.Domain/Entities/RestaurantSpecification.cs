@@ -19,7 +19,7 @@ namespace FoodStoreMarket.Domain.Entities
 
         public List<Employee> Employees { get; private set; } = new List<Employee>(); 
 
-        public int OpeningClosingSpecificationId{ get; set; }
+        public int? OpeningClosingSpecificationId{ get; set; }
         public OpeningClosingSpecification OpeningClosingSpecification { get; set; }
     }
 }

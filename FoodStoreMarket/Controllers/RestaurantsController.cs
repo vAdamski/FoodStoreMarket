@@ -1,4 +1,5 @@
 ﻿using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 namespace FoodStoreMarket.Api.Controllers
 {
     [Route("api/restaurants")]
+    [EnableCors("MyAllowSecificOrigins")]
     public class RestaurantsController : BaseController
     {
         /// <summary>

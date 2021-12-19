@@ -23,7 +23,7 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
 
             var restaurantsVm = new RestaurantsVm()
             {
-                //Restaurants = restuatrants,
+
             };
 
             return restaurantsVm;
