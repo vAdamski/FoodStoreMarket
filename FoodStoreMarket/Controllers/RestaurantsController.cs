@@ -1,4 +1,5 @@
-﻿using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
+﻿using FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants;
+using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,9 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetAllAsync()
         {
-            return null;
+            var vm = await Mediator.Send(new GetRestaurantsQuery { });
+
+            return Ok(vm);
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FoodStoreMarket.Persistance.Migrations
 {
-    public partial class InitAndSeed : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,15 +15,15 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PersonName_FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    PersonName_LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Adres_City = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PostCode = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: true),
-                    Adres_Street = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
-                    Adres_Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    PersonName_FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonName_LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PostCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -43,7 +43,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -87,15 +87,15 @@ namespace FoodStoreMarket.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Adres_City = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PostCode = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: true),
-                    Adres_Street = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Adres_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PostCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Adres_FlatNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
-                    Adres_Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OpeningClosingSpecificationId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -117,13 +117,13 @@ namespace FoodStoreMarket.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(type: "int", nullable: false),
-                    Adres_City = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PostCode = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: true),
-                    Adres_Street = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
-                    Adres_Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Adres_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PostCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateOfAccepted = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DateOfScheduledDelivery = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -178,15 +178,15 @@ namespace FoodStoreMarket.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RestaurantSpecificationId = table.Column<int>(type: "int", nullable: false),
-                    PersonName_FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    PersonName_LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Adres_City = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PostCode = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: true),
-                    Adres_Street = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
-                    Adres_Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    PersonName_FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonName_LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PostCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_FlatNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adres_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -228,8 +228,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         name: "FK_OpeningClosingSpecifications_RestaurantSpecifications_RestaurantSpecificationId",
                         column: x => x.RestaurantSpecificationId,
                         principalTable: "RestaurantSpecifications",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -239,7 +238,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MenuId = table.Column<int>(type: "int", nullable: true),
-                    RestaurantSpecificationId = table.Column<int>(type: "int", nullable: true),
+                    RestaurantSpecificationId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -255,7 +254,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                         name: "FK_Restaurants_RestaurantSpecifications_RestaurantSpecificationId",
                         column: x => x.RestaurantSpecificationId,
                         principalTable: "RestaurantSpecifications",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -294,7 +294,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OpeningClosingSpecificationId = table.Column<int>(type: "int", nullable: false),
-                    Day = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Day = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsOpen = table.Column<bool>(type: "bit", nullable: false),
                     OpeningTime_Hour = table.Column<int>(type: "int", nullable: true),
                     OpeningTime_Minute = table.Column<int>(type: "int", nullable: true),
@@ -343,8 +343,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         name: "FK_Menus_Restaurants_RestaurantId",
                         column: x => x.RestaurantId,
                         principalTable: "Restaurants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -408,9 +407,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                 columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "Name", "Price", "StatusId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6048), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Mutton meat", 0m, 1 },
-                    { 2, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6054), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Chicken meat", 0m, 1 },
-                    { 3, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6059), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Salad", 0m, 1 }
+                    { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5822), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Mutton meat", 0m, 1 },
+                    { 2, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5831), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Chicken meat", 0m, 1 },
+                    { 3, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5836), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Salad", 0m, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -418,49 +417,49 @@ namespace FoodStoreMarket.Persistance.Migrations
                 columns: new[] { "Id", "Created", "CreatedBy", "Description", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "Name", "ProductId", "StatusId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6022), null, "Kebab w Tortilli", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Kebab", 1, 1 },
-                    { 2, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6029), null, "Fizzy Drink", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Pepsi", 2, 1 }
+                    { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5787), null, "Kebab w Tortilli", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Kebab", 1, 1 },
+                    { 2, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5797), null, "Fizzy Drink", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Pepsi", 2, 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "RestaurantSpecifications",
                 columns: new[] { "Id", "Created", "CreatedBy", "Description", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "Name", "OpeningClosingSpecificationId", "RestaurantId", "StatusId", "Adres_City", "Adres_Email", "Adres_FlatNumber", "Adres_HouseNumber", "Adres_PhoneNumber", "Adres_PostCode", "Adres_Street" },
-                values: new object[] { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(4646), null, "Best Kebab in Lodz", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "BestKebab", null, 1, 1, "Lodz", "bestkebab@gmail.com", null, "16", "123456789", "94-042", "Olimpijska" });
-
-            migrationBuilder.InsertData(
-                table: "Restaurants",
-                columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "MenuId", "Modified", "ModifiedBy", "RestaurantSpecificationId", "StatusId" },
-                values: new object[] { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(4520), null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1 });
+                values: new object[] { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4153), null, "Best Kebab in Lodz", null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "BestKebab", null, 1, 1, "Lodz", "bestkebab@gmail.com", null, "16", "123456789", "94-042", "Olimpijska" });
 
             migrationBuilder.InsertData(
                 table: "Employees",
                 columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "RestaurantSpecificationId", "StatusId", "Adres_City", "Adres_Email", "Adres_FlatNumber", "Adres_HouseNumber", "Adres_PhoneNumber", "Adres_PostCode", "Adres_Street", "PersonName_FirstName", "PersonName_LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(4827), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, "Lodz", "mateusz.nowak@gmail.com", "1", "10", "112233445", "94-042", "Rajdowa", "Mateusz", "Nowak" },
-                    { 2, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5006), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, "Lodz", "mariusz.gruszka@gmail.com", "44", "80", "987654321", "94-042", "Retkinska", "Mariusz", "Gruszka" }
+                    { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4385), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, "Lodz", "mateusz.nowak@gmail.com", "1", "10", "112233445", "94-042", "Rajdowa", "Mateusz", "Nowak" },
+                    { 2, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4643), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, "Lodz", "mariusz.gruszka@gmail.com", "44", "80", "987654321", "94-042", "Retkinska", "Mariusz", "Gruszka" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Menus",
-                columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "RestaurantId", "StatusId" },
-                values: new object[] { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5979), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "OpeningClosingSpecifications",
                 columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "RestaurantSpecificationId", "StatusId" },
-                values: new object[] { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5161), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 });
+                values: new object[] { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4813), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Restaurants",
+                columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "MenuId", "Modified", "ModifiedBy", "RestaurantSpecificationId", "StatusId" },
+                values: new object[] { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4019), null, null, null, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Menus",
+                columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "Modified", "ModifiedBy", "RestaurantId", "StatusId" },
+                values: new object[] { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5729), null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "OpeningClosingHours",
                 columns: new[] { "Id", "Created", "CreatedBy", "Day", "Inactivated", "InactivatedBy", "IsOpen", "Modified", "ModifiedBy", "OpeningClosingSpecificationId", "StatusId", "ClosingTime_Hour", "ClosingTime_Minute", "ClosingTime_Secound", "OpeningTime_Hour", "OpeningTime_Minute", "OpeningTime_Secound" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5184), null, "Monday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
-                    { 2, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5372), null, "Tuesday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
-                    { 3, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5508), null, "Wednesday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
-                    { 4, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5644), null, "Thursday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
-                    { 5, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5810), null, "Friday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 }
+                    { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4846), null, "Monday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
+                    { 2, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5036), null, "Tuesday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
+                    { 3, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5220), null, "Wednesday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
+                    { 4, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5362), null, "Thursday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 },
+                    { 5, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5502), null, "Friday", null, null, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1, 20, 0, 0, 8, 0, 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -468,18 +467,19 @@ namespace FoodStoreMarket.Persistance.Migrations
                 columns: new[] { "Id", "Created", "CreatedBy", "Day", "Inactivated", "InactivatedBy", "IsOpen", "Modified", "ModifiedBy", "OpeningClosingSpecificationId", "StatusId" },
                 values: new object[,]
                 {
-                    { 6, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5951), null, "Saturday", null, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 },
-                    { 7, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5959), null, "Sunday", null, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 }
+                    { 6, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5690), null, "Saturday", null, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 },
+                    { 7, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5699), null, "Sunday", null, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "MenuId", "Modified", "ModifiedBy", "ProductSpecificationId", "StatusId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(5997), null, null, null, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1 },
-                    { 2, new DateTime(2021, 12, 19, 2, 3, 56, 110, DateTimeKind.Local).AddTicks(6005), null, null, null, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1 }
-                });
+                values: new object[] { 1, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5752), null, null, null, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Created", "CreatedBy", "Inactivated", "InactivatedBy", "MenuId", "Modified", "ModifiedBy", "ProductSpecificationId", "StatusId" },
+                values: new object[] { 2, new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5760), null, null, null, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_RestaurantSpecificationId",
@@ -534,8 +534,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                 name: "IX_Restaurants_RestaurantSpecificationId",
                 table: "Restaurants",
                 column: "RestaurantSpecificationId",
-                unique: true,
-                filter: "[RestaurantSpecificationId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_WorkingHours_EmployeeId",

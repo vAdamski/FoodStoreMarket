@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
 {
-    public class RestaurantsQuery : IRequest<RestaurantsVm>
+    public class GetRestaurantsQuery : IRequest<RestaurantsVm>
     {
 
     }

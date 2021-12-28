@@ -12,12 +12,14 @@ namespace FoodStoreMarket.Persistance.Configuration
             builder
                 .HasOne(r => r.RestaurantSpecification)
                 .WithOne(rs => rs.Restaurant)
-                .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId);
+                .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId)
+                .IsRequired();
 
             builder
                 .HasOne(r => r.Menu)
                 .WithOne(m => m.Restaurant)
-                .HasForeignKey<Menu>(m => m.RestaurantId);
+                .HasForeignKey<Menu>(m => m.RestaurantId)
+                .IsRequired();
         }
     }
 }

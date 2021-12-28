@@ -4,6 +4,7 @@ using FoodStoreMarket.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodStoreMarket.Persistance.Migrations
 {
     [DbContext(typeof(FoodStoreMarketDbContext))]
-    partial class FoodStoreMarketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211226004000_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +100,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(476),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4385),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantSpecificationId = 1,
                             StatusId = 1
@@ -106,7 +108,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(665),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4643),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantSpecificationId = 1,
                             StatusId = 1
@@ -156,7 +158,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1774),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5822),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Mutton meat",
                             Price = 0m,
@@ -165,7 +167,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1781),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5831),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Chicken meat",
                             Price = 0m,
@@ -174,7 +176,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1785),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5836),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Salad",
                             Price = 0m,
@@ -225,7 +227,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1703),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5729),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantId = 1,
                             StatusId = 1
@@ -280,7 +282,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(903),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4846),
                             Day = "Monday",
                             IsOpen = true,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -290,7 +292,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1078),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5036),
                             Day = "Tuesday",
                             IsOpen = true,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -300,7 +302,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1214),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5220),
                             Day = "Wednesday",
                             IsOpen = true,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -310,7 +312,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1377),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5362),
                             Day = "Thursday",
                             IsOpen = true,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -320,7 +322,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1508),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5502),
                             Day = "Friday",
                             IsOpen = true,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -330,7 +332,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1644),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5690),
                             Day = "Saturday",
                             IsOpen = false,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -340,7 +342,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1651),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5699),
                             Day = "Sunday",
                             IsOpen = false,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -392,7 +394,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(878),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4813),
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantSpecificationId = 1,
                             StatusId = 1
@@ -499,19 +501,17 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1720),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5752),
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductSpecificationId = 1,
                             StatusId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1728),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5760),
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductSpecificationId = 2,
                             StatusId = 1
                         });
                 });
@@ -562,7 +562,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1746),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5787),
                             Description = "Kebab w Tortilli",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kebab",
@@ -572,7 +572,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(1754),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(5797),
                             Description = "Fizzy Drink",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pepsi",
@@ -628,7 +628,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(158),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4019),
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantSpecificationId = 1,
@@ -685,11 +685,10 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2021, 12, 26, 1, 43, 46, 477, DateTimeKind.Local).AddTicks(278),
+                            Created = new DateTime(2021, 12, 26, 1, 40, 0, 358, DateTimeKind.Local).AddTicks(4153),
                             Description = "Best Kebab in Lodz",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "BestKebab",
-                            OpeningClosingSpecificationId = 1,
                             RestaurantId = 1,
                             StatusId = 1
                         });
