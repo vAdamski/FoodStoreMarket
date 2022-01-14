@@ -12,7 +12,7 @@ namespace FoodStoreMarket.Persistance.Configuration
             builder.OwnsOne(p => p.ClosingTime);
             builder.OwnsOne(p => p.OpeningTime);
 
-            //builder.Property(p => p.Day).HasMaxLength(15).IsRequired();
+            builder.Property(p => p.Day).HasMaxLength(15).IsRequired();
         }
     }
 }

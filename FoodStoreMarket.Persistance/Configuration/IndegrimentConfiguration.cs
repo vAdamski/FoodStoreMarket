@@ -9,8 +9,8 @@ namespace FoodStoreMarket.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<Indegriment> builder)
         {
-            //builder.Property(i => i.Name).HasMaxLength(30).IsRequired();
-            //builder.Property(i => i.Price).IsRequired();
+            builder.Property(i => i.Name).HasMaxLength(30).IsRequired();
+            builder.Property(i => i.Price).IsRequired();
         }
     }
 }
