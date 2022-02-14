@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="Restaurants\Commands\CreateRestaurant\" />
     <Folder Include="Restaurants\Commands\DeleteRestaurant\" />
   </ItemGroup>
 </Project>
