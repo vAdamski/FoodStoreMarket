@@ -21,12 +21,16 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            var restaurantSpecification = MapRestaurantSpecifiaction(request);
+            RestaurantSpecification restaurantSpecification = MapRestaurantSpecifiaction(request);
 
             _context.RestaurantSpecifications.Add(restaurantSpecification);
 
+            Menu menu = new Menu();
+            _context.Menus.Add(menu);
+
             var restaurant = new Restaurant();
             restaurant.RestaurantSpecificationId = restaurantSpecification.Id;
+            restaurant.MenuId = menu.Id;
             
             _context.Restaurants.Add(restaurant);
 
@@ -38,6 +42,7 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
         private RestaurantSpecification MapRestaurantSpecifiaction(CreateRestaurantCommand request)
         {
             var restauranSpecification = new RestaurantSpecification();
+            restauranSpecification.Adres = new Domain.ValueObjects.Adres();
             restauranSpecification.Description = request.Description;
             restauranSpecification.Name = request.Name;
             restauranSpecification.Adres.City = request.City;

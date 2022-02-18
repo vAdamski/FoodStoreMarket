@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
 
 namespace FoodStoreMarket.Api.Controllers
 {
@@ -55,9 +56,19 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<ActionResult> PostAsync()
+        public async Task<ActionResult<int>> PostAsync([FromBody]CreateRestaurantCommand restaurantCommand)
         {
-            return null;
+            var vm = restaurantCommand;
+
+            var id = await Mediator.Send(vm);
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            // Implement Created
+            return Ok(id);
         }
 
         /// <summary>
