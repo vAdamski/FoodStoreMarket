@@ -10,7 +10,7 @@ namespace FoodStoreMarket.Domain.Entities
 {
     public class RestaurantSpecification : AuditableEntity
     {
-        public int RestaurantId { get; set; }
+        public int? RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
 
         public string Name { get; set; }
