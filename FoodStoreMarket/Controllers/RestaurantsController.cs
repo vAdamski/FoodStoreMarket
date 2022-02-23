@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
+using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
 
 namespace FoodStoreMarket.Api.Controllers
 {
@@ -96,7 +97,8 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeleteAsync(int id)
         {
-            return null;
+            await Mediator.Send(new DeleteRestaurantCommand() { IdRestaurantToDelete = id });
+            return Ok();
         }
     }
 }

@@ -8,30 +8,37 @@ using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants;
 using FoodStoreMarket.Domain.Entities;
+using AutoMapper;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
 {
     public class CreateRestaurantHandler : IRequestHandler<CreateRestaurantCommand, int>
     {
         private readonly IFoodStoreMarketDbContext _context;
+        private IMapper _mapper;
 
-        public CreateRestaurantHandler(IFoodStoreMarketDbContext foodStoreMarketDbContext)
+        public CreateRestaurantHandler(
+            IFoodStoreMarketDbContext foodStoreMarketDbContext, 
+            IMapper mapper)
         {
             _context = foodStoreMarketDbContext;
+            _mapper = mapper;
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
+            var restaurant = new Restaurant();
+            _context.Restaurants.Add(restaurant);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
             //RestaurantSpecification restaurantSpecification = MapRestaurantSpecifiaction(request);
-            //_context.RestaurantSpecifications.Add(restaurantSpecification);
+            RestaurantSpecification restaurantSpecification = _mapper.Map<RestaurantSpecification>(request);
+            restaurantSpecification.RestaurantId = restaurant.Id;
+            _context.RestaurantSpecifications.Add(restaurantSpecification);
 
             Menu menu = new Menu();
+            menu.RestaurantId = restaurant.Id;
             _context.Menus.Add(menu);
-
-            var restaurant = new Restaurant();
-            //restaurant.RestaurantSpecificationId = restaurantSpecification.Id;
-            restaurant.MenuId = menu.Id;
-            
-            _context.Restaurants.Add(restaurant);
 
             await _context.SaveChangesAsync(cancellationToken);
             

@@ -10,16 +10,18 @@ namespace FoodStoreMarket.Persistance.Configuration
         public void Configure(EntityTypeBuilder<Restaurant> builder)
         {
             builder
-                .HasOne(r => r.RestaurantSpecification)
+                .HasOne<RestaurantSpecification>(r => r.RestaurantSpecification)
                 .WithOne(rs => rs.Restaurant)
-                .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId)
-                .IsRequired(false);
+                .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId).
+                IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
-                .HasOne(r => r.Menu)
+                .HasOne<Menu>(r => r.Menu)
                 .WithOne(m => m.Restaurant)
                 .HasForeignKey<Menu>(m => m.RestaurantId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

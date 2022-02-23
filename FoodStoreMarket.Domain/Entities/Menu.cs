@@ -9,7 +9,7 @@ namespace FoodStoreMarket.Domain.Entities
 {
     public class Menu : AuditableEntity
     {
-        public int? RestaurantId { get; set; }
+        public int RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
         public List<Product> Products { get; private set; } = new List<Product>();
     }

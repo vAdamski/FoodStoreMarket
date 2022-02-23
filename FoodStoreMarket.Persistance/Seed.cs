@@ -16,8 +16,6 @@ namespace FoodStoreMarket.Persistance
                 {
                     Id = 1,
                     StatusId = 1,
-                    RestaurantSpecificationId = 1,
-                    MenuId = 1,
                     Created = DateTime.Now
                 });
             });
@@ -30,7 +28,6 @@ namespace FoodStoreMarket.Persistance
                 {
                     Id = 1,
                     RestaurantId = 1,
-                    OpeningClosingSpecificationId = 1,
                     StatusId = 1,
                     Created = DateTime.Now,
                     Name = "BestKebab",

@@ -25,13 +25,13 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
         }
         public async Task<RestaurantsVm> Handle(GetRestaurantsQuery request, CancellationToken cancellationToken)
         {
-            var restuatrants = _context.Restaurants.Select(x => x).ToList();
+            var restuatrants = _context.Restaurants.Where(x => x.StatusId == 1).ToList();
 
             var restaurantsVm = new RestaurantsVm();
 
             restuatrants.ForEach(r =>
             {
-                r.RestaurantSpecification = _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == rs.Id).FirstOrDefault();
+                r.RestaurantSpecification = _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == r.Id).FirstOrDefault();
 
                 var restaurant = _mapper.Map<RestaurantDto>(r);
 

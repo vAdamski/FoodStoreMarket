@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodStoreMarket.Persistance.Migrations
 {
     [DbContext(typeof(FoodStoreMarketDbContext))]
-    [Migration("20220218212008_Init")]
-    partial class Init
+    [Migration("20220223212253_AddCascadeDelete")]
+    partial class AddCascadeDelete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -426,26 +426,16 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MenuId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestaurantSpecificationId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantSpecificationId")
-                        .IsUnique();
 
                     b.ToTable("Restaurants");
                 });
@@ -494,6 +484,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId")
+                        .IsUnique();
 
                     b.ToTable("RestaurantSpecifications");
                 });
@@ -742,7 +735,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
                         .WithOne("Menu")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Menu", "RestaurantId");
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Menu", "RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Restaurant");
                 });
@@ -892,19 +886,13 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("ProductSpecification");
                 });
 
-            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
-                {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantSpecification")
-                        .WithOne("Restaurant")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Restaurant", "RestaurantSpecificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RestaurantSpecification");
-                });
-
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
                 {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
+                        .WithOne("RestaurantSpecification")
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Adres", "Adres", b1 =>
                         {
                             b1.Property<int>("RestaurantSpecificationId")
@@ -952,6 +940,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                         });
 
                     b.Navigation("Adres");
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
@@ -1018,6 +1008,8 @@ namespace FoodStoreMarket.Persistance.Migrations
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
                 {
                     b.Navigation("Menu");
+
+                    b.Navigation("RestaurantSpecification");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
@@ -1025,8 +1017,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employees");
 
                     b.Navigation("OpeningClosingSpecification");
-
-                    b.Navigation("Restaurant");
                 });
 #pragma warning restore 612, 618
         }

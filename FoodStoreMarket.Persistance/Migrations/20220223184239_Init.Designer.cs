@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodStoreMarket.Persistance.Migrations
 {
     [DbContext(typeof(FoodStoreMarketDbContext))]
-    [Migration("20220221214702_Update3")]
-    partial class Update3
+    [Migration("20220223184239_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -165,7 +165,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestaurantId")
+                    b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
@@ -174,8 +174,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RestaurantId")
-                        .IsUnique()
-                        .HasFilter("[RestaurantId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Menus");
                 });
@@ -427,26 +426,16 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MenuId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestaurantSpecificationId")
-                        .HasColumnType("int");
-
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantSpecificationId")
-                        .IsUnique()
-                        .HasFilter("[RestaurantSpecificationId] IS NOT NULL");
 
                     b.ToTable("Restaurants");
                 });
@@ -488,13 +477,16 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<int?>("OpeningClosingSpecificationId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RestaurantId")
+                    b.Property<int>("RestaurantId")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId")
+                        .IsUnique();
 
                     b.ToTable("RestaurantSpecifications");
                 });
@@ -893,17 +885,12 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("ProductSpecification");
                 });
 
-            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
-                {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantSpecification")
-                        .WithOne("Restaurant")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Restaurant", "RestaurantSpecificationId");
-
-                    b.Navigation("RestaurantSpecification");
-                });
-
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
                 {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
+                        .WithOne("RestaurantSpecification")
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantId");
+
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Adres", "Adres", b1 =>
                         {
                             b1.Property<int>("RestaurantSpecificationId")
@@ -951,6 +938,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                         });
 
                     b.Navigation("Adres");
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
@@ -1017,6 +1006,8 @@ namespace FoodStoreMarket.Persistance.Migrations
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
                 {
                     b.Navigation("Menu");
+
+                    b.Navigation("RestaurantSpecification");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
@@ -1024,8 +1015,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employees");
 
                     b.Navigation("OpeningClosingSpecification");
-
-                    b.Navigation("Restaurant");
                 });
 #pragma warning restore 612, 618
         }

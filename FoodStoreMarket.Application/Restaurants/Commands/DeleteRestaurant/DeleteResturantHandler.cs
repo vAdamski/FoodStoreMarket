@@ -22,6 +22,9 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
         {
             var restaurantToDelete = await _context.Restaurants.Where(r => r.Id == request.IdRestaurantToDelete).FirstOrDefaultAsync();
 
+            restaurantToDelete.Menu = await _context.Menus.Where(m => m.RestaurantId == restaurantToDelete.Id).FirstOrDefaultAsync();
+            restaurantToDelete.RestaurantSpecification = await _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == restaurantToDelete.Id).FirstOrDefaultAsync();
+
             _context.Restaurants.Remove(restaurantToDelete);
 
             await _context.SaveChangesAsync(cancellationToken);

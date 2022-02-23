@@ -25,9 +25,9 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail
         }
         public async Task<RestaurantDetailVm> Handle(GetRestaurantDetailQuery request, CancellationToken cancellationToken)
         {
-            var restaurant = await _context.Restaurants.Where(r => r.Id == request.RestaurantId).FirstOrDefaultAsync(cancellationToken);
+            var restaurant = await _context.Restaurants.Where(r => r.Id == request.RestaurantId && r.StatusId == 1).FirstOrDefaultAsync(cancellationToken);
             
-            restaurant.RestaurantSpecification = await _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == restaurant.RestaurantSpecificationId).FirstOrDefaultAsync(cancellationToken);
+            restaurant.RestaurantSpecification = await _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == request.RestaurantId).FirstOrDefaultAsync(cancellationToken);
 
             var restaurantVm = _mapper.Map<RestaurantDetailVm>(restaurant);
 
