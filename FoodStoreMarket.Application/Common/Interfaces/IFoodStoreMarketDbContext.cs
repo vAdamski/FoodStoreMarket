@@ -17,7 +17,7 @@ namespace FoodStoreMarket.Application.Interfaces
         DbSet<WorkingHours> WorkingHours { get; set; }
         DbSet<OpeningClosingSpecification> OpeningClosingSpecifications { get; set; }
         DbSet<OpeningClosingHours> OpeningClosingHours { get; set; }
-        DbSet<Menu> Menus { get; set; }
+        DbSet<Domain.Entities.Menu> Menus { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<ProductSpecification> ProductSpecifications { get; set; }
         DbSet<Indegriment> Indegriments { get; set; }

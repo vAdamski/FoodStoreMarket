@@ -1,14 +1,10 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.Interfaces;
-using FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants;
-using FoodStoreMarket.Domain.Entities;
 using AutoMapper;
+using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Domain.ValueObjects;
+using MediatR;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
 {
@@ -35,8 +31,8 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
             RestaurantSpecification restaurantSpecification = _mapper.Map<RestaurantSpecification>(request);
             restaurantSpecification.RestaurantId = restaurant.Id;
             _context.RestaurantSpecifications.Add(restaurantSpecification);
-
-            Menu menu = new Menu();
+            
+            var menu = new Menu();
             menu.RestaurantId = restaurant.Id;
             _context.Menus.Add(menu);
 
@@ -48,7 +44,7 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
         private RestaurantSpecification MapRestaurantSpecifiaction(CreateRestaurantCommand request)
         {
             var restauranSpecification = new RestaurantSpecification();
-            restauranSpecification.Adres = new Domain.ValueObjects.Adres();
+            restauranSpecification.Adres = new Adres();
             restauranSpecification.Description = request.Description;
             restauranSpecification.Name = request.Name;
             restauranSpecification.Adres.City = request.City;
