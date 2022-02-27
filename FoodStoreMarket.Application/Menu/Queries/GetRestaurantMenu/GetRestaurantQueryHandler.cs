@@ -30,9 +30,9 @@ namespace FoodStoreMarket.Application.Menu.Queries.GetRestaurantMenu
 
             if(menu != null)
             {
-                var products = _context.Products.Where(p => p.MenuId == menu.Id).ToList();
+                var productsInRestaurantMenu = _context.Products.Where(p => p.MenuId == menu.Id).ToList();
 
-                products.ForEach(product =>
+                productsInRestaurantMenu.ForEach(product =>
                 {
                     menu.Products.Add(product);
                 });
