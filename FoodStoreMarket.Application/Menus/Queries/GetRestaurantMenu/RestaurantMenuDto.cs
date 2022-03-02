@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodStoreMarket.Application.Menu.Queries.GetRestaurantMenu
+namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
 {
     public class RestaurantMenuDto
     {

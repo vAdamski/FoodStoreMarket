@@ -1,14 +1,11 @@
-﻿using FoodStoreMarket.Application.Interfaces;
+﻿using System;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Common;
 using FoodStoreMarket.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Persistance
 {
