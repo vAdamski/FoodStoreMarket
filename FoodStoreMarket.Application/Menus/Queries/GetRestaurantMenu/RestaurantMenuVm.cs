@@ -8,6 +8,6 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
 {
     public class RestaurantMenuVm
     {
-        public ICollection<RestaurantMenuDto> restaurantProductDtos { get; set; }
+        public ICollection<RestaurantProductDto> restaurantProductDtos { get; set; } = new List<RestaurantProductDto>();
     }
 }
