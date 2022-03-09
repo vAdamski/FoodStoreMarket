@@ -18,7 +18,7 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Product, RestaurantProductDto>()
-                .ForMember(x => x.Name, map => map.MapFrom(src => src.));
+                .ForMember(x => x.Name, map => map.MapFrom(src => src.ProductSpecification.Name));
         }
     }
 }

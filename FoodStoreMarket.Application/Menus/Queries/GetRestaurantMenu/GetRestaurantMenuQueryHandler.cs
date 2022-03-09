@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
 {
-    internal class GetRestaurantQueryHandler : IRequestHandler<GetRestaurantMenuQuery, RestaurantMenuVm>
+    internal class GetRestaurantMenuQueryHandler : IRequestHandler<GetRestaurantMenuQuery, RestaurantMenuVm>
     {
         private readonly IFoodStoreMarketDbContext _context;
         private IMapper _mapper;
 
-        public GetRestaurantQueryHandler(
+        public GetRestaurantMenuQueryHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext,
             IMapper mapper)
         {
@@ -26,21 +27,22 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
 
         public async Task<RestaurantMenuVm> Handle(GetRestaurantMenuQuery request, CancellationToken cancellationToken)
         {
-            var menu = await _context.Menus.Where(m => m.RestaurantId == request.IdRestuarantMenu).FirstOrDefaultAsync(cancellationToken);
+            Menu menu = await _context.Menus.Where(m => m.Id == request.IdRestuarantMenu).FirstOrDefaultAsync(cancellationToken);
 
             if(menu != null)
             {
-                var products = _context.Products.Where(p => p.MenuId == menu.Id).ToList();
+                var productList = await _context.Products.Where(p => p.MenuId == request.IdRestuarantMenu).ToListAsync(cancellationToken);
 
-                products.ForEach(product =>
+                productList.ForEach(p =>
                 {
-                    menu.Products.Add(product);
+                    p.ProductSpecification = _context.ProductSpecifications.Where(ps => ps.ProductId == p.Id).FirstOrDefault();
+
+                    if(p.ProductSpecification != null)
+                    {
+                        p.ProductSpecification.Indegriments = _context.Indegriments.Where(i => i.ProductSpecifications)
+                    }
                 });
             }
-
-            RestaurantMenuVm vm = new RestaurantMenuVm();
-
-            return vm;
         }
     }
 }
