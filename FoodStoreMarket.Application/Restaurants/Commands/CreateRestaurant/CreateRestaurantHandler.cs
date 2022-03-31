@@ -40,22 +40,5 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
             
             return restaurant.Id;
         }
-
-        private RestaurantSpecification MapRestaurantSpecifiaction(CreateRestaurantCommand request)
-        {
-            var restauranSpecification = new RestaurantSpecification();
-            restauranSpecification.Adres = new Adres();
-            restauranSpecification.Description = request.Description;
-            restauranSpecification.Name = request.Name;
-            restauranSpecification.Adres.City = request.City;
-            restauranSpecification.Adres.PostCode = request.PostCode;
-            restauranSpecification.Adres.Street = request.Street;
-            restauranSpecification.Adres.HouseNumber = request.HouseNumber;
-            restauranSpecification.Adres.FlatNumber = request.FlatNumber;
-            restauranSpecification.Adres.Email = request.Email;
-            restauranSpecification.Adres.PhoneNumber = request.PhoneNumber;
-
-            return restauranSpecification;
-        }
     }
 }

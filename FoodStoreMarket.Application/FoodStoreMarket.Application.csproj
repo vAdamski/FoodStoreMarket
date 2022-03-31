@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <None Remove="Interfaces\" />
+    <None Remove="Products\" />
+    <None Remove="Products\Commands\" />
+    <None Remove="Products\Commands\AddNewProduct\" />
+    <None Remove="Indegriments\" />
+    <None Remove="Indegriments\Command\" />
+    <None Remove="Indegriments\Commands\AddNewIndegriment\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,5 +30,11 @@
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Restaurants\Commands\UpdateRestaurant\" />
+    <Folder Include="Products\" />
+    <Folder Include="Products\Commands\" />
+    <Folder Include="Products\Commands\AddNewProduct\" />
+    <Folder Include="Indegriments\" />
+    <Folder Include="Indegriments\Commands\" />
+    <Folder Include="Indegriments\Commands\CreateIndegriment\" />
   </ItemGroup>
 </Project>
