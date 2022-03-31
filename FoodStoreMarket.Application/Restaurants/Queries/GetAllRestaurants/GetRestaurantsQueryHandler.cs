@@ -25,7 +25,7 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
         }
         public async Task<RestaurantsVm> Handle(GetRestaurantsQuery request, CancellationToken cancellationToken)
         {
-            var restuatrants = _context.Restaurants.Where(x => x.StatusId == 1).ToList();
+            var restuatrants = await _context.Restaurants.Where(x => x.StatusId == 1).ToListAsync(cancellationToken);
 
             var restaurantsVm = new RestaurantsVm();
 

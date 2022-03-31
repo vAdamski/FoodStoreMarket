@@ -36,13 +36,26 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
                 productList.ForEach(p =>
                 {
                     p.ProductSpecification = _context.ProductSpecifications.Where(ps => ps.ProductId == p.Id).FirstOrDefault();
-
-                    if(p.ProductSpecification != null)
-                    {
-                        p.ProductSpecification.Indegriments = _context.Indegriments.Where(i => i.ProductSpecifications)
-                    }
                 });
             }
+
+            var vm = new RestaurantMenuVm();
+
+            menu.Products.ForEach(p =>
+            {
+                var productVm = _mapper.Map<RestaurantProductDto>(p.ProductSpecification);
+
+                p.ProductSpecification.Indegriments.ForEach(i =>
+                {
+                    var indegrimentDto = _mapper.Map<ProductIndegrimentDto>(i);
+
+                    productVm.IndegrimentsDto.Add(indegrimentDto);
+                });
+
+                vm.restaurantProductDtos.Add(productVm);
+            });
+
+            return vm;
         }
     }
 }

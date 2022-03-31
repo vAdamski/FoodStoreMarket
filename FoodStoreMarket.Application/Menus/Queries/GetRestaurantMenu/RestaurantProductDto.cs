@@ -13,7 +13,7 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<ProductIndegrimentDto> Indegriments { get; private set; } = new List<ProductIndegrimentDto>();
+        public List<ProductIndegrimentDto> IndegrimentsDto { get; set; } = new List<ProductIndegrimentDto>();
 
         public void Mapping(Profile profile)
         {
