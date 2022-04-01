@@ -10,16 +10,16 @@
     <None Remove="Products\Commands\" />
     <None Remove="Products\Commands\AddNewProduct\" />
     <None Remove="Indegriments\" />
-    <None Remove="Indegriments\Command\" />
-    <None Remove="Indegriments\Commands\AddNewIndegriment\" />
+    <None Remove="Ingredients\Command\" />
+    <None Remove="Ingredients\Commands\AddNewIndegriment\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,8 +33,5 @@
     <Folder Include="Products\" />
     <Folder Include="Products\Commands\" />
     <Folder Include="Products\Commands\AddNewProduct\" />
-    <Folder Include="Indegriments\" />
-    <Folder Include="Indegriments\Commands\" />
-    <Folder Include="Indegriments\Commands\CreateIndegriment\" />
   </ItemGroup>
 </Project>

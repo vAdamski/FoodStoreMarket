@@ -8,23 +8,23 @@ using MediatR;
 
 namespace FoodStoreMarket.Application.Indegriments.Commands.CreateIndegriment
 {
-    public class CreateIndegrimentHandler : IRequestHandler<CreateIndegrimentCommand, int>
+    public class CreateIngredientHandler : IRequestHandler<CreateIngredientCommand, int>
     {
         private readonly IFoodStoreMarketDbContext _context;
         private IMapper _mapper;
 
-        public CreateIndegrimentHandler(
+        public CreateIngredientHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext,
             IMapper mapper)
         {
             _context = foodStoreMarketDbContext;
             _mapper = mapper;
         }
-        public async Task<int> Handle(CreateIndegrimentCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            var indegrimentToAdd = _mapper.Map<Indegriment>(request);
+            var indegrimentToAdd = _mapper.Map<Ingredient>(request);
 
-            _context.Indegriments.Add(indegrimentToAdd);
+            _context.Ingredients.Add(indegrimentToAdd);
 
             await _context.SaveChangesAsync(cancellationToken);
 

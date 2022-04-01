@@ -20,7 +20,7 @@ namespace FoodStoreMarket.Application.Interfaces
         DbSet<Domain.Entities.Menu> Menus { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<ProductSpecification> ProductSpecifications { get; set; }
-        DbSet<Indegriment> Indegriments { get; set; }
+        DbSet<Ingredient> Ingredients { get; set; }
         DbSet<Order> Orders { get; set; }
         DbSet<Client> Clients { get; set; }
 
