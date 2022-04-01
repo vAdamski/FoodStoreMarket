@@ -30,7 +30,7 @@ namespace FoodStoreMarket.Persistance
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductSpecification> ProductSpecifications { get; set; }
-        public DbSet<Indegriment> Indegriments { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Client> Clients { get; set; }
 
