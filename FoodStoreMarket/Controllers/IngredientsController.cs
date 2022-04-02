@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Api.Controllers
 {
-	[Route("api/ingredients")]
-	[EnableCors("MyAllowSecificOrigins")]
-	public class IngredientsController : BaseController
-	{
+    [Route("api/ingredients")]
+    [EnableCors("MyAllowSecificOrigins")]
+    public class IngredientsController : BaseController
+    {
         /// <summary>
         /// Get igredient by id
         /// </summary>
@@ -44,13 +45,13 @@ namespace FoodStoreMarket.Api.Controllers
         /// Get all ingredients for product
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{productId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetAllForProductAsync()
+        public async Task<ActionResult> GetAllForProductAsync(int productId)
         {
             return Ok();
         }
@@ -64,9 +65,19 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<ActionResult<int>> PostAsync()
+        public async Task<ActionResult<int>> PostAsync([FromBody] CreateIngredientCommand createIngredientCommand)
         {
-            return Ok();
+            var vm = createIngredientCommand;
+
+            var id = await Mediator.Send(vm);
+
+            if (id != null)
+            {
+                // Implement Created
+                return Ok(id);
+            }
+
+            return NotFound();
         }
 
         /// <summary>

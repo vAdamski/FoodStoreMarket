@@ -12,6 +12,7 @@
     <None Remove="Indegriments\" />
     <None Remove="Ingredients\Command\" />
     <None Remove="Ingredients\Commands\AddNewIndegriment\" />
+    <None Remove="Ingredients\Commands\DeleteIngrediment\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,5 +34,6 @@
     <Folder Include="Products\" />
     <Folder Include="Products\Commands\" />
     <Folder Include="Products\Commands\AddNewProduct\" />
+    <Folder Include="Ingredients\Commands\DeleteIngredient\" />
   </ItemGroup>
 </Project>
