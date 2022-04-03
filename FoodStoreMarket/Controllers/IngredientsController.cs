@@ -1,4 +1,5 @@
 ﻿using FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment;
+using FoodStoreMarket.Application.Ingredients.Commands.DeleteIngredient;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -105,6 +106,8 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeleteAsync(int id)
         {
+            await Mediator.Send(new DeleteIngredientCommand { IngredientIdToDelete = id });
+
             return Ok();
         }
     }
