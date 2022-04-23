@@ -1,11 +1,12 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
 using MediatR;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.EditIngredient;
 
-public class EditIngredientCommand : IRequest<int>, IMapFrom<EditIngredientCommand>
+public class EditIngredientCommand : IRequest<bool>, IMapFrom<EditIngredientCommand>
 {
     public int Id { get; set; }
     public string Name { get; set; }

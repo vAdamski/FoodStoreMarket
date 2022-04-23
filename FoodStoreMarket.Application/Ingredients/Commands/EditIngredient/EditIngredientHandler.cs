@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.EditIngredient;
 
-public class EditIngredientHandler : IRequestHandler<EditIngredientCommand, int>
+public class EditIngredientHandler : IRequestHandler<EditIngredientCommand, bool>
 {
     private readonly IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
@@ -20,7 +20,7 @@ public class EditIngredientHandler : IRequestHandler<EditIngredientCommand, int>
         _context = foodStoreMarketDbContext;
         _mapper = mapper;
     }
-    public async Task<int> Handle(EditIngredientCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(EditIngredientCommand request, CancellationToken cancellationToken)
     {
         var ingredientToEdit =
             await _context.Ingredients.Where(i => i.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
@@ -32,8 +32,10 @@ public class EditIngredientHandler : IRequestHandler<EditIngredientCommand, int>
 
             _context.Ingredients.Update(ingredientToEdit);
             await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
 
-        return ingredientToEdit.Id;
+        return false;
     }
 }
