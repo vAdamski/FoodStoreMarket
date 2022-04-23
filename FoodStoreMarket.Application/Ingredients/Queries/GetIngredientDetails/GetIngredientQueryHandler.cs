@@ -26,7 +26,9 @@ public class GetIngredientQueryHandler : IRequestHandler<GetIngredientQuery, Ing
     {
         var ingredient = await _context.Ingredients.Where(i => i.Id == request.IngredientId)
             .FirstOrDefaultAsync(cancellationToken);
-
-        return _mapper.Map<Ingredient, IngredientVm>(ingredient);
+        
+        var ingredientVm = _mapper.Map<Ingredient, IngredientVm>(ingredient);
+        
+        return ingredientVm;
     }
 }
