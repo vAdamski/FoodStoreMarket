@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FoodStoreMarket.Application.Ingredients.Queries.GetIngredientDetails;
 
 namespace FoodStoreMarket.Api.Controllers
 {
@@ -24,7 +25,14 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetByIdAsync(int id)
         {
-            return Ok();
+            var ingredient = await Mediator.Send(new GetIngredientQuery {IngredientId = id});
+
+            if (ingredient is null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(ingredient);
         }
 
         /// <summary>
