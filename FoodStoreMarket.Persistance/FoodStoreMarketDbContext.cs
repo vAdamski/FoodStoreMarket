@@ -67,6 +67,19 @@ namespace FoodStoreMarket.Persistance
                         break;
                 }
             }
+
+            foreach (var entry in ChangeTracker.Entries<ValueObject>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             return base.SaveChangesAsync(cancellationToken);
         }
     }
