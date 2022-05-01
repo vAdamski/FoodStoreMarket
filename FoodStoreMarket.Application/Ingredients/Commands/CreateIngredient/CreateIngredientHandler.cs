@@ -24,11 +24,11 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
         }
         public async Task<int> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            var menuIsExist = _context.Menus.Where(m => m.Id == request.MenuId).FirstOrDefaultAsync(cancellationToken);
+            var menuIsExist = await _context.Menus.Where(m => m.Id == request.MenuId).FirstOrDefaultAsync(cancellationToken);
 
 
             var indegrimentToAdd = _mapper.Map<Ingredient>(request);
-            _context.Ingredients.Add(indegrimentToAdd);
+            await _context.Ingredients.AddAsync(indegrimentToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
             return indegrimentToAdd.Id;

@@ -25,7 +25,7 @@ public class GetAllIngredientsInRestaurantQueryHandler : IRequestHandler<GetAllI
     public async Task<IngredientsInRestaurantVm> Handle(GetAllIngredientsInRestaurantQuery request, CancellationToken cancellationToken)
     {
         var ingredientsInRestaurant =
-            await _context.Ingredients.Where(i => i.MenuId == request.MenuId).ToListAsync(cancellationToken);
+            await _context.Ingredients.Where(i => i.MenuId == request.MenuId && i.StatusId == 1).ToListAsync(cancellationToken);
 
         var ingredientsVm = new IngredientsInRestaurantVm();
 

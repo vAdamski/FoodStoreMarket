@@ -8,8 +8,8 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
 {
 	public class CreateIngredientCommand : IRequest<int>, IMapFrom<CreateIngredientCommand>
 	{
-		public string Name { get; set; }
         public int MenuId { get; set; }
+		public string Name { get; set; }
         public decimal Price { get; set; }
 
 		public void Mapping(Profile profile)

@@ -13,6 +13,8 @@ namespace FoodStoreMarket.Domain.Entities
         public Product Product { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public decimal BasePrice { get; set; }
         public List<Ingredient> Ingredients { get; private set; } = new List<Ingredient>();
+        public List<ProductSize> ProductSizes { get; private set; } = new List<ProductSize>();
     }
 }

@@ -36,7 +36,4 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Configuration\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
 </Project>

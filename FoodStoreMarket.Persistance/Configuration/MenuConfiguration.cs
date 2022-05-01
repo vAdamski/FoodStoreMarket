@@ -9,10 +9,7 @@ namespace FoodStoreMarket.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-            //builder
-            //    .HasOne(m => m.Restaurant)
-            //    .WithOne(r => r.Menu)
-            //    .HasForeignKey<Restaurant>(r => r.MenuId);
+
         }
     }
 }
