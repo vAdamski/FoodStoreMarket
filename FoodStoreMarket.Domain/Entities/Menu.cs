@@ -13,5 +13,6 @@ namespace FoodStoreMarket.Domain.Entities
         public Restaurant Restaurant { get; set; }
         public List<Product> Products { get; private set; } = new List<Product>();
         public List<Ingredient> Ingredients { get; private set; } = new List<Ingredient>();
+        public List<Size> Sizes { get; private set; } = new List<Size>();
     }
 }

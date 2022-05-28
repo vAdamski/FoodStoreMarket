@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Persistance.Configuration
 {
-    public class ProductSizeConfiguration : IEntityTypeConfiguration<ComponentSizeDetails>
+    public class SizeConfiguration : IEntityTypeConfiguration<Size>
     {
-        public void Configure(EntityTypeBuilder<ComponentSizeDetails> builder)
+        public void Configure(EntityTypeBuilder<Size> builder)
         {
-            builder.Property(ps => ps.Price).IsRequired();
+
         }
     }
 }
