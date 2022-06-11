@@ -28,7 +28,6 @@ public class EditIngredientHandler : IRequestHandler<EditIngredientCommand, bool
         if (ingredientToEdit is not null)
         {
             ingredientToEdit.Name = request.Name;
-            ingredientToEdit.Price = request.Price;
 
             _context.Ingredients.Update(ingredientToEdit);
             await _context.SaveChangesAsync(cancellationToken);

@@ -165,9 +165,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<int>("IngredientId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
@@ -186,8 +183,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IngredientId");
-
-                    b.HasIndex("MenuId");
 
                     b.HasIndex("SizeId");
 
@@ -438,9 +433,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
@@ -460,8 +452,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MenuId");
 
                     b.HasIndex("ProductSpecificationId");
 
@@ -899,21 +889,13 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FoodStoreMarket.Domain.Entities.Size", "Size")
                         .WithMany("IngredientSizeDetails")
                         .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Ingredient");
-
-                    b.Navigation("Menu");
 
                     b.Navigation("Size");
                 });
@@ -1066,7 +1048,8 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithOne("Product")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId");
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Menu");
 
@@ -1075,12 +1058,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeDetail", b =>
                 {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithMany("ProductSizeDetails")
                         .HasForeignKey("ProductSpecificationId")
@@ -1090,10 +1067,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasOne("FoodStoreMarket.Domain.Entities.Size", "Size")
                         .WithMany("ProductSizeDetails")
                         .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.Navigation("Menu");
 
                     b.Navigation("ProductSpecification");
 

@@ -8,6 +8,10 @@ public class IngredientSizeDetailConfiguration : IEntityTypeConfiguration<Ingred
 {
     public void Configure(EntityTypeBuilder<IngredientSizeDetail> builder)
     {
-        builder.
+        builder
+            .HasOne(isd => isd.Size)
+            .WithMany(s => s.IngredientSizeDetails)
+            .HasForeignKey(s => s.SizeId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

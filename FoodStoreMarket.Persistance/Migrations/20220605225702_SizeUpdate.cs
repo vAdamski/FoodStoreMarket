@@ -5,10 +5,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FoodStoreMarket.Persistance.Migrations
 {
-    public partial class UpdateSizeInfo : Migration
+    public partial class SizeUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Products_ProductSpecifications_ProductSpecificationId",
+                table: "Products");
+
             migrationBuilder.DropTable(
                 name: "ComponentSize");
 
@@ -49,7 +53,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuId = table.Column<int>(type: "int", nullable: false),
                     SizeId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IngredientId = table.Column<int>(type: "int", nullable: false),
@@ -71,17 +74,10 @@ namespace FoodStoreMarket.Persistance.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IngredientSizeDetails_Menus_MenuId",
-                        column: x => x.MenuId,
-                        principalTable: "Menus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_IngredientSizeDetails_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -90,7 +86,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuId = table.Column<int>(type: "int", nullable: false),
                     SizeId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductSpecificationId = table.Column<int>(type: "int", nullable: false),
@@ -106,12 +101,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     table.PrimaryKey("PK_ProductSizeDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductSizeDetails_Menus_MenuId",
-                        column: x => x.MenuId,
-                        principalTable: "Menus",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_ProductSizeDetails_ProductSpecifications_ProductSpecificationId",
                         column: x => x.ProductSpecificationId,
                         principalTable: "ProductSpecifications",
@@ -121,8 +110,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         name: "FK_ProductSizeDetails_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -131,19 +119,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientSizeDetails_MenuId",
-                table: "IngredientSizeDetails",
-                column: "MenuId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_IngredientSizeDetails_SizeId",
                 table: "IngredientSizeDetails",
                 column: "SizeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductSizeDetails_MenuId",
-                table: "ProductSizeDetails",
-                column: "MenuId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductSizeDetails_ProductSpecificationId",
@@ -159,10 +137,22 @@ namespace FoodStoreMarket.Persistance.Migrations
                 name: "IX_Sizes_MenuId",
                 table: "Sizes",
                 column: "MenuId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Products_ProductSpecifications_ProductSpecificationId",
+                table: "Products",
+                column: "ProductSpecificationId",
+                principalTable: "ProductSpecifications",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Products_ProductSpecifications_ProductSpecificationId",
+                table: "Products");
+
             migrationBuilder.DropTable(
                 name: "IngredientSizeDetails");
 
@@ -222,6 +212,13 @@ namespace FoodStoreMarket.Persistance.Migrations
                 name: "IX_ComponentSize_ProductSpecificationId",
                 table: "ComponentSize",
                 column: "ProductSpecificationId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Products_ProductSpecifications_ProductSpecificationId",
+                table: "Products",
+                column: "ProductSpecificationId",
+                principalTable: "ProductSpecifications",
+                principalColumn: "Id");
         }
     }
 }
