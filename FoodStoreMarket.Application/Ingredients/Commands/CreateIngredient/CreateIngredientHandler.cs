@@ -24,14 +24,25 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
         }
         public async Task<int> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            var menuIsExist = await _context.Menus.Where(m => m.Id == request.MenuId).FirstOrDefaultAsync(cancellationToken);
-            var sizesInMenu = await _context.
+            var menuIsExist = await _context.Menus.Where(m => m.Id == request.MenuId)
+                .FirstOrDefaultAsync(cancellationToken);
+            var sizesInMenu = await _context.Sizes.Where(s => s.MenuId == request.MenuId)
+                .ToListAsync(cancellationToken);
 
-            var indegrimentToAdd = _mapper.Map<Ingredient>(request);
-            await _context.Ingredients.AddAsync(indegrimentToAdd, cancellationToken);
+            //Create base for ingredient
+            var ingredientToAdd = _mapper.Map<Ingredient>(request);
+            
+            //Create all available sizes for new ingredient
+            sizesInMenu.ForEach(s =>
+            {
+                var newIngredientSizeDetails = new IngredientSizeDetail();
+                newIngredientSizeDetails.SizeId = s.Id;
+            });
+
+            await _context.Ingredients.AddAsync(ingredientToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return indegrimentToAdd.Id;
+            return ingredientToAdd.Id;
         }
     }
 }
