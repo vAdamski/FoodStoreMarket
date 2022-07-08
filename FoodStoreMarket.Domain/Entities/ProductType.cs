@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Domain.Entities
 {
-    public class Size : AuditableEntity
+    public class ProductType : AuditableEntity
     {
-        public string SizeName { get; set; }
         public int MenuId { get; set; }
         public Menu Menu { get; set; }
-        public List<ProductSizeSpecification> ProductSizeSpecifications { get; set; }
-        public int ProductTypeId { get; set; }
-        public ProductType ProductType { get; set; }
+        public string ProductTypeName { get; set; }
+        public List<ProductSpecification> ProductSpecifications { get; set; } = new List<ProductSpecification>();
     }
 }

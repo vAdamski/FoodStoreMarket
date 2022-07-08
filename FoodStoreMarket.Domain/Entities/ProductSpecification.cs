@@ -14,6 +14,8 @@ namespace FoodStoreMarket.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Ingredient> Ingredients { get; private set; } = new List<Ingredient>();
-        public List<ProductSizeDetail> ProductSizeDetails { get; private set; } = new List<ProductSizeDetail>();
+        public int ProductTypeId { get; set; }
+        public ProductType ProductType { get; set; }
+        public List<ProductSizeSpecification> ProductSizeSpecifications { get; set; } = new List<ProductSizeSpecification>();
     }
 }

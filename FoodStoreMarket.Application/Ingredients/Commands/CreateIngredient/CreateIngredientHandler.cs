@@ -24,23 +24,15 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
         }
         public async Task<int> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            var menuIsExist = await _context.Menus.Where(m => m.Id == request.MenuId)
-                .FirstOrDefaultAsync(cancellationToken);
-            var sizesInMenu = await _context.Sizes.Where(s => s.MenuId == request.MenuId)
-                .ToListAsync(cancellationToken);
-
             //Create base for ingredient
             var ingredientToAdd = _mapper.Map<Ingredient>(request);
             
-            //Create all available sizes for new ingredient
-            sizesInMenu.ForEach(s =>
-            {
-                var newIngredientSizeDetails = new IngredientSizeDetail();
-                newIngredientSizeDetails.SizeId = s.Id;
-            });
-
+            //Save new ingredient to get ID for next step
             await _context.Ingredients.AddAsync(ingredientToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
+
+            //Next actions for create ingredient
+            
 
             return ingredientToAdd.Id;
         }
