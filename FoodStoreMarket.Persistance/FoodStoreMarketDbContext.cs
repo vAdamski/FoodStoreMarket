@@ -29,7 +29,10 @@ namespace FoodStoreMarket.Persistance
         public DbSet<OpeningClosingSpecification> OpeningClosingSpecifications { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductSpecification> ProductSizeSpecifications { get; set; }
         public DbSet<ProductSpecification> ProductSpecifications { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantSpecification> RestaurantSpecifications { get; set; }
         public DbSet<WorkingHours> WorkingHours { get; set; }

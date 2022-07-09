@@ -13,5 +13,6 @@ namespace FoodStoreMarket.Domain.Entities
         public Menu Menu { get; set; }
         public string ProductTypeName { get; set; }
         public List<ProductSpecification> ProductSpecifications { get; set; } = new List<ProductSpecification>();
+        public List<Size> Sizes { get; set; } = new List<Size>();
     }
 }
