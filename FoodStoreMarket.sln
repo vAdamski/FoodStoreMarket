@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{19B224B7-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F80F1F9C-5C96-4129-852F-2D580EC47B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Application", "FoodStoreMarket.Application\FoodStoreMarket.Application.csproj", "{9FA06AA0-8760-4D7C-B97B-2B5FC808082F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Application", "FoodStoreMarket.Application\FoodStoreMarket.Application.csproj", "{9FA06AA0-8760-4D7C-B97B-2B5FC808082F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Common", "FoodStoreMarket.Common\FoodStoreMarket.Common.csproj", "{B3BC0178-9544-447C-8E35-6D7DED954420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Common", "FoodStoreMarket.Common\FoodStoreMarket.Common.csproj", "{B3BC0178-9544-447C-8E35-6D7DED954420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Domain", "FoodStoreMarket.Domain\FoodStoreMarket.Domain.csproj", "{68640CB5-F26D-4B29-A822-5489222C16E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Domain", "FoodStoreMarket.Domain\FoodStoreMarket.Domain.csproj", "{68640CB5-F26D-4B29-A822-5489222C16E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Infrastructure", "FoodStoreMarket.Infrastructure\FoodStoreMarket.Infrastructure.csproj", "{32065B26-2760-4D98-8094-3DA86B0D26B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Infrastructure", "FoodStoreMarket.Infrastructure\FoodStoreMarket.Infrastructure.csproj", "{32065B26-2760-4D98-8094-3DA86B0D26B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Persistance", "FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj", "{4473FBB0-5681-431D-9084-306992947CC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Persistance", "FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj", "{4473FBB0-5681-431D-9084-306992947CC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
