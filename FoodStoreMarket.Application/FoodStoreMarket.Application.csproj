@@ -30,7 +30,6 @@
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="ProductTypes\Commands\AddNewProductType\" />
     <Folder Include="Restaurants\Commands\UpdateRestaurant\" />
     <Folder Include="Products\" />
     <Folder Include="Products\Commands\" />

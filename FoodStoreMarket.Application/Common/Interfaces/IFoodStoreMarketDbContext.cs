@@ -19,7 +19,7 @@ namespace FoodStoreMarket.Application.Interfaces
         DbSet<OpeningClosingSpecification> OpeningClosingSpecifications { get; set; }
         DbSet<Order> Orders { get; set; }
         DbSet<Product> Products { get; set; }
-        DbSet<ProductSpecification> ProductSizeSpecifications { get; set; }
+        DbSet<ProductSizeSpecification> ProductSizeSpecifications { get; set; }
         DbSet<ProductSpecification> ProductSpecifications { get; set; }
         DbSet<ProductType> ProductTypes { get; set; }
         DbSet<Size> Sizes { get; set; }
