@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
 {
-    public class ProductIndegrimentDto : IMapFrom<Indegriment>
+    public class ProductIndegrimentDto : IMapFrom<Ingredient>
     {
         public string Name { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Indegriment, ProductIndegrimentDto>()
+            profile.CreateMap<Ingredient, ProductIndegrimentDto>()
                 .ForMember(x => x.Name, map => map.MapFrom(src => src.Name));
         }
     }

@@ -45,7 +45,7 @@ namespace FoodStoreMarket.Application.Menus.Queries.GetRestaurantMenu
             {
                 var productVm = _mapper.Map<RestaurantProductDto>(p.ProductSpecification);
 
-                p.ProductSpecification.Indegriments.ForEach(i =>
+                p.ProductSpecification.Ingredients.ForEach(i =>
                 {
                     var indegrimentDto = _mapper.Map<ProductIndegrimentDto>(i);
 

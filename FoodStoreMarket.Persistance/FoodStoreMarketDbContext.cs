@@ -21,18 +21,21 @@ namespace FoodStoreMarket.Persistance
             _dateTime = dateTime;
         }
 
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<OpeningClosingHours> OpeningClosingHours { get; set; }
+        public DbSet<OpeningClosingSpecification> OpeningClosingSpecifications { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductSpecification> ProductSizeSpecifications { get; set; }
+        public DbSet<ProductSpecification> ProductSpecifications { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<Size> Sizes { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantSpecification> RestaurantSpecifications { get; set; }
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<WorkingHours> WorkingHours { get; set; }
-        public DbSet<OpeningClosingSpecification> OpeningClosingSpecifications { get; set; }
-        public DbSet<OpeningClosingHours> OpeningClosingHours { get; set; }
-        public DbSet<Menu> Menus { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<ProductSpecification> ProductSpecifications { get; set; }
-        public DbSet<Indegriment> Indegriments { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Client> Clients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -67,6 +70,19 @@ namespace FoodStoreMarket.Persistance
                         break;
                 }
             }
+
+            foreach (var entry in ChangeTracker.Entries<ValueObject>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             return base.SaveChangesAsync(cancellationToken);
         }
     }

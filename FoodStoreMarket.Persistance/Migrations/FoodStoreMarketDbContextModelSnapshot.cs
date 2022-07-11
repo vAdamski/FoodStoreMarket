@@ -17,7 +17,7 @@ namespace FoodStoreMarket.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -95,7 +95,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Indegriment", b =>
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Ingredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,6 +115,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
@@ -126,15 +129,14 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Indegriments");
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
@@ -361,6 +363,53 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeSpecification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductSpecificationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductSpecificationId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizeSpecification");
+                });
+
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
                 {
                     b.Property<int>("Id")
@@ -396,12 +445,59 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductSpecifications");
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("ProductSpecification");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
@@ -489,6 +585,53 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.ToTable("RestaurantSpecifications");
                 });
 
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SizeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("Sizes");
+                });
+
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
                 {
                     b.Property<int>("Id")
@@ -537,19 +680,19 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.ToTable("WorkingHours");
                 });
 
-            modelBuilder.Entity("IndegrimentProductSpecification", b =>
+            modelBuilder.Entity("IngredientProductSpecification", b =>
                 {
-                    b.Property<int>("IndegrimentsId")
+                    b.Property<int>("IngredientsId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductSpecificationsId")
                         .HasColumnType("int");
 
-                    b.HasKey("IndegrimentsId", "ProductSpecificationsId");
+                    b.HasKey("IngredientsId", "ProductSpecificationsId");
 
                     b.HasIndex("ProductSpecificationsId");
 
-                    b.ToTable("IndegrimentProductSpecification");
+                    b.ToTable("IngredientProductSpecification");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -729,6 +872,17 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("RestaurantSpecification");
                 });
 
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Ingredient", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+                });
+
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
                 {
                     b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
@@ -877,11 +1031,53 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithOne("Product")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId");
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Menu");
 
                     b.Navigation("ProductSpecification");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeSpecification", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
+                        .WithMany("ProductSizeSpecifications")
+                        .HasForeignKey("ProductSpecificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Size", "Size")
+                        .WithMany("ProductSizeSpecifications")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductSpecification");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductType", "ProductType")
+                        .WithMany("ProductSpecifications")
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("ProductTypes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
@@ -942,6 +1138,25 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Restaurant");
                 });
 
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("Sizes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductType", "ProductType")
+                        .WithMany("Sizes")
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+
+                    b.Navigation("ProductType");
+                });
+
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
                 {
                     b.HasOne("FoodStoreMarket.Domain.Entities.Employee", "Employee")
@@ -953,11 +1168,11 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("IndegrimentProductSpecification", b =>
+            modelBuilder.Entity("IngredientProductSpecification", b =>
                 {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.Indegriment", null)
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Ingredient", null)
                         .WithMany()
-                        .HasForeignKey("IndegrimentsId")
+                        .HasForeignKey("IngredientsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -990,7 +1205,13 @@ namespace FoodStoreMarket.Persistance.Migrations
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
                 {
+                    b.Navigation("Ingredients");
+
+                    b.Navigation("ProductTypes");
+
                     b.Navigation("Products");
+
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", b =>
@@ -1001,6 +1222,15 @@ namespace FoodStoreMarket.Persistance.Migrations
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
                 {
                     b.Navigation("Product");
+
+                    b.Navigation("ProductSizeSpecifications");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.Navigation("ProductSpecifications");
+
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
@@ -1015,6 +1245,11 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employees");
 
                     b.Navigation("OpeningClosingSpecification");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.Navigation("ProductSizeSpecifications");
                 });
 #pragma warning restore 612, 618
         }

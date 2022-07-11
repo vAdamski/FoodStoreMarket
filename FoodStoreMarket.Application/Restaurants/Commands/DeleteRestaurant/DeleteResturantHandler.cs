@@ -20,10 +20,17 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
 
         public async Task<Unit> Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
         {
-            var restaurantToDelete = await _context.Restaurants.Where(r => r.Id == request.IdRestaurantToDelete).FirstOrDefaultAsync();
+            var restaurantToDelete = await _context.Restaurants
+                .Where(r => r.Id == request.IdRestaurantToDelete)
+                .FirstOrDefaultAsync();
 
-            restaurantToDelete.Menu = await _context.Menus.Where(m => m.RestaurantId == restaurantToDelete.Id).FirstOrDefaultAsync();
-            restaurantToDelete.RestaurantSpecification = await _context.RestaurantSpecifications.Where(rs => rs.RestaurantId == restaurantToDelete.Id).FirstOrDefaultAsync();
+            restaurantToDelete.Menu = await _context.Menus
+                .Where(m => m.RestaurantId == restaurantToDelete.Id)
+                .FirstOrDefaultAsync();
+            
+            restaurantToDelete.RestaurantSpecification = await _context.RestaurantSpecifications
+                .Where(rs => rs.RestaurantId == restaurantToDelete.Id)
+                .FirstOrDefaultAsync();
 
             _context.Restaurants.Remove(restaurantToDelete);
 

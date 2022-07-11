@@ -7,10 +7,11 @@ using FoodStoreMarket.Domain.Common;
 
 namespace FoodStoreMarket.Domain.Entities
 {
-    public class Indegriment : AuditableEntity
+    public class Ingredient : AuditableEntity
     {
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public int MenuId { get; set; }
+        public Menu Menu { get; set; }
         public List<ProductSpecification> ProductSpecifications { get; private set; } = new List<ProductSpecification>();
     }
 }

@@ -63,13 +63,12 @@ namespace FoodStoreMarket.Api.Controllers
 
             var id = await Mediator.Send(vm);
 
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
+                // Implement Created
+                return Ok(id);
             }
-
-            // Implement Created
-            return Ok(id);
+            return NotFound();
         }
 
         /// <summary>

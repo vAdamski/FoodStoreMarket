@@ -12,13 +12,10 @@ namespace FoodStoreMarket.Domain.Entities
     {
         public int RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
-
         public string Name { get; set; }
         public string Description { get; set; }
         public Adres Adres { get; set; }
-
         public List<Employee> Employees { get; private set; } = new List<Employee>(); 
-
         public int? OpeningClosingSpecificationId{ get; set; }
         public OpeningClosingSpecification OpeningClosingSpecification { get; set; }
     }

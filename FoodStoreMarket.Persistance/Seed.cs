@@ -325,9 +325,9 @@ namespace FoodStoreMarket.Persistance
                 });
             });
 
-            modelBuilder.Entity<Indegriment>(i =>
+            modelBuilder.Entity<Ingredient>(i =>
             {
-                i.HasData(new Indegriment()
+                i.HasData(new Ingredient()
                 {
                     Id = 1,
                     StatusId = 1,
@@ -335,7 +335,7 @@ namespace FoodStoreMarket.Persistance
                     Name = "Mutton meat"
                 });
 
-                i.HasData(new Indegriment()
+                i.HasData(new Ingredient()
                 {
                     Id = 2,
                     StatusId = 1,
@@ -343,7 +343,7 @@ namespace FoodStoreMarket.Persistance
                     Name = "Chicken meat"
                 });
 
-                i.HasData(new Indegriment()
+                i.HasData(new Ingredient()
                 {
                     Id = 3,
                     StatusId = 1,
