@@ -4,5 +4,5 @@ namespace FoodStoreMarket.Application.ProductTypes.Queries.GetAllProductTypesInR
 
 public class GetAllProductTypesInRestaurantQuery : IRequest<GetAllProductTypesInRestaurantVm>
 {
-    public int MenuId { get; set; }
+    public int RestaurantId { get; set; }
 }

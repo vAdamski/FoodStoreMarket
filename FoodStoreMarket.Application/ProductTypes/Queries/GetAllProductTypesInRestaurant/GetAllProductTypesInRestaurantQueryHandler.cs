@@ -24,16 +24,16 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
     {
         try
         {
-            var menuIsExist = await _context.Menus.Where(x => x.Id == request.MenuId)
+            var menu = await _context.Menus.Where(x => x.RestaurantId == request.RestaurantId)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (menuIsExist == null)
+            if (menu == null)
             {
                 throw new Exception("Menu with this Id is not exist!");
                 //TODO: Create exception "Menu is not exist"
             }
-            
-            var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == request.MenuId)
+
+            var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
                 .ToListAsync(cancellationToken);
 
             var vm = new GetAllProductTypesInRestaurantVm();

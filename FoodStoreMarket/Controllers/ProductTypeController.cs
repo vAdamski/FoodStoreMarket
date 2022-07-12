@@ -24,7 +24,7 @@ public class ProductTypeController : BaseController
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult> GetAllProductTypesInRestaurant(int id)
     {
-        var vm = await Mediator.Send(new GetAllProductTypesInRestaurantQuery() { MenuId = id });
+        var vm = await Mediator.Send(new GetAllProductTypesInRestaurantQuery() { RestaurantId = id });
 
         return Ok(vm);
     }

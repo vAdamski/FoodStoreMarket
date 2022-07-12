@@ -4,5 +4,6 @@ namespace FoodStoreMarket.Application.ProductTypes.Queries.GetAllProductTypesInR
 
 public class GetAllProductTypesInRestaurantVm
 {
-    public List<GetAllProductTypesInRestaurantDto> GetAllProductTypesInRestaurantDtos { get; set; }
+    public List<GetAllProductTypesInRestaurantDto> GetAllProductTypesInRestaurantDtos { get; set; } =
+        new List<GetAllProductTypesInRestaurantDto>();
 }
