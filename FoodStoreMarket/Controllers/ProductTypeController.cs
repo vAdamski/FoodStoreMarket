@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FoodStoreMarket.Application.ProductTypes.Commands.AddNewProductType;
+using FoodStoreMarket.Application.ProductTypes.Commands.UpdateProductType;
 using FoodStoreMarket.Application.ProductTypes.Queries.GetAllProductTypesInRestaurant;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -50,5 +51,21 @@ public class ProductTypeController : BaseController
             return Ok(id);
         }
         return NotFound();
+    }
+    
+    /// <summary>
+    /// Update product type
+    /// </summary>
+    /// <returns></returns>
+    [HttpPatch]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<int>> PatchAsync([FromBody]UpdateProductTypeCommand  productTypeCommand)
+    {
+        var id = await Mediator.Send(productTypeCommand);
+        
+        return Ok(id);
     }
 }
