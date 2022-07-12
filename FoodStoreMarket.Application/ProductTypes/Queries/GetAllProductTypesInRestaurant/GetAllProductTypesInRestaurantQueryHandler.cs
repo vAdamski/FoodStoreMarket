@@ -29,8 +29,8 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
 
             if (menu == null)
             {
-                throw new Exception("Menu with this Id is not exist!");
-                //TODO: Create exception "Menu is not exist"
+                throw new Exception("Restaurant with this Id is not exist!");
+                //TODO: Create exception "Restaurant is not exist"
             }
 
             var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
