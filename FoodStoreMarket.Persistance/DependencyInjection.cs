@@ -10,7 +10,7 @@ namespace FoodStoreMarket.Persistance
     {
         public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<FoodStoreMarketDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("FoodStoreMarketDatabase")));
+            services.AddDbContext<FoodStoreMarketDbContext>(options => options.UseSqlServer(configuration.GetConnectionString(ConnectionStringDbContext.GetConnectionStringByPlatform())));
             services.AddScoped<IFoodStoreMarketDbContext, FoodStoreMarketDbContext>();
 
             return services;
