@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using FoodStoreMarket.Application.ProductTypes.Commands.AddNewProductType;
+using FoodStoreMarket.Application.ProductTypes.Commands.DeleteProductType;
 using FoodStoreMarket.Application.ProductTypes.Commands.UpdateProductType;
 using FoodStoreMarket.Application.ProductTypes.Queries.GetAllProductTypesInRestaurant;
 using Microsoft.AspNetCore.Cors;
@@ -67,5 +69,20 @@ public class ProductTypeController : BaseController
         var id = await Mediator.Send(productTypeCommand);
         
         return Ok(id);
+    }
+    
+    /// <summary>
+    /// Delete product type by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> DeleteAsync(int id)
+    {
+        await Mediator.Send(new DeleteProductTypeCommand() { ProductTypeId = id });
+        return Ok();
     }
 }
