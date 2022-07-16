@@ -35,6 +35,5 @@
     <Folder Include="Products\Commands\" />
     <Folder Include="Products\Commands\AddNewProduct\" />
     <Folder Include="Ingredients\Commands\DeleteIngredient\" />
-    <Folder Include="Sizes\Queries" />
   </ItemGroup>
 </Project>

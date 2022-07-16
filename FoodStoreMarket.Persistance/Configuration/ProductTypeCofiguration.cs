@@ -13,7 +13,15 @@ namespace FoodStoreMarket.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<ProductType> builder)
         {
+            builder
+                .HasMany(pt => pt.ProductSpecifications)
+                .WithOne(ps => ps.ProductType)
+                .OnDelete(DeleteBehavior.NoAction);
 
+            builder
+                .HasMany(pt => pt.Sizes)
+                .WithOne(s => s.ProductType)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
