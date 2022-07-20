@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,8 +30,7 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
 
             if (menu == null)
             {
-                throw new Exception("Restaurant with this Id is not exist!");
-                //TODO: Create exception "Restaurant is not exist"
+                throw new ObjectWithIdNotExistException(request.RestaurantId, "Restaurnat");
             }
 
             var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
