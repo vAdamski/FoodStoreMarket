@@ -2,9 +2,9 @@
 
 namespace FoodStoreMarket.Domain.Exceptions;
 
-public class ObjectWithIdNotExistException : Exception
+public class ObjectNotExistInDbException : Exception
 {
-    public ObjectWithIdNotExistException(int id, string objectName = "Object") 
+    public ObjectNotExistInDbException(int id, string objectName = "Object") 
         : base($"{objectName} with Id = {id} not found in database", new Exception())
     {
         

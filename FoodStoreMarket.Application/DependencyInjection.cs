@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Common.Behaviours;
 using MediatR.Pipeline;
+using FoodStoreMarket.Application.Common.Middleware;
 
 namespace FoodStoreMarket.Application
 {
@@ -20,7 +21,8 @@ namespace FoodStoreMarket.Application
 
 
             services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehaviour<>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+
             return services;
         }
     }

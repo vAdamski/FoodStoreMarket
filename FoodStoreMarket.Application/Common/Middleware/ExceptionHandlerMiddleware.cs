@@ -1,42 +1,45 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using FoodStoreMarket.Domain.Exceptions;
 
-namespace FoodStoreMarket.Application.Common.Middleware;
-
-public class ExceptionHandlerMiddleware
+namespace FoodStoreMarket.Application.Common.Middleware
 {
-    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    public class ExceptionHandlerMiddleware
     {
-        var code = HttpStatusCode.InternalServerError;
-
-        var result = string.Empty;
-
-        switch (exception)
+        private readonly RequestDelegate _next;
+        public ExceptionHandlerMiddleware(RequestDelegate next)
         {
-            case ValidationException validationException:
-                code = HttpStatusCode.BadRequest;
-                result = JsonConvert.SerializeObject(validationException.Failures);
-                break;
-            case BadRequestException _:
-                code = HttpStatusCode.BadRequest;
-                break;
-            case MissingRequestSecurityDeclarationException _:
-                code = HttpStatusCode.InternalServerError;
-                break;
+            _next = next;
         }
-
-        context.Response.ContentType = "application/json";
-        context.Response.StatusCode = (int)code;
-
-        if (result == string.Empty)
+        public Task InvokeAsync(HttpContext httpContext, Exception exception)
         {
-            result = JsonConvert.SerializeObject(new { error = exception.Message });
-        }
+            var code = HttpStatusCode.NotFound;
 
-        return context.Response.WriteAsync(result);
+            var result = string.Empty;
+
+            httpContext.Response.ContentType = "application/json";
+            httpContext.Response.StatusCode = (int)code;
+
+            switch (exception)
+            {
+                case ObjectNotExistInDbException _:
+                    code = HttpStatusCode.BadRequest;
+                    break;
+            }
+
+            if (result == string.Empty)
+            {
+                result = JsonConvert.SerializeObject(new { error = exception.Message });
+            }
+
+            return httpContext.Response.WriteAsync(result);
+        }
     }
 }
