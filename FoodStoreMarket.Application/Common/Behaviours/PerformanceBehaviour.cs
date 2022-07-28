@@ -12,10 +12,10 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
     private readonly ILogger<TRequest> _logger;
     private readonly Stopwatch _stopwatch;
 
-    public PerformanceBehaviour(ILogger<TRequest> logger, Stopwatch stopwatch)
+    public PerformanceBehaviour(ILogger<TRequest> logger)
     {
         _logger = logger;
-        _stopwatch = stopwatch;
+        _stopwatch = new Stopwatch();
     }
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
