@@ -88,13 +88,13 @@ namespace FoodStoreMarket
 
             app.UseAuthorization();
 
+            app.UseMiddlewareApplication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseMiddlewareApplication();
         }
     }
 }

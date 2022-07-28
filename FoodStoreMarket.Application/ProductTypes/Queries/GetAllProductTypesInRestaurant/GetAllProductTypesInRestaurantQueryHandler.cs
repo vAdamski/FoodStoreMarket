@@ -23,25 +23,32 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
 
     public async Task<GetAllProductTypesInRestaurantVm> Handle(GetAllProductTypesInRestaurantQuery request, CancellationToken cancellationToken)
     {
-        var menu = await _context.Menus.Where(x => x.RestaurantId == request.RestaurantId)
+        try
+        {
+            var menu = await _context.Menus.Where(x => x.RestaurantId == request.RestaurantId)
                 .FirstOrDefaultAsync(cancellationToken);
 
-        if (menu == null)
-        {
-            throw new ObjectNotExistInDbException(request.RestaurantId, "Restaurnat");
+            if (menu == null)
+            {
+                throw new ObjectNotExistInDbException(request.RestaurantId, "Restaurnat");
+            }
+
+            var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
+                .ToListAsync(cancellationToken);
+
+            var vm = new GetAllProductTypesInRestaurantVm();
+
+            productTypesInRestaurant.ForEach(pt =>
+            {
+                var mappedEntity = _mapper.Map<GetAllProductTypesInRestaurantDto>(pt);
+                vm.GetAllProductTypesInRestaurantDtos.Add(mappedEntity);
+            });
+
+            return vm;
         }
-
-        var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
-            .ToListAsync(cancellationToken);
-
-        var vm = new GetAllProductTypesInRestaurantVm();
-            
-        productTypesInRestaurant.ForEach(pt =>
+        catch(Exception e)
         {
-            var mappedEntity = _mapper.Map<GetAllProductTypesInRestaurantDto>(pt);
-            vm.GetAllProductTypesInRestaurantDtos.Add(mappedEntity);
-        });
-
-        return vm;
+            throw e;
+        }
     }
 }

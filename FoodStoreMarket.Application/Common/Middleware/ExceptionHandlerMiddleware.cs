@@ -18,14 +18,24 @@ namespace FoodStoreMarket.Application.Common.Middleware
         {
             _next = next;
         }
-        public Task InvokeAsync(HttpContext httpContext, Exception exception)
+        public async Task InvokeAsync(HttpContext httpContext)
         {
-            var code = HttpStatusCode.NotFound;
+            try
+            {
+                await _next(httpContext);
+            }
+            catch(Exception exception)
+            {
+                await HandleExceptionAsync(httpContext, exception);
+            }
+
+        }
+
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            var code = HttpStatusCode.InternalServerError;
 
             var result = string.Empty;
-
-            httpContext.Response.ContentType = "application/json";
-            httpContext.Response.StatusCode = (int)code;
 
             switch (exception)
             {
@@ -34,12 +44,15 @@ namespace FoodStoreMarket.Application.Common.Middleware
                     break;
             }
 
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)code;
+
             if (result == string.Empty)
             {
                 result = JsonConvert.SerializeObject(new { error = exception.Message });
             }
 
-            return httpContext.Response.WriteAsync(result);
+            return context.Response.WriteAsync(result);
         }
     }
 }
