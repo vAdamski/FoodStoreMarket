@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,11 +28,19 @@ public class DeleteProductTypeHandler : IRequestHandler<DeleteProductTypeCommand
 
             if (productTypeToDelete == null)
             {
-                throw new Exception($"Product type with Id = {request.ProductTypeId} not exist!");
+                throw new ObjectNotExistInDbException(request.ProductTypeId, "Product Type");
             }
 
             _context.ProductTypes.Remove(productTypeToDelete);
-            await _context.SaveChangesAsync(cancellationToken);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException("Saving to database error!");
+            }
 
             return Unit.Value;
         }

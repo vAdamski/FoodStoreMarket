@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,18 +33,26 @@ public class AddNewSizeHandler : IRequestHandler<AddNewSizeCommand, int>
 
             if (menuIsValid == null)
             {
-                throw new Exception("Menu not exist!");
+                throw new ObjectNotExistInDbException(request.MenuId, "Menu");
             }
 
             if (productTypeIsValid == null)
             {
-                throw new Exception("Product type not exist!");
+                throw new ObjectNotExistInDbException(request.ProductTypeId, "Product type");
             }
             
             var sizeToAdd = _mapper.Map<Size>(request);
 
             await _context.Sizes.AddAsync(sizeToAdd, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException("Saving to database error!");
+            }
 
             return sizeToAdd.Id;
         }

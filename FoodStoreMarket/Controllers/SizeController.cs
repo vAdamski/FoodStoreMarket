@@ -30,6 +30,11 @@ public class SizeController : BaseController
     {
         var vm = await Mediator.Send(new GetSizeDetailQuery() { SizeId = id });
 
+        if (vm == null)
+        {
+            return NotFound();
+        }
+
         return Ok(vm);
     }
     /// <summary>
@@ -59,18 +64,16 @@ public class SizeController : BaseController
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    public async Task<ActionResult<int>> PostAsync([FromBody]AddNewSizeCommand prodcutTypeCommand)
+    public async Task<ActionResult<int>> PostAsync([FromBody]AddNewSizeCommand productTypeCommand)
     {
-        var vm = prodcutTypeCommand;
-
-        var id = await Mediator.Send(vm);
-
-        if (id != null)
+        if (productTypeCommand == null)
         {
-            // Implement Created
-            return Ok(id);
+            return BadRequest();
         }
-        return NotFound();
+        
+        var responseId = await Mediator.Send(productTypeCommand);
+        
+        return CreatedAtAction(nameof(GetSize), new {id = responseId}, productTypeCommand);
     }
     
     /// <summary>

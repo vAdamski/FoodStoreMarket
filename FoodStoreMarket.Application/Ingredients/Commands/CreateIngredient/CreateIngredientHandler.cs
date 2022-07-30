@@ -24,17 +24,20 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
         }
         public async Task<int> Handle(CreateIngredientCommand request, CancellationToken cancellationToken)
         {
-            //Create base for ingredient
-            var ingredientToAdd = _mapper.Map<Ingredient>(request);
-            
-            //Save new ingredient to get ID for next step
-            await _context.Ingredients.AddAsync(ingredientToAdd, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
+            try
+            {
+                var ingredientToAdd = _mapper.Map<Ingredient>(request);
 
-            //Next actions for create ingredient
-            
+                await _context.Ingredients.AddAsync(ingredientToAdd, cancellationToken);
+                await _context.SaveChangesAsync(cancellationToken);
 
-            return ingredientToAdd.Id;
+                return ingredientToAdd.Id;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

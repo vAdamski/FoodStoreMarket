@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,14 +34,22 @@ namespace FoodStoreMarket.Application.ProductTypes.Commands.AddNewProductType
 
                 if (menu == null)
                 {
-                    throw new Exception("Menu with this Id not exist in database");
+                    throw new ObjectNotExistInDbException(request.MenuId, "Menu");
                 }
 
                 var productTypeToAdd = _mapper.Map<ProductType>(request);
                 productTypeToAdd.Menu = menu;
 
                 await _context.ProductTypes.AddAsync(productTypeToAdd, cancellationToken);
-                await _context.SaveChangesAsync(cancellationToken);
+                
+                try
+                {
+                    await _context.SaveChangesAsync(cancellationToken);
+                }
+                catch (DbUpdateException)
+                {
+                    throw new DbUpdateException("Saving to database error!");
+                }
 
                 return productTypeToAdd.Id;
             }

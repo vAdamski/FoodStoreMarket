@@ -24,7 +24,7 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetByIdAsync(int id)
+        public async Task<ActionResult> GetById(int id)
         {
             var vm = await Mediator.Send(new GetRestaurantDetailQuery() { RestaurantId = id });
 
@@ -59,16 +59,14 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<ActionResult<int>> PostAsync([FromBody]CreateRestaurantCommand restaurantCommand)
         {
-            var vm = restaurantCommand;
-
-            var id = await Mediator.Send(vm);
-
-            if (id != null)
+            if (restaurantCommand == null)
             {
-                // Implement Created
-                return Ok(id);
+                return BadRequest();
             }
-            return NotFound();
+            
+            var responseId = await Mediator.Send(restaurantCommand);
+
+            return CreatedAtAction(nameof(GetById), new {id = responseId}, restaurantCommand);
         }
 
         /// <summary>

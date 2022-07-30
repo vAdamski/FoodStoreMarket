@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,14 +27,21 @@ public class UpdateProductTypeHandler : IRequestHandler<UpdateProductTypeCommand
 
             if (productType == null)
             {
-                throw new Exception("Product type not exist");
-                //TODO: Exception Product type not exist
+                throw new ObjectNotExistInDbException(request.ProductTypeId, "Product type");
             }
 
             productType.ProductTypeName = request.NewProductTypeName;
         
             _context.ProductTypes.Update(productType);
-            await _context.SaveChangesAsync(cancellationToken);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException("Saving to database error!");
+            }
 
             return productType.Id;
         }

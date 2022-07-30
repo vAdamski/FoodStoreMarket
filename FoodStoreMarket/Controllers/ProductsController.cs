@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FoodStoreMarket.Application.Products.Commands.AddNewProduct;
 
 namespace FoodStoreMarket.Api.Controllers
 {
@@ -52,9 +53,16 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<ActionResult> PostAsync()
+        public async Task<ActionResult> PostAsync([FromBody]AddNewProductCommand command)
         {
-            return null;
+            if (command == null)
+            {
+                return BadRequest();
+            }
+            
+            var response = await Mediator.Send(command);
+            
+            return Ok(response);
         }
 
         /// <summary>

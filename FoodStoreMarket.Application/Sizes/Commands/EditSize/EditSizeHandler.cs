@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,14 +30,22 @@ public class EditSizeHandler : IRequestHandler<EditSizeCommand, int>
 
             if (sizeToUpdate == null)
             {
-                throw new Exception($"Size with Id = {request.SizeId} not exist!");
+                throw new ObjectNotExistInDbException(request.SizeId, "Size");
             }
 
             sizeToUpdate.SizeName = request.SizeName;
             sizeToUpdate.ProductTypeId = request.ProductTypeId;
 
             _context.Sizes.Update(sizeToUpdate);
-            await _context.SaveChangesAsync(cancellationToken);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException("Saving to database error!");
+            }
 
             return sizeToUpdate.Id;
         }

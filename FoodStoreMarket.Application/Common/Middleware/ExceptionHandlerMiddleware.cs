@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using FoodStoreMarket.Domain.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Common.Middleware
 {
@@ -41,6 +42,9 @@ namespace FoodStoreMarket.Application.Common.Middleware
             {
                 case ObjectNotExistInDbException _:
                     code = HttpStatusCode.BadRequest;
+                    break;
+                case DbUpdateException _:
+                    code = HttpStatusCode.InternalServerError;
                     break;
             }
 

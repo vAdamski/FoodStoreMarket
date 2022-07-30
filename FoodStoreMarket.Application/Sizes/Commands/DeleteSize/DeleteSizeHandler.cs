@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,11 +27,19 @@ public class DeleteSizeHandler : IRequestHandler<DeleteSizeCommand>
 
             if (sizeToDelete == null)
             {
-                throw new Exception($"Size with Id = {request.SizeIdToDelete} not exist!");
+                throw new ObjectNotExistInDbException(request.SizeIdToDelete, "Size");
             }
 
             _context.Sizes.Remove(sizeToDelete);
-            await _context.SaveChangesAsync(cancellationToken);
+            
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException("Saving to database error!");
+            }
             
             return Unit.Value;
         }

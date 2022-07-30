@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,7 @@ public class GetSizeDetailQueryHandler : IRequestHandler<GetSizeDetailQuery, Siz
 
             if (size == null)
             {
-                throw new Exception($"Size with Id = {request.SizeId} not found!");
+                throw new ObjectNotExistInDbException(request.SizeId, "Size");
             }
 
             var vm = _mapper.Map<SizeDetailVm>(size);
