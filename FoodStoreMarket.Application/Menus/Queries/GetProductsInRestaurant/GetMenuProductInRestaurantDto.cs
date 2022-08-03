@@ -3,7 +3,7 @@ using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
 
-namespace FoodStoreMarket.Application.Products.Queries.GetProductsInRestaurant;
+namespace FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 
 public class GetMenuProductInRestaurantDto : IMapFrom<Product>
 {

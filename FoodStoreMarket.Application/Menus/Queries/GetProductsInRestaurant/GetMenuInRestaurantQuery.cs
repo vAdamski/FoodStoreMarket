@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FoodStoreMarket.Application.Products.Queries.GetProductsInRestaurant;
+namespace FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 
 public class GetMenuInRestaurantQuery : IRequest<GetMenuInRestaurantVm>
 {

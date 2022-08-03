@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FoodStoreMarket.Application.Products.Queries.GetProductsInRestaurant;
+namespace FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 
 public class GetMenuInRestaurantVm
 {

@@ -38,7 +38,7 @@ namespace FoodStoreMarket
 
             services.AddCors(options =>
             {
-                options.AddPolicy(name: "MyAllowSecificOrigins",
+                options.AddPolicy(name: "MyAllowSpecificOrigins",
                     builder =>
                     {
                         builder.AllowAnyOrigin();

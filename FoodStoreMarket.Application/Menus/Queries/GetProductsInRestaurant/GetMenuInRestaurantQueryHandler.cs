@@ -8,7 +8,7 @@ using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodStoreMarket.Application.Products.Queries.GetProductsInRestaurant;
+namespace FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 
 public class GetMenuInRestaurantQueryHandler : IRequestHandler<GetMenuInRestaurantQuery, GetMenuInRestaurantVm>
 {
@@ -46,7 +46,8 @@ public class GetMenuInRestaurantQueryHandler : IRequestHandler<GetMenuInRestaura
             products.ForEach(p =>
             {
                 var productDto = _mapper.Map<GetMenuProductInRestaurantDto>(p);
-                productDto.LowestPrice = p.ProductSpecification.ProductSizeSpecifications.Min(x => x.Price);
+                productDto.LowestPrice = p.ProductSpecification.ProductSizeSpecifications.Count > 0 ? p.ProductSpecification.ProductSizeSpecifications.Min(x => x.Price) : 0;
+
                 p.ProductSpecification.Ingredients.ForEach(i =>
                 {
                     productDto.Ingredients.Add(_mapper.Map<GetMenuInRestaurantProductIngredientDto>(i));
