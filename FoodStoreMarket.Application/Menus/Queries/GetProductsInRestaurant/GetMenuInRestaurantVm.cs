@@ -4,5 +4,5 @@ namespace FoodStoreMarket.Application.Products.Queries.GetProductsInRestaurant;
 
 public class GetMenuInRestaurantVm
 {
-    public List<GetMenuInRestaurantDto> ProductsInRestaurant { get; set; } = new List<GetMenuInRestaurantDto>();
+    public List<GetMenuProductInRestaurantDto> ProductsInRestaurant { get; set; } = new List<GetMenuProductInRestaurantDto>();
 }

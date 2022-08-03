@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -22,18 +23,44 @@ public class GetMenuInRestaurantQueryHandler : IRequestHandler<GetMenuInRestaura
 
     public async Task<GetMenuInRestaurantVm> Handle(GetMenuInRestaurantQuery request, CancellationToken cancellationToken)
     {
-        var restaurant = await _context.Restaurants
-            .Where(x => x.Id == request.RestaurantId && x.StatusId == 1).FirstOrDefaultAsync(cancellationToken);
-        
-        if (restaurant == null)
+        try
         {
-            throw new ObjectNotExistInDbException(request.RestaurantId, "Restaurant");
-        }
+            var restaurant = await _context.Restaurants
+                .Where(x => x.Id == request.RestaurantId && x.StatusId == 1).Include(x => x.Menu).FirstOrDefaultAsync(cancellationToken);
         
+            if (restaurant?.Menu == null)
+            {
+                throw new ObjectNotExistInDbException(request.RestaurantId, "Restaurant");
+            }
         
+            var vm = new GetMenuInRestaurantVm();
 
-        var vm = new GetMenuInRestaurantVm();
-        
-        productsInRestaurant
+            var products = await _context.Products
+                .Where(x => x.MenuId == restaurant.Menu.Id)
+                .Include(x => x.ProductSpecification)
+                .ThenInclude(x => x.Ingredients)
+                .Include(x => x.ProductSpecification)
+                .ThenInclude(x => x.ProductSizeSpecifications)
+                .ToListAsync(cancellationToken);
+            
+            products.ForEach(p =>
+            {
+                var productDto = _mapper.Map<GetMenuProductInRestaurantDto>(p);
+                productDto.LowestPrice = p.ProductSpecification.ProductSizeSpecifications.Min(x => x.Price);
+                p.ProductSpecification.Ingredients.ForEach(i =>
+                {
+                    productDto.Ingredients.Add(_mapper.Map<GetMenuInRestaurantProductIngredientDto>(i));
+                });
+
+                vm.ProductsInRestaurant.Add(productDto);
+            });
+
+            return vm;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }
