@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Application.Sizes.Commands.AddNewSize;
@@ -13,8 +14,9 @@ namespace FoodStoreMarket.Application.Products.Commands.AddNewProduct
 		public int ProductTypeId { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		
 
+		public List<int> IngredientsId { get; set; }
+		
 		public void Mapping(Profile profile)
 		{
 			profile.CreateMap<AddNewProductCommand, ProductSpecification>()

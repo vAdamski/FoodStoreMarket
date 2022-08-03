@@ -13,7 +13,7 @@ namespace FoodStoreMarket.Persistance.Configuration
                 .HasOne(p => p.ProductSpecification)
                 .WithOne(ps => ps.Product)
                 .HasForeignKey<ProductSpecification>(ps => ps.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

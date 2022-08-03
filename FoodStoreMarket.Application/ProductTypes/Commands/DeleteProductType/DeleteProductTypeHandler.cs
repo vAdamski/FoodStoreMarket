@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.DeleteProductType;
 
-public class DeleteProductTypeHandler : IRequestHandler<DeleteProductTypeCommand>
+public class DeleteProductTypeHandler : IRequestHandler<DeleteProductTypeCommand, bool>
 {
     private IFoodStoreMarketDbContext _context;
 
@@ -19,7 +19,7 @@ public class DeleteProductTypeHandler : IRequestHandler<DeleteProductTypeCommand
         _context = context;
     }
 
-    public async Task<Unit> Handle(DeleteProductTypeCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteProductTypeCommand request, CancellationToken cancellationToken)
     {
         try
         {
@@ -41,8 +41,16 @@ public class DeleteProductTypeHandler : IRequestHandler<DeleteProductTypeCommand
             {
                 throw new DbUpdateException("Saving to database error!");
             }
+            
+            var productIsSuccessfulDeleted = await _context.ProductTypes.Where(x => x.Id == request.ProductTypeId && x.StatusId == 1)
+                .FirstOrDefaultAsync(cancellationToken);
 
-            return Unit.Value;
+            if (productIsSuccessfulDeleted == null)
+            {
+                return false;
+            }
+
+            return true;
         }
         catch (Exception e)
         {

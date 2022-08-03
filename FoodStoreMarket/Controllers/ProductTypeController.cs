@@ -41,7 +41,7 @@ public class ProductTypeController : BaseController
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    [HttpGet("{restauranId}")]
+    [HttpGet("getAllProductTypesInRestaurant/{restauranId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -103,7 +103,13 @@ public class ProductTypeController : BaseController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> DeleteAsync(int id)
     {
-        await Mediator.Send(new DeleteProductTypeCommand() { ProductTypeId = id });
-        return Ok();
+        var response = await Mediator.Send(new DeleteProductTypeCommand() { ProductTypeId = id });
+
+        if (response == false)
+        {
+            return BadRequest();
+        }
+        
+        return NoContent();
     }
 }

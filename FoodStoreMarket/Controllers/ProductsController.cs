@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Products.Commands.AddNewProduct;
+using FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
+using FoodStoreMarket.Application.Products.Queries.GetProduct;
 
 namespace FoodStoreMarket.Api.Controllers
 {
     /// <summary>
-    /// End-point to manageing products/dishes in restaurant
+    /// End-point to manage products/dishes in restaurant
     /// </summary>
     [Route("api/products")]
     [EnableCors("MyAllowSecificOrigins")]
@@ -24,9 +26,16 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetByIdAsync(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            return null;
+            var vm = await Mediator.Send(new GetProductQuery { ProductId = id });
+
+            if (vm == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(vm);
         }
 
         /// <summary>
@@ -90,7 +99,14 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeleteAsync(int id)
         {
-            return null;
+            var response = await Mediator.Send(new DeleteProductCommand() { ProductId = id });
+
+            if (response == false)
+            {
+                return BadRequest();
+            }
+
+            return NoContent();
         }
     }
 }

@@ -12,12 +12,19 @@ namespace FoodStoreMarket.Persistance.Configuration
             builder
                 .HasOne(ps => ps.Product)
                 .WithOne(p => p.ProductSpecification)
-                .HasForeignKey<Product>(p => p.ProductSpecificationId);
+                .HasForeignKey<Product>(p => p.ProductSpecificationId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasOne(ps => ps.ProductType)
                 .WithMany(pt => pt.ProductSpecifications)
                 .HasForeignKey(p => p.ProductTypeId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder
+                .HasMany(ps => ps.ProductSizeSpecifications)
+                .WithOne(pss => pss.ProductSpecification)
+                .HasForeignKey(pss => pss.ProductSpecificationId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

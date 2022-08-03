@@ -25,7 +25,7 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
     {
         try
         {
-            var menu = await _context.Menus.Where(x => x.RestaurantId == request.RestaurantId)
+            var menu = await _context.Menus.Where(x => x.RestaurantId == request.RestaurantId && x.StatusId == 1)
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (menu == null)
@@ -33,7 +33,7 @@ public class GetAllProductTypesInRestaurantQueryHandler : IRequestHandler<GetAll
                 throw new ObjectNotExistInDbException(request.RestaurantId, "Restaurnat");
             }
 
-            var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id)
+            var productTypesInRestaurant = await _context.ProductTypes.Where(x => x.MenuId == menu.Id && x.StatusId == 1)
                 .ToListAsync(cancellationToken);
 
             var vm = new GetAllProductTypesInRestaurantVm();

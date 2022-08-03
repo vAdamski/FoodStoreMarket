@@ -45,8 +45,24 @@ namespace FoodStoreMarket.Application.Products.Commands.AddNewProduct
 					throw new DbUpdateException("Saving to database error!");
 				}
 				
+				var ingredientsInRestaurant = await _context.Ingredients
+					.Where(x => x.MenuId == request.MenuId && x.StatusId == 1).ToListAsync(cancellationToken);
+				
 				var productSpecifaction = _mapper.Map<ProductSpecification>(request);
 				productSpecifaction.ProductId = productToAdd.Id;
+				
+				request.IngredientsId.ForEach(ingredientId =>
+				{
+					var ingredient = ingredientsInRestaurant.Where(x => x.Id == ingredientId && x.StatusId == 1).FirstOrDefault();
+
+					if (ingredient == null)
+					{
+						throw new ObjectNotExistInDbException(ingredientId, "Ingredient");
+					}
+                
+					productSpecifaction.Ingredients.Add(ingredient);
+				});
+				
 
 				await _context.ProductSpecifications.AddAsync(productSpecifaction, cancellationToken);
 				try
@@ -58,6 +74,18 @@ namespace FoodStoreMarket.Application.Products.Commands.AddNewProduct
 					throw new DbUpdateException("Saving to database error!");
 				}
 
+				productToAdd.ProductSpecificationId = productSpecifaction.Id;
+
+				_context.Products.Update(productToAdd);
+				try
+				{
+					await _context.SaveChangesAsync(cancellationToken);
+				}
+				catch (DbUpdateException)
+				{
+					throw new DbUpdateException("Saving to database error!");
+				}
+				
 				return productToAdd.Id;
 			}
 			catch (Exception e)

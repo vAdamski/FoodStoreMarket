@@ -2,7 +2,7 @@
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.DeleteProductType;
 
-public class DeleteProductTypeCommand : IRequest
+public class DeleteProductTypeCommand : IRequest<bool>
 {
     public int ProductTypeId { get; set; }
 }
