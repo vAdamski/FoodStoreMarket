@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.Products.Commands.AddNewProduct;
-using FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
-using FoodStoreMarket.Application.ProductSpecifications.Commands;
+using FoodStoreMarket.Application.ProductSpecifications.Commands.EditProductSpecification;
 
 namespace FoodStoreMarket.Api.Controllers;
 
@@ -12,7 +10,7 @@ namespace FoodStoreMarket.Api.Controllers;
 /// End-point to manage products specifications in restaurant
 /// </summary>
 [Route("api/productSpecifications")]
-[EnableCors("MyAllowSecificOrigins")]
+[EnableCors("MyAllowSpecificOrigins")]
 public class ProductSpecificationController : BaseController
 {
     /// <summary>

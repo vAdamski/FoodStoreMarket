@@ -4,7 +4,7 @@ using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
 using MediatR;
 
-namespace FoodStoreMarket.Application.ProductSpecifications.Commands;
+namespace FoodStoreMarket.Application.ProductSpecifications.Commands.EditProductSpecification;
 
 public class EditProductSpecificationCommand: IRequest<bool>, IMapFrom<EditProductSpecificationCommand>
 {

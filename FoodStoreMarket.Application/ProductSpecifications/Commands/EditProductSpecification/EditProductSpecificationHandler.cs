@@ -8,7 +8,7 @@ using FoodStoreMarket.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodStoreMarket.Application.ProductSpecifications.Commands;
+namespace FoodStoreMarket.Application.ProductSpecifications.Commands.EditProductSpecification;
 
 public class EditProductSpecificationHandler : IRequestHandler<EditProductSpecificationCommand, bool>
 {
