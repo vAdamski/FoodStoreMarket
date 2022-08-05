@@ -4,7 +4,7 @@ using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
 using MediatR;
 
-namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
+namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIngredient
 {
 	public class CreateIngredientCommand : IRequest<int>, IMapFrom<CreateIngredientCommand>
 	{

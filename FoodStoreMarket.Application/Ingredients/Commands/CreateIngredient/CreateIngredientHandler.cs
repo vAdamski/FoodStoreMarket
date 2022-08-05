@@ -8,7 +8,7 @@ using FoodStoreMarket.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment
+namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIngredient
 {
     public class CreateIngredientHandler : IRequestHandler<CreateIngredientCommand, int>
     {

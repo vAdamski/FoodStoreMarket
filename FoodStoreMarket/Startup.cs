@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace FoodStoreMarket
 {
@@ -82,6 +83,8 @@ namespace FoodStoreMarket
 
             app.UseHttpsRedirection();
 
+            app.UseSerilogRequestLogging();
+            
             app.UseRouting();
 
             app.UseCors();

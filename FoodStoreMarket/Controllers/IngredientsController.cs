@@ -1,4 +1,4 @@
-﻿using FoodStoreMarket.Application.Ingredients.Commands.CreateIndegriment;
+﻿using FoodStoreMarket.Application.Ingredients.Commands.CreateIngredient;
 using FoodStoreMarket.Application.Ingredients.Commands.DeleteIngredient;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;

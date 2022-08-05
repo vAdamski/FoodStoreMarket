@@ -19,7 +19,6 @@ namespace FoodStoreMarket.Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehaviour<>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
