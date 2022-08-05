@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Persistance", "FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj", "{4473FBB0-5681-431D-9084-306992947CC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{065B1229-DE7B-4E27-9451-89C113B4B753}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4473FBB0-5681-431D-9084-306992947CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4473FBB0-5681-431D-9084-306992947CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4473FBB0-5681-431D-9084-306992947CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{065B1229-DE7B-4E27-9451-89C113B4B753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065B1229-DE7B-4E27-9451-89C113B4B753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065B1229-DE7B-4E27-9451-89C113B4B753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065B1229-DE7B-4E27-9451-89C113B4B753}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
