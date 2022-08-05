@@ -46,6 +46,9 @@ namespace FoodStoreMarket.Application.Common.Middleware
                 case DbUpdateException _:
                     code = HttpStatusCode.InternalServerError;
                     break;
+                case ValidationException _:
+                    code = HttpStatusCode.BadRequest;
+                    break;
             }
 
             context.Response.ContentType = "application/json";

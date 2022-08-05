@@ -7,6 +7,6 @@ public class CreateIngredientCommandValidator : AbstractValidator<CreateIngredie
     public CreateIngredientCommandValidator()
     {
         RuleFor(x => x.MenuId).GreaterThan(0);
-        RuleFor(x => x.Name).MinimumLength(2).MaximumLength(20);
+        RuleFor(x => x.Name).NotEmpty().MinimumLength(2).MaximumLength(20);
     }
 }
