@@ -121,6 +121,7 @@ namespace FoodStoreMarket
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodStoreMarket");
                 c.OAuthClientId("swagger");
+                c.OAuthClientSecret("secret");
                 c.OAuth2RedirectUrl("https://localhost:44376/swagger/oauth2-redirect.html");
                 c.OAuthUsePkce();
             });
