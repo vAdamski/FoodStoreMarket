@@ -11,7 +11,6 @@ namespace FoodStoreMarket.Api.Controllers;
 /// End-point to menage menu in restaurant
 /// </summary>
 [Route("api/menu")]
-[EnableCors("MyAllowSpecificOrigins")]
 public class MenuController : BaseController
 {
     /// <summary>

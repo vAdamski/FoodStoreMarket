@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace FoodStoreMarket.Api.Controllers;
 
 [Route("api/sizes")]
-[EnableCors("MyAllowSpecificOrigins")]
 public class SizeController : BaseController
 {
     /// <summary>

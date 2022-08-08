@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace FoodStoreMarket.Api.Controllers;
 
 [Route("api/productTypes")]
-[EnableCors("MyAllowSpecificOrigins")]
 public class ProductTypeController : BaseController
 {
     /// <summary>

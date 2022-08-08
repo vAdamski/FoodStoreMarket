@@ -10,7 +10,6 @@ namespace FoodStoreMarket.Api.Controllers;
 /// End-point to manage product sizes
 /// </summary>
 [Route("api/productSizeSpecifications")]
-[EnableCors("MyAllowSpecificOrigins")]
 public class ProductSizeSpecificationController : BaseController
 {
     /// <summary>

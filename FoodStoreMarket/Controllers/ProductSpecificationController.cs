@@ -10,7 +10,6 @@ namespace FoodStoreMarket.Api.Controllers;
 /// End-point to manage products specifications in restaurant
 /// </summary>
 [Route("api/productSpecifications")]
-[EnableCors("MyAllowSpecificOrigins")]
 public class ProductSpecificationController : BaseController
 {
     /// <summary>

@@ -12,13 +12,15 @@ namespace FoodStoreMarket.Persistance
     public class FoodStoreMarketDbContext : DbContext, IFoodStoreMarketDbContext
     {
         private readonly IDateTime _dateTime;
+        private readonly ICurrentUserService _userService;
         public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options) : base(options)
         {
-
         }
-        public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options, IDateTime dateTime) : base(options)
+        
+        public FoodStoreMarketDbContext(DbContextOptions<FoodStoreMarketDbContext> options, IDateTime dateTime, ICurrentUserService userService) : base(options)
         {
             _dateTime = dateTime;
+            _userService = userService;
         }
 
         public DbSet<Client> Clients { get; set; }
@@ -50,19 +52,19 @@ namespace FoodStoreMarket.Persistance
                 switch (entry.State)
                 {
                     case EntityState.Deleted:
-                        entry.Entity.ModifiedBy = String.Empty;
+                        entry.Entity.ModifiedBy = _userService.Email;
                         entry.Entity.Modified = _dateTime.Now;
                         entry.Entity.Inactivated = _dateTime.Now;
-                        entry.Entity.InactivatedBy = String.Empty;
+                        entry.Entity.InactivatedBy = _userService.Email;
                         entry.Entity.StatusId = 0;
                         entry.State = EntityState.Modified;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.ModifiedBy = String.Empty;
+                        entry.Entity.ModifiedBy = _userService.Email;
                         entry.Entity.Modified = _dateTime.Now;
                         break;
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = String.Empty;
+                        entry.Entity.CreatedBy = _userService.Email;
                         entry.Entity.Created = _dateTime.Now;
                         entry.Entity.StatusId = 1;
                         break;

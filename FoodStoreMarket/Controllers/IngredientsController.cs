@@ -11,7 +11,6 @@ using FoodStoreMarket.Application.Ingredients.Queries.GetAllIngredientsInRestaur
 namespace FoodStoreMarket.Api.Controllers
 {
     [Route("api/ingredients")]
-    [EnableCors("MyAllowSecificOrigins")]
     public class IngredientsController : BaseController
     {
         /// <summary>

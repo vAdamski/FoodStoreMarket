@@ -12,7 +12,6 @@ namespace FoodStoreMarket.Api.Controllers
     /// End-point to manage products/dishes in restaurant
     /// </summary>
     [Route("api/products")]
-    [EnableCors("MyAllowSecificOrigins")]
     public class ProductsController : BaseController
     {
         /// <summary>

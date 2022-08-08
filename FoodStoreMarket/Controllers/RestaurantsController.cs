@@ -10,7 +10,6 @@ using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
 namespace FoodStoreMarket.Api.Controllers
 {
     [Route("api/restaurants")]
-    [EnableCors("MyAllowSecificOrigins")]
     public class RestaurantsController : BaseController
     {
         /// <summary>
