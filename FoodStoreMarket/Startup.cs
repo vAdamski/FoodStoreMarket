@@ -3,21 +3,15 @@ using FoodStoreMarket.Infrastructure;
 using FoodStoreMarket.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Service;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
@@ -72,7 +66,8 @@ namespace FoodStoreMarket
                             Scopes = new Dictionary<string, string>
                             {
                                 {"api1", "Full access"},
-                                {"user", "User info"}
+                                {"user", "User info"},
+                                {"openid", "openid" }
                             }
                         }
                     }

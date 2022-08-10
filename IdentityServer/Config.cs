@@ -59,14 +59,5 @@ namespace IdentityServer
                     AllowedCorsOrigins = {"https://localhost:44376"}
                 }
             };
-
-        // public static IEnumerable<ApiResource> ApiResources =>
-        //     new ApiResource[]
-        //     {
-        //         new ApiResource(
-        //             name: "user",
-        //             displayName: "User",
-        //             userClaims: new[] { JwtClaimTypes.Email })
-        //     };
     }
 }
