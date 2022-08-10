@@ -11,12 +11,14 @@ namespace IdentityServer
     public static class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
-                   new IdentityResource[]
-                   {
+           new IdentityResource[]
+           {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResource(name: "user", userClaims: new []{JwtClaimTypes.Email})
-                   };
+                new IdentityResource(
+                    name: "user",
+                    userClaims: new[] {JwtClaimTypes.Email})
+           };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
@@ -49,13 +51,22 @@ namespace IdentityServer
                     
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     ClientSecrets = {new Secret("secret".Sha256())},
-                    AllowedScopes = {"api1", "user"},
+                    AllowedScopes = {"api1", "user", "openid"},
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = {"https://localhost:44376/swagger/oauth2-redirect.html"},
-                    AllowedCorsOrigins = {"https://localhost:5001"}
+                    AllowedCorsOrigins = {"https://localhost:44376"}
                 }
             };
+
+        // public static IEnumerable<ApiResource> ApiResources =>
+        //     new ApiResource[]
+        //     {
+        //         new ApiResource(
+        //             name: "user",
+        //             displayName: "User",
+        //             userClaims: new[] { JwtClaimTypes.Email })
+        //     };
     }
 }

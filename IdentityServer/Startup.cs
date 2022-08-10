@@ -51,8 +51,9 @@ namespace IdentityServer
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
+                // .AddInMemoryApiResources(Config.ApiResources)
+                .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryClients(Config.Clients)
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<ProfileService>()
