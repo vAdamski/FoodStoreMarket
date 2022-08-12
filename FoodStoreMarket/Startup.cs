@@ -89,6 +89,7 @@ namespace FoodStoreMarket
                         Url = new Uri("https://example.com/license")
                     }
                 });
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
                 var filePath = Path.Combine(AppContext.BaseDirectory, "FoodStoreMarket.Api.xml");
                 c.IncludeXmlComments(filePath);
             });

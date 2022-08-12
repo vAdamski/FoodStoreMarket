@@ -10,6 +10,7 @@ namespace IdentityServer
 {
     public static class Config
     {
+        //Here declares which one information will be given in token
         public static IEnumerable<IdentityResource> IdentityResources =>
            new IdentityResource[]
            {
@@ -19,15 +20,15 @@ namespace IdentityServer
                     name: "user",
                     userClaims: new[] {JwtClaimTypes.Email})
            };
-
+    
+        //Here declares my ApiApplications
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("scope1"),
-                new ApiScope("scope2"),
                 new ApiScope("api1")
             };
 
+        //Here declares my Applications
         public static IEnumerable<Client> Clients =>
             new Client[]
             {

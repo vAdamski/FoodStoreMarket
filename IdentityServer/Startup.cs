@@ -51,9 +51,8 @@ namespace IdentityServer
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                // .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<ProfileService>()
@@ -61,6 +60,8 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+            
+            services.AddAuthentication();
         }
 
         public void Configure(IApplicationBuilder app)
