@@ -102,7 +102,7 @@ namespace FoodStoreMarket
                 {
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "api1");
-                    policy.RequireRole("role", "admin");
+                    policy.RequireRole("admin");
                 });
                 optionns.AddPolicy("ApiScope", policy =>
                 {
