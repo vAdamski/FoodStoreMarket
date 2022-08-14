@@ -4,4 +4,5 @@ public class ICurrentUserService
 { 
     public string Email { get; set; } 
     public bool IsAuthenticated { get; set; }
+    public string Role { get; set; }
 }

@@ -18,7 +18,10 @@ namespace IdentityServer
                 new IdentityResources.Profile(),
                 new IdentityResource(
                     name: "user",
-                    userClaims: new[] {JwtClaimTypes.Email})
+                    userClaims: new[] {JwtClaimTypes.Email}),
+                new IdentityResource(
+                    name: "role",
+                    userClaims: new[] {JwtClaimTypes.Role})
            };
     
         //Here declares my ApiApplications
@@ -52,7 +55,7 @@ namespace IdentityServer
                     
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     ClientSecrets = {new Secret("secret".Sha256())},
-                    AllowedScopes = {"api1", "user", "openid"},
+                    AllowedScopes = {"api1", "user", "openid", JwtClaimTypes.Role},
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,

@@ -67,7 +67,8 @@ namespace FoodStoreMarket
                             {
                                 {"api1", "Full access"},
                                 {"user", "User info"},
-                                {"openid", "openid" }
+                                {"openid", "openid" },
+                                {"role", "User role"}
                             }
                         }
                     }

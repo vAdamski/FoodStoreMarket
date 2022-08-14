@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
 {
@@ -15,16 +16,20 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
     {
         private readonly IFoodStoreMarketDbContext _context;
         private IMapper _mapper;
+        private readonly ICurrentUserService _currentUserService;
 
         public GetRestaurantsQueryHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext,
-            IMapper mapper)
+            IMapper mapper,
+            ICurrentUserService currentUserService)
         {
             _context = foodStoreMarketDbContext;
             _mapper = mapper;
+            _currentUserService = currentUserService;
         }
         public async Task<RestaurantsVm> Handle(GetRestaurantsQuery request, CancellationToken cancellationToken)
         {
+            Console.WriteLine($"Role: {_currentUserService.Role}");
             var restaurants = await _context.Restaurants.Where(x => x.StatusId == 1).ToListAsync(cancellationToken);
 
             var restaurantsVm = new RestaurantsVm();

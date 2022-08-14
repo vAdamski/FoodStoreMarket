@@ -2,6 +2,9 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Threading.Tasks;
 using IdentityServer4;
 using IdentityServer.Data;
 using IdentityServer.Models;
@@ -60,12 +63,15 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
-            
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services.AddAuthentication();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IServiceProvider services)
         {
+
+            CreateRoles(services).Wait();
+                
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -81,6 +87,15 @@ namespace IdentityServer
             {
                 endpoints.MapDefaultControllerRoute();
             });
+        }
+        
+        private async Task CreateRoles(IServiceProvider serviceProvider) {
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            ApplicationUser userToMakeAdmin = await UserManager.FindByNameAsync("alice");
+            await UserManager.AddToRoleAsync(userToMakeAdmin, "admin");
+            ApplicationUser userToMakeMember = await UserManager.FindByNameAsync("bob");
+            await UserManager.AddToRoleAsync(userToMakeMember, "member");
         }
     }
 }

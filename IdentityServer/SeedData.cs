@@ -36,12 +36,33 @@ namespace IdentityServer
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                    
+                    var member = roleMgr.FindByNameAsync("member").Result;
+                    if (member == null)
+                    {
+                        member = new IdentityRole
+                        {
+                            Name = "member"
+                        };
+                        _ = roleMgr.CreateAsync(member).Result;
+                    }
+
+                    var admin = roleMgr.FindByNameAsync("admin").Result;
+                    if (admin == null)
+                    {
+                        admin = new IdentityRole
+                        {
+                            Name = "admin"
+                        };
+                        _ = roleMgr.CreateAsync(admin).Result;
+                    }
+
                     var alice = userMgr.FindByNameAsync("alice").Result;
                     if (alice == null)
                     {
                         alice = new ApplicationUser
                         {
-                            Id = "1",
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
                             EmailConfirmed = true,
@@ -53,7 +74,6 @@ namespace IdentityServer
                         }
 
                         result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                            new Claim(JwtClaimTypes.Id, "1"),
                             new Claim(JwtClaimTypes.Name, "Alice Smith"),
                             new Claim(JwtClaimTypes.GivenName, "Alice"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -63,6 +83,12 @@ namespace IdentityServer
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
+
+                        if (!userMgr.IsInRoleAsync(alice, member.Name).Result)
+                        {
+                            _ = userMgr.AddToRoleAsync(alice, member.Name).Result;
+                        }
+
                         Log.Debug("alice created");
                     }
                     else
@@ -75,7 +101,6 @@ namespace IdentityServer
                     {
                         bob = new ApplicationUser
                         {
-                            Id = "2",
                             UserName = "bob",
                             Email = "BobSmith@email.com",
                             EmailConfirmed = true
@@ -87,7 +112,6 @@ namespace IdentityServer
                         }
 
                         result = userMgr.AddClaimsAsync(bob, new Claim[]{
-                            new Claim(JwtClaimTypes.Id, "2"),
                             new Claim(JwtClaimTypes.Name, "Bob Smith"),
                             new Claim(JwtClaimTypes.GivenName, "Bob"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -98,6 +122,12 @@ namespace IdentityServer
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
+
+                        if (!userMgr.IsInRoleAsync(bob, admin.Name).Result)
+                        {
+                            _ = userMgr.AddToRoleAsync(bob, admin.Name).Result;
+                        }
+
                         Log.Debug("bob created");
                     }
                     else
