@@ -30,7 +30,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Policy = "admin")]
         public async Task<ActionResult> GetAllAsync()
         {
             var vm = await Mediator.Send(new GetRestaurantsQuery { });

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
@@ -97,6 +98,12 @@ namespace FoodStoreMarket
 
             services.AddAuthorization(optionns =>
             {
+                optionns.AddPolicy("admin", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api1");
+                    policy.RequireRole("role", "admin");
+                });
                 optionns.AddPolicy("ApiScope", policy =>
                 {
                     policy.RequireAuthenticatedUser();
