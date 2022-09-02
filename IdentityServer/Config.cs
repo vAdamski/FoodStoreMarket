@@ -20,7 +20,7 @@ namespace IdentityServer
                     name: "user",
                     userClaims: new[] {JwtClaimTypes.Email}),
                 new IdentityResource(
-                    name: "role",
+                    name: "roles",
                     userClaims: new[] {JwtClaimTypes.Role})
            };
     
@@ -55,13 +55,23 @@ namespace IdentityServer
                     
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     ClientSecrets = {new Secret("secret".Sha256())},
-                    AllowedScopes = {"api1", "user", "openid", JwtClaimTypes.Role},
+                    AllowedScopes = {"api1", "user", "openid", "roles"},
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = {"https://localhost:44376/swagger/oauth2-redirect.html"},
                     AllowedCorsOrigins = {"https://localhost:44376"}
                 }
+            };
+
+        public static IEnumerable<ApiResource> ApiResources =>
+            new ApiResource[]
+            {
+                new ApiResource
+                    (
+                        "api1",
+                        new List<string> {"role"}
+                    )
             };
     }
 }

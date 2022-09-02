@@ -57,6 +57,7 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
+                .AddInMemoryApiResources(Config.ApiResources)
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<ProfileService>()
                 .AddAspNetIdentity<ApplicationUser>();
@@ -69,8 +70,7 @@ namespace IdentityServer
 
         public void Configure(IApplicationBuilder app, IServiceProvider services)
         {
-
-            CreateRoles(services).Wait();
+            services.SeedRoleAndAddToUsers();
                 
             if (Environment.IsDevelopment())
             {
@@ -89,13 +89,6 @@ namespace IdentityServer
             });
         }
         
-        private async Task CreateRoles(IServiceProvider serviceProvider) {
-            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
-            ApplicationUser userToMakeAdmin = await UserManager.FindByNameAsync("alice");
-            await UserManager.AddToRoleAsync(userToMakeAdmin, "admin");
-            ApplicationUser userToMakeMember = await UserManager.FindByNameAsync("bob");
-            await UserManager.AddToRoleAsync(userToMakeMember, "member");
-        }
+        
     }
 }

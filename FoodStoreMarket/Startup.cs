@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Service;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Any;
 using Serilog;
 
 namespace FoodStoreMarket
@@ -40,9 +42,10 @@ namespace FoodStoreMarket
             {
                 options.AddPolicy("AllowAll", poliicy => poliicy.AllowAnyOrigin());
             });
-            
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(typeof(ICurrentUserService), typeof(CurrnetUserService));
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services.AddAuthentication("bearer")
                 .AddJwtBearer("bearer", options =>
                 {
@@ -69,7 +72,7 @@ namespace FoodStoreMarket
                                 {"api1", "Full access"},
                                 {"user", "User info"},
                                 {"openid", "openid" },
-                                {"role", "User role"}
+                                {"roles", "User role"}
                             }
                         }
                     }
