@@ -63,15 +63,5 @@ namespace IdentityServer
                     AllowedCorsOrigins = {"https://localhost:44376"}
                 }
             };
-
-        public static IEnumerable<ApiResource> ApiResources =>
-            new ApiResource[]
-            {
-                new ApiResource
-                    (
-                        "api1",
-                        new List<string> {"role"}
-                    )
-            };
     }
 }

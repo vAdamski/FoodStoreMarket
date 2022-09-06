@@ -23,22 +23,27 @@ public sealed class ProfileService : IProfileService
 
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            context.IssuedClaims.AddRange(context.Subject.Claims);
-
             var user = await _userMgr.GetUserAsync(context.Subject);
+            
 
+            var claims = new List<Claim>()
+            {
+                new Claim("Email", user.Email)
+            };
+            
             var roles = await _userMgr.GetRolesAsync(user);
-
+            
             foreach (var role in roles)
             {
-                context.IssuedClaims.Add(new Claim(JwtClaimTypes.Role, role));
+                claims.Add(new Claim(JwtClaimTypes.Role, role));
             }
+            
+            context.IssuedClaims.AddRange(claims);
         }
 
         public async Task IsActiveAsync(IsActiveContext context)
         {
-            string sub = context.Subject.GetSubjectId();
-            ApplicationUser user = await _userMgr.FindByIdAsync(sub);
+            var user = await _userMgr.GetUserAsync(context.Subject);
             context.IsActive = user != null;
         }
     }

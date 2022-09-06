@@ -57,7 +57,6 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
-                .AddInMemoryApiResources(Config.ApiResources)
                 .AddJwtBearerClientAuthentication()
                 .AddProfileService<ProfileService>()
                 .AddAspNetIdentity<ApplicationUser>();
