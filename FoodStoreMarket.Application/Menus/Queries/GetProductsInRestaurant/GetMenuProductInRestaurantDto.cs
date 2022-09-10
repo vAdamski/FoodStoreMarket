@@ -9,7 +9,7 @@ public class GetMenuProductInRestaurantDto : IMapFrom<Product>
 {
     public int ProductId { get; set; }
     public string ProductName { get; set; }
-    public decimal LowestPrice { get; set; }
+    public double LowestPrice { get; set; }
     public List<GetMenuInRestaurantProductIngredientDto> Ingredients { get; set; } =
         new List<GetMenuInRestaurantProductIngredientDto>();
 

@@ -13,6 +13,6 @@ namespace FoodStoreMarket.Domain.Entities
         public ProductSpecification ProductSpecification { get; set; }
         public int SizeId { get; set; }
         public Size Size { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }
