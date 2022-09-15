@@ -63,6 +63,7 @@ namespace IdentityServer
                     {
                         alice = new ApplicationUser
                         {
+                            Id = "1",
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
                             EmailConfirmed = true,
@@ -101,6 +102,7 @@ namespace IdentityServer
                     {
                         bob = new ApplicationUser
                         {
+                            Id = "2",
                             UserName = "bob",
                             Email = "BobSmith@email.com",
                             EmailConfirmed = true

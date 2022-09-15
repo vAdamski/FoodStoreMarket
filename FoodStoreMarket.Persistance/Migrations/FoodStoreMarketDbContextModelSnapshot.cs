@@ -17,7 +17,7 @@ namespace FoodStoreMarket.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -137,6 +137,68 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("MenuId");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2306),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Cheese",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2308),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sauce",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2310),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Pepper",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2312),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ham",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2313),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Mushrooms",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2315),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Pineapple",
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
@@ -177,6 +239,17 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2110),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RestaurantId = 1,
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingHours", b =>
@@ -361,6 +434,71 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .HasFilter("[ProductSpecificationId] IS NOT NULL");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2334),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2336),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2338),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2339),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2341),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2343),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2344),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeSpecification", b =>
@@ -389,8 +527,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductSpecificationId")
                         .HasColumnType("int");
@@ -408,6 +546,173 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("SizeId");
 
                     b.ToTable("ProductSizeSpecifications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2992),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 20.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2998),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 25.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3000),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 30.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3001),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 22.0,
+                            ProductSpecificationId = 2,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3003),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 27.0,
+                            ProductSpecificationId = 2,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3004),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 33.0,
+                            ProductSpecificationId = 2,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3006),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 25.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3008),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 30.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3009),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 35.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3011),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 7.0,
+                            ProductSpecificationId = 4,
+                            SizeId = 4,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3012),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 9.0,
+                            ProductSpecificationId = 4,
+                            SizeId = 5,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3014),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 7.0,
+                            ProductSpecificationId = 5,
+                            SizeId = 4,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3016),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 8.0,
+                            ProductSpecificationId = 7,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3017),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 8.0,
+                            ProductSpecificationId = 6,
+                            SizeId = 6,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3019),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 10.0,
+                            ProductSpecificationId = 6,
+                            SizeId = 7,
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
@@ -456,6 +761,92 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("ProductTypeId");
 
                     b.ToTable("ProductSpecifications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2362),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "PIZZA #1",
+                            ProductId = 1,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2364),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "PIZZA #2",
+                            ProductId = 2,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2366),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "PIZZA #3",
+                            ProductId = 3,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2368),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Cola",
+                            ProductId = 4,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2370),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sprite",
+                            ProductId = 5,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2372),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Zatecky",
+                            ProductId = 6,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2374),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Lech",
+                            ProductId = 7,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
@@ -498,6 +889,38 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("MenuId");
 
                     b.ToTable("ProductTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2221),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Pizza",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2225),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Drink",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2227),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Beer",
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
@@ -532,6 +955,16 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(1992),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
@@ -583,6 +1016,19 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("RestaurantSpecifications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2127),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "Pizzeria na osiedlu",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Pizzeria #1",
+                            RestaurantId = 1,
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
@@ -630,6 +1076,85 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("ProductTypeId");
 
                     b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2247),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Small 26cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2250),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Medium 32cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2252),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Big 42cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2253),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 2,
+                            SizeName = "500ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2255),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 2,
+                            SizeName = "850ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2257),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 3,
+                            SizeName = "300ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2285),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 3,
+                            SizeName = "500ml",
+                            StatusId = 1
+                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
@@ -692,7 +1217,64 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                     b.HasIndex("ProductSpecificationsId");
 
-                    b.ToTable("IngredientProductSpecification");
+                    b.ToTable("IngredientProductSpecification", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 1
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 1
+                        },
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 3,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 4,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 5,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 4,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 6,
+                            ProductSpecificationsId = 3
+                        });
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -1032,7 +1614,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithOne("Product")
                         .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Menu");
 
@@ -1044,7 +1626,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithMany("ProductSizeSpecifications")
                         .HasForeignKey("ProductSpecificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FoodStoreMarket.Domain.Entities.Size", "Size")
@@ -1131,6 +1713,19 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("RestaurantSpecificationId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    RestaurantSpecificationId = 1,
+                                    City = "Lodz",
+                                    Email = "PIZZERIA@GMAIL.COM",
+                                    FlatNumber = "",
+                                    HouseNumber = "1",
+                                    PhoneNumber = "123456789",
+                                    PostCode = "94-000",
+                                    Street = "al.Politechniki"
+                                });
                         });
 
                     b.Navigation("Adres");
