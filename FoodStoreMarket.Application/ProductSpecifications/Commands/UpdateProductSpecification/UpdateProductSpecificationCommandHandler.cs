@@ -10,12 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.ProductSpecifications.Commands.UpdateProductSpecification;
 
-public class UpdateProductSpecificationHandler : IRequestHandler<UpdateProductSpecificationCommand, bool>
+public class UpdateProductSpecificationCommandHandler : IRequestHandler<UpdateProductSpecificationCommand, bool>
 {
     private IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
 
-    public UpdateProductSpecificationHandler(IFoodStoreMarketDbContext context, IMapper mapper)
+    public UpdateProductSpecificationCommandHandler(IFoodStoreMarketDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

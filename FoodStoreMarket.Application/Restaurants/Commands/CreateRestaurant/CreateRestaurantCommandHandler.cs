@@ -8,12 +8,12 @@ using MediatR;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
 {
-    public class CreateRestaurantHandler : IRequestHandler<CreateRestaurantCommand, int>
+    public class CreateRestaurantCommandHandler : IRequestHandler<CreateRestaurantCommand, int>
     {
         private readonly IFoodStoreMarketDbContext _context;
         private IMapper _mapper;
 
-        public CreateRestaurantHandler(
+        public CreateRestaurantCommandHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext, 
             IMapper mapper)
         {

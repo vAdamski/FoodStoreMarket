@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.DeleteIngredient
 {
-	public class DeleteIngredientHandler : IRequestHandler<DeleteIngredientCommand>
+	public class DeleteIngredientCommandHandler : IRequestHandler<DeleteIngredientCommand>
 	{
         private readonly IFoodStoreMarketDbContext _context;
-        public DeleteIngredientHandler(IFoodStoreMarketDbContext foodStoreMarketDbContext)
+        public DeleteIngredientCommandHandler(IFoodStoreMarketDbContext foodStoreMarketDbContext)
         {
             _context = foodStoreMarketDbContext;
         }

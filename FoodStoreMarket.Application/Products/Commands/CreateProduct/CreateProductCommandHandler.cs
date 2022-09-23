@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Products.Commands.CreateProduct
 {
-	public class CreateProductHandler : IRequestHandler<CreateProductCommand, int>
+	public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
 	{
 		private IFoodStoreMarketDbContext _context;
 		private IMapper _mapper;
-		public CreateProductHandler(IFoodStoreMarketDbContext context, IMapper mapper)
+		public CreateProductCommandHandler(IFoodStoreMarketDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

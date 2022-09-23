@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.UpdateProductType;
 
-public class UpdateProductTypeHandler : IRequestHandler<UpdateProductTypeCommand, int>
+public class UpdateProductTypeCommandHandler : IRequestHandler<UpdateProductTypeCommand, int>
 {
     private IFoodStoreMarketDbContext _context;
 
-    public UpdateProductTypeHandler(IFoodStoreMarketDbContext context)
+    public UpdateProductTypeCommandHandler(IFoodStoreMarketDbContext context)
     {
         _context = context;
     }

@@ -13,13 +13,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType;
 
-public class CreateProductTypeHandler : IRequestHandler<CreateProdcutTypeCommand, int>
+public class CreateProductTypeCommandHandler : IRequestHandler<CreateProdcutTypeCommand, int>
 {
 
     private IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
 
-    public CreateProductTypeHandler(IFoodStoreMarketDbContext context, IMapper mapper)
+    public CreateProductTypeCommandHandler(IFoodStoreMarketDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

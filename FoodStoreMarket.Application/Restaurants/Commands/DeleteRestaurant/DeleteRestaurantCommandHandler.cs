@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
 {
-    public class DeleteResturantHandler : IRequestHandler<DeleteRestaurantCommand>
+    public class DeleteRestaurantCommandHandler : IRequestHandler<DeleteRestaurantCommand>
     {
         private readonly IFoodStoreMarketDbContext _context;
-        public DeleteResturantHandler(IFoodStoreMarketDbContext foodStoreMarketDbContext)
+        public DeleteRestaurantCommandHandler(IFoodStoreMarketDbContext foodStoreMarketDbContext)
         {
             _context = foodStoreMarketDbContext;
         }

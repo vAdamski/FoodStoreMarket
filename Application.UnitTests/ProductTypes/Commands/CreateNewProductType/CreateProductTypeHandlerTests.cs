@@ -5,10 +5,10 @@ namespace Application.UnitTests.ProductTypes.Commands.CreateNewProductType;
 
 public class CreateProductTypeHandlerTests : CommandTestBase
 {
-    private readonly CreateProductTypeHandler _handler;
+    private readonly Create _handler;
 
     public CreateProductTypeHandlerTests() : base()
     {
-        _handler = new AddNewProductTypeHandler(_context);
+        _handler = new CreateProductTypeHandler(_context);
     }
 }

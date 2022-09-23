@@ -10,12 +10,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIngredient
 {
-    public class CreateIngredientHandler : IRequestHandler<CreateIngredientCommand, int>
+    public class CreateIngredientCommandHandler : IRequestHandler<CreateIngredientCommand, int>
     {
         private readonly IFoodStoreMarketDbContext _context;
         private IMapper _mapper;
 
-        public CreateIngredientHandler(
+        public CreateIngredientCommandHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext,
             IMapper mapper)
         {

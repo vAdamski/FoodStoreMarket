@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
 
-public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, bool>
+public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, bool>
 {
     private IFoodStoreMarketDbContext _context;
 
-    public DeleteProductHandler(IFoodStoreMarketDbContext context)
+    public DeleteProductCommandHandler(IFoodStoreMarketDbContext context)
     {
         _context = context;
     }

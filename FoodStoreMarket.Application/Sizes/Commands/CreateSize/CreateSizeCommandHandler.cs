@@ -11,12 +11,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.CreateSize;
 
-public class CreateSizeHandler : IRequestHandler<CreateSizeCommand, int>
+public class CreateSizeCommandHandler : IRequestHandler<CreateSizeCommand, int>
 {
     private IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
 
-    public CreateSizeHandler(IFoodStoreMarketDbContext context, IMapper mapper)
+    public CreateSizeCommandHandler(IFoodStoreMarketDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

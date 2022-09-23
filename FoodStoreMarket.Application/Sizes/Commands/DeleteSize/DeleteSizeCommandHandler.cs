@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.DeleteSize;
 
-public class DeleteSizeHandler : IRequestHandler<DeleteSizeCommand>
+public class DeleteSizeCommandHandler : IRequestHandler<DeleteSizeCommand>
 {
     private IFoodStoreMarketDbContext _context;
 
-    public DeleteSizeHandler(IFoodStoreMarketDbContext context)
+    public DeleteSizeCommandHandler(IFoodStoreMarketDbContext context)
     {
         _context = context;
     }

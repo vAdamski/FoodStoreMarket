@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.UpdateIngredient;
 
-public class UpdateIngredientHandler : IRequestHandler<UpdateIngredientCommand, bool>
+public class UpdateIngredientCommandHandler : IRequestHandler<UpdateIngredientCommand, bool>
 {
     private readonly IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
 
-    public UpdateIngredientHandler(
+    public UpdateIngredientCommandHandler(
         IFoodStoreMarketDbContext foodStoreMarketDbContext,
         IMapper mapper)
     {
