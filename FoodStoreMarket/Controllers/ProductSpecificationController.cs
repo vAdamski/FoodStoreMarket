@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.ProductSpecifications.Commands.EditProductSpecification;
+using FoodStoreMarket.Application.ProductSpecifications.Commands.UpdateProductSpecification;
 
 namespace FoodStoreMarket.Api.Controllers;
 
@@ -21,7 +21,7 @@ public class ProductSpecificationController : BaseController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> PatchAsync([FromBody] EditProductSpecificationCommand command)
+    public async Task<ActionResult> PatchAsync([FromBody] UpdateProductSpecificationCommand command)
     {
         if (command == null)
         {

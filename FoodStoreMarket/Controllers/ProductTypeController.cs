@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.ProductTypes.Commands.AddNewProductType;
+using FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType;
 using FoodStoreMarket.Application.ProductTypes.Commands.DeleteProductType;
 using FoodStoreMarket.Application.ProductTypes.Commands.UpdateProductType;
 using FoodStoreMarket.Application.ProductTypes.Queries.GetAllProductTypesInRestaurant;
@@ -62,7 +62,7 @@ public class ProductTypeController : BaseController
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    public async Task<ActionResult<int>> PostAsync([FromBody]AddNewProdcutTypeCommand prodcutTypeCommand)
+    public async Task<ActionResult<int>> PostAsync([FromBody]CreateProdcutTypeCommand prodcutTypeCommand)
     {
         if (prodcutTypeCommand == null)
         {

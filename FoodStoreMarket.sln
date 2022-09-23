@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Persistance
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{065B1229-DE7B-4E27-9451-89C113B4B753}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3B4E941F-71FB-4408-B57C-98306EF786A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "Application.UnitTests\Application.UnitTests.csproj", "{37A94864-5707-4153-834E-7B1D720F5955}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{065B1229-DE7B-4E27-9451-89C113B4B753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065B1229-DE7B-4E27-9451-89C113B4B753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065B1229-DE7B-4E27-9451-89C113B4B753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A94864-5707-4153-834E-7B1D720F5955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A94864-5707-4153-834E-7B1D720F5955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A94864-5707-4153-834E-7B1D720F5955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A94864-5707-4153-834E-7B1D720F5955}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{68640CB5-F26D-4B29-A822-5489222C16E7} = {19B224B7-8FCC-4E5E-9415-0699E3C125FA}
 		{32065B26-2760-4D98-8094-3DA86B0D26B2} = {F80F1F9C-5C96-4129-852F-2D580EC47B82}
 		{4473FBB0-5681-431D-9084-306992947CC9} = {F80F1F9C-5C96-4129-852F-2D580EC47B82}
+		{37A94864-5707-4153-834E-7B1D720F5955} = {3B4E941F-71FB-4408-B57C-98306EF786A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA6C4A6D-C383-4157-A0E2-6561896EDB24}

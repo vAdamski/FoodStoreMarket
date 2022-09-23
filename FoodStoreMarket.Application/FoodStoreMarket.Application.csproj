@@ -34,9 +34,6 @@
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
     <Folder Include="Restaurants\Commands\UpdateRestaurant\" />
-    <Folder Include="Products\" />
-    <Folder Include="Products\Commands\" />
-    <Folder Include="Products\Commands\AddNewProduct\" />
     <Folder Include="Ingredients\Commands\DeleteIngredient\" />
   </ItemGroup>
 </Project>
