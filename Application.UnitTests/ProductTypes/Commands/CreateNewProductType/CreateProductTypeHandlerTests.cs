@@ -1,14 +1,20 @@
 ﻿using Application.UnitTests.Common;
+using AutoMapper;
 using FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType;
 
 namespace Application.UnitTests.ProductTypes.Commands.CreateNewProductType;
 
 public class CreateProductTypeHandlerTests : CommandTestBase
 {
-    private readonly Create _handler;
+    private readonly CreateProductTypeCommandHandler _handler;
 
     public CreateProductTypeHandlerTests() : base()
     {
-        _handler = new CreateProductTypeHandler(_context);
+        _handler = new CreateProductTypeCommandHandler(_context, _mapper);
+    }
+
+    [Fact]
+    public async Task Handle_GivenValidRequest_ShouldInsertProductType()
+    {
     }
 }

@@ -30,4 +30,8 @@
       <ProjectReference Include="..\FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Restaurants\Commands\CreateRestaurant\" />
+    </ItemGroup>
+
 </Project>
