@@ -9,8 +9,6 @@ public static class SeedMockData
 {
     public static FoodStoreMarketDbContext SeedData(this FoodStoreMarketDbContext context)
     {
-        
-        
         return context;
     }
 

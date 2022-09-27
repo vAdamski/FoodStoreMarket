@@ -13,14 +13,20 @@ public static class FoodStoreMarketDbContextFactory
         var dateTimeMock = new Mock<IDateTime>();
         dateTimeMock.Setup(m => m.Now).Returns(dateTime);
 
-        var currentUserMock = new Mock<ICurrentUserService>();
-        currentUserMock.Setup(m => m.Email).Returns("ALICESMITH@EMAIL.COM");
-        currentUserMock.Setup(m => m.IsAuthenticated).Returns(true);
+        // var currentUserMock = new Mock<ICurrentUserService>();
+        // currentUserMock.Setup(m => m.Email).Returns("TEST@EMAIL.COM");
+        // currentUserMock.Setup(m => m.IsAuthenticated).Returns(true);
+
+        var currentUserService = new ICurrentUserService
+        {
+            Email = "TEST@EMAIL.COM", 
+            IsAuthenticated = true
+        };
 
         var options = new DbContextOptionsBuilder<FoodStoreMarketDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
-        var mock = new Mock<FoodStoreMarketDbContext>(options, dateTimeMock.Object, currentUserMock.Object)
+        var mock = new Mock<FoodStoreMarketDbContext>(options, dateTimeMock.Object, currentUserService)
             { CallBase = true };
 
         var context = mock.Object;

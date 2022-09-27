@@ -6,15 +6,15 @@ using Shouldly;
 
 namespace Application.UnitTests.Restaurants.Commands.CreateRestaurant;
 
-public class CreateRestaurantHandlerTests : CommandTestBase
+public class CreateRestaurantHandlerTests : CommandTestBase, IClassFixture<CommandTestFixture>
 {
     private readonly CreateRestaurantCommandHandler _handler;
+    private readonly IMapper _mapper;
 
-    public CreateRestaurantHandlerTests() : base()
+    public CreateRestaurantHandlerTests(CommandTestFixture fixture) : base()
     {
+        _mapper = fixture.Mapper;
         _handler = new CreateRestaurantCommandHandler(_context, _mapper);
-        
-        
     }
 
     [Fact]
@@ -37,6 +37,6 @@ public class CreateRestaurantHandlerTests : CommandTestBase
 
         var restaurant = await _context.Restaurants.FirstAsync(x => x.Id == result, CancellationToken.None);
         
-        restaurant.ShouldBeNull();
+        restaurant.ShouldNotBeNull();
     }
 }

@@ -8,9 +8,9 @@ public class CreateProductTypeHandlerTests : CommandTestBase
 {
     private readonly CreateProductTypeCommandHandler _handler;
 
-    public CreateProductTypeHandlerTests() : base()
+    public CreateProductTypeHandlerTests(CommandTestFixture fixture) : base()
     {
-        _handler = new CreateProductTypeCommandHandler(_context, _mapper);
+        _handler = new CreateProductTypeCommandHandler(_context, fixture.Mapper);
     }
 
     [Fact]
