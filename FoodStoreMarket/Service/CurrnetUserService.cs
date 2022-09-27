@@ -10,6 +10,7 @@ public class CurrnetUserService : ICurrentUserService
 {
     public string Email { get; set; }
     public bool IsAuthenticated { get; set; }
+    public string Role { get; set; }
 
     public CurrnetUserService(IHttpContextAccessor httpContextAccessor)
     {
