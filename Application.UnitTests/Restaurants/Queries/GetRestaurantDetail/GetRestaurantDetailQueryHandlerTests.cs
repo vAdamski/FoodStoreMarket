@@ -1,4 +1,5 @@
-﻿using Application.UnitTests.Common;
+﻿using System.Reflection;
+using Application.UnitTests.Common;
 using AutoMapper;
 using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
 using FoodStoreMarket.Persistance;
@@ -20,13 +21,64 @@ public class GetRestaurantDetailQueryHandlerTests
     [Fact]
     public async Task CanGetRestaurantById()
     {
-        var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
         var restaurantId = 1;
+        var expectedRestaurant = new RestaurantDetailVm
+        {
+            Name = "Pizzeria #1",
+            Description = "Pizzeria na osiedlu",
+            City = "Lodz",
+            PostCode = "94-000",
+            Street = "al.Politechniki",
+            HouseNumber = "1",
+            PhoneNumber = "123456789",
+            Email = "PIZZERIA@GMAIL.COM"
+        };
+
+        var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
 
         var result = await handler.Handle(new GetRestaurantDetailQuery { RestaurantId = restaurantId },
             CancellationToken.None);
 
         result.ShouldBeOfType<RestaurantDetailVm>();
-        result.Name.ShouldBe("Pizzeria #1");
+        foreach (PropertyInfo propertyInfo in result.GetType().GetProperties())
+        {
+            var resultPropertyValue = result.GetType().GetProperty(propertyInfo.Name)?.GetValue(result, null);
+            var expectedPropertyValue = expectedRestaurant.GetType().GetProperty(propertyInfo.Name)
+                ?.GetValue(expectedRestaurant, null);
+            
+            resultPropertyValue.ShouldBe(expectedPropertyValue);
+        }
     }
+    
+    // [Fact]
+    // public async Task CanGetRestaurantById()
+    // {
+    //     var restaurantId = 1;
+    //     var expectedRestaurant = new RestaurantDetailVm
+    //     {
+    //         Name = "Pizzeria #1",
+    //         Description = "Pizzeria na osiedlu",
+    //         City = "Lodz",
+    //         PostCode = "94-000",
+    //         Street = "al.Politechniki",
+    //         HouseNumber = "1",
+    //         PhoneNumber = "123456789",
+    //         Email = "PIZZERIA@GMAIL.COM"
+    //     };
+    //
+    //     var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+    //
+    //     var result = await handler.Handle(new GetRestaurantDetailQuery { RestaurantId = restaurantId },
+    //         CancellationToken.None);
+    //
+    //     result.ShouldBeOfType<RestaurantDetailVm>();
+    //     foreach (PropertyInfo propertyInfo in result.GetType().GetProperties())
+    //     {
+    //         var resultPropertyValue = result.GetType().GetProperty(propertyInfo.Name)?.GetValue(result, null);
+    //         var expectedPropertyValue = expectedRestaurant.GetType().GetProperty(propertyInfo.Name)
+    //             ?.GetValue(expectedRestaurant, null);
+    //         
+    //         resultPropertyValue.ShouldBe(expectedPropertyValue);
+    //     }
+    // }
 }
