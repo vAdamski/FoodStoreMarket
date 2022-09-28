@@ -14,6 +14,7 @@ public class UpdateIngredientCommand : IRequest<bool>, IMapFrom<UpdateIngredient
     public void Mapping(Profile profile)
     {
         profile.CreateMap<UpdateIngredientCommand, Ingredient>()
-            .ForMember(x => x.Name, map => map.MapFrom(src => src.Name));
+            .ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
+            .IgnoreAllNonExisting();
     }
 }

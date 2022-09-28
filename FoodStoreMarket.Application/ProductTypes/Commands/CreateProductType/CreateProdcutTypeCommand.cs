@@ -19,6 +19,7 @@ public class CreateProdcutTypeCommand : IRequest<int>, IMapFrom<CreateProdcutTyp
     {
         profile.CreateMap<CreateProdcutTypeCommand, ProductType>()
             .ForMember(x => x.ProductTypeName, map => map.MapFrom(src => src.ProductTypeName))
-            .ForMember(x => x.MenuId, map => map.MapFrom(src => src.MenuId));
+            .ForMember(x => x.MenuId, map => map.MapFrom(src => src.MenuId))
+            .IgnoreAllNonExisting();
     }
 }

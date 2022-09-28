@@ -18,6 +18,7 @@ public class GetProductVm : IMapFrom<Product>
         profile.CreateMap<Product, GetProductVm>()
             .ForMember(x => x.ProductName, map => map.MapFrom(src => src.ProductSpecification.Name))
             .ForMember(x => x.Description, map => map.MapFrom(src => src.ProductSpecification.Description))
-            .ForMember(x => x.ProductTypeName, map => map.MapFrom(src => src.ProductSpecification.ProductType.ProductTypeName));
+            .ForMember(x => x.ProductTypeName, map => map.MapFrom(src => src.ProductSpecification.ProductType.ProductTypeName))
+            .IgnoreAllNonExisting();
     }
 }

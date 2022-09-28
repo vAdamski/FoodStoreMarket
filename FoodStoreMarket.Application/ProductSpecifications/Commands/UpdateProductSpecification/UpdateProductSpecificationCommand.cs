@@ -19,6 +19,7 @@ public class UpdateProductSpecificationCommand : IRequest<bool>, IMapFrom<Update
         profile.CreateMap<UpdateProductSpecificationCommand, ProductSpecification>()
             .ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
             .ForMember(x => x.Description, map => map.MapFrom(src => src.Description))
-            .ForMember(x => x.ProductTypeId, map => map.MapFrom(src => src.ProductTypeId));
+            .ForMember(x => x.ProductTypeId, map => map.MapFrom(src => src.ProductTypeId))
+            .IgnoreAllNonExisting();
     }
 }
