@@ -84,7 +84,7 @@ public class SizeController : BaseController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<int>> PatchAsync([FromBody]UpdateCommand  productTypeCommand)
+    public async Task<ActionResult<int>> PatchAsync([FromBody]UpdateSzieCommand  productTypeCommand)
     {
         var id = await Mediator.Send(productTypeCommand);
         
