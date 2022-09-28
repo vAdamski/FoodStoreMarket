@@ -2,9 +2,9 @@
 
 namespace FoodStoreMarket.Application.Sizes.Commands.UpdateSize;
 
-public class UpdateCommandValidator : AbstractValidator<UpdateCommand>
+public class UpdateSizeCommandValidator : AbstractValidator<UpdateSzieCommand>
 {
-    public UpdateCommandValidator()
+    public UpdateSizeCommandValidator()
     {
         RuleFor(x => x.SizeId).NotEmpty().GreaterThan(0);
         RuleFor(x => x.ProductTypeId).NotEmpty().GreaterThan(0);
