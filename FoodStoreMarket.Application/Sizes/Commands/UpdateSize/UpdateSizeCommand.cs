@@ -5,7 +5,7 @@ using MediatR;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.UpdateSize;
 
-public class UpdateSzieCommand : IRequest<int>, IMapFrom<UpdateSzieCommand>
+public class UpdateSizeCommand : IRequest<int>, IMapFrom<UpdateSizeCommand>
 {
     public int SizeId { get; set; }
     public int ProductTypeId { get; set; }
@@ -13,7 +13,7 @@ public class UpdateSzieCommand : IRequest<int>, IMapFrom<UpdateSzieCommand>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<UpdateSzieCommand, Size>()
+        profile.CreateMap<UpdateSizeCommand, Size>()
             .ForMember(x => x.SizeName, map => map.MapFrom(src => src.SizeName))
             .ForMember(x => x.ProductTypeId, map => map.MapFrom(src => src.ProductTypeId));
     }

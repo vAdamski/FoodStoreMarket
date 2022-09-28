@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.UpdateSize;
 
-public class UpdateSizeCommandHandler : IRequestHandler<UpdateSzieCommand, int>
+public class UpdateSizeCommandHandler : IRequestHandler<UpdateSizeCommand, int>
 {
     private IFoodStoreMarketDbContext _context;
     private IMapper _mapper;
@@ -21,7 +21,7 @@ public class UpdateSizeCommandHandler : IRequestHandler<UpdateSzieCommand, int>
         _mapper = mapper;
     }
 
-    public async Task<int> Handle(UpdateSzieCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(UpdateSizeCommand request, CancellationToken cancellationToken)
     {
         try
         {

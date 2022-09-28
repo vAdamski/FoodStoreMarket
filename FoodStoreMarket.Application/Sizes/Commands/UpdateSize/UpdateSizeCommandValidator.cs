@@ -2,7 +2,7 @@
 
 namespace FoodStoreMarket.Application.Sizes.Commands.UpdateSize;
 
-public class UpdateSizeCommandValidator : AbstractValidator<UpdateSzieCommand>
+public class UpdateSizeCommandValidator : AbstractValidator<UpdateSizeCommand>
 {
     public UpdateSizeCommandValidator()
     {
