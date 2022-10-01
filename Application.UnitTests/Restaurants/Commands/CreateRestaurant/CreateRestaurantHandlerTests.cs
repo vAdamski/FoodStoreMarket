@@ -1,6 +1,7 @@
 ﻿using Application.UnitTests.Common;
 using AutoMapper;
 using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
+using FoodStoreMarket.Common;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 
@@ -38,5 +39,36 @@ public class CreateRestaurantHandlerTests : CommandTestBase, IClassFixture<Comma
         var restaurant = await _context.Restaurants.FirstAsync(x => x.Id == result, CancellationToken.None);
         
         restaurant.ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task Handle_GivenInvalidRequestName_ShouldReturnBadRequest()
+    {
+        try
+        {
+            var command = new CreateRestaurantCommand()
+            {
+                Name = "",
+                Description = "Kebsik w Łodzi",
+                City = "Lodz",
+                PostCode = "94-001",
+                Street = "Łódzka",
+                HouseNumber = "1",
+                FlatNumber = "",
+                PhoneNumber = "123123123",
+                Email = "kebsik@test.com"
+            };
+
+            var result = await _handler.Handle(command, CancellationToken.None);
+
+            var restaurant = await _context.Restaurants.FirstAsync(x => x.Id == result, CancellationToken.None);
+
+            restaurant.ShouldBeNull();
+        }
+        catch(Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(400);
+        }
     }
 }

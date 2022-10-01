@@ -4,7 +4,7 @@ using FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType;
 
 namespace Application.UnitTests.ProductTypes.Commands.CreateNewProductType;
 
-public class CreateProductTypeHandlerTests : CommandTestBase
+public class CreateProductTypeHandlerTests : CommandTestBase, IClassFixture<CommandTestFixture>
 {
     private readonly CreateProductTypeCommandHandler _handler;
 
