@@ -19,13 +19,14 @@ namespace FoodStoreMarket.Common
             switch (exception)
             {
                 case ObjectNotExistInDbException _:
+                    code = HttpStatusCode.NotFound;
+                    break;
+                case ValidationException _:
+                case InvalidRequestException _:
                     code = HttpStatusCode.BadRequest;
                     break;
                 case DbUpdateException _:
                     code = HttpStatusCode.InternalServerError;
-                    break;
-                case ValidationException _:
-                    code = HttpStatusCode.BadRequest;
                     break;
             }
 

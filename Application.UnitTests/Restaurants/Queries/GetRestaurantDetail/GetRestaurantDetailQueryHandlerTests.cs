@@ -2,6 +2,7 @@
 using Application.UnitTests.Common;
 using AutoMapper;
 using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
+using FoodStoreMarket.Common;
 using FoodStoreMarket.Persistance;
 using Shouldly;
 
@@ -51,15 +52,64 @@ public class GetRestaurantDetailQueryHandlerTests
     }
     
     [Fact]
-    public async Task Handle_GivenIncorrectId_ShouldReturnNull()
+    public async Task Handle_GivenNotExistedRestaurantId_ShouldReturnNotFound()
     {
-        var restaurantId = 2;
+        try
+        {
+            var restaurantId = 2;
     
-        var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+            var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
     
-        var result = await handler.Handle(new GetRestaurantDetailQuery { RestaurantId = restaurantId },
-            CancellationToken.None);
+            var result = await handler.Handle(new GetRestaurantDetailQuery { RestaurantId = restaurantId },
+                CancellationToken.None);
         
-        result.ShouldBeNull();
+            result.ShouldBeNull();
+        }
+        catch (Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(404);
+        }
+    }
+    
+    [Fact]
+    public async Task Handle_GivenNegativeId_ShouldReturnBadRequest()
+    {
+        try
+        {
+            var restaurantId = -10;
+    
+            var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+    
+            var result = await handler.Handle(new GetRestaurantDetailQuery { RestaurantId = restaurantId },
+                CancellationToken.None);
+        
+            result.ShouldBeNull();
+        }
+        catch (Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(400);
+        }
+        
+    }
+    
+    [Fact]
+    public async Task Handle_GivenRestaurantIdIsNull_ShouldReturnBadRequest()
+    {
+        try
+        {
+            var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+    
+            var result = await handler.Handle(null,
+                CancellationToken.None);
+        
+            result.ShouldBeNull();
+        }
+        catch (Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(400);
+        }
     }
 }
