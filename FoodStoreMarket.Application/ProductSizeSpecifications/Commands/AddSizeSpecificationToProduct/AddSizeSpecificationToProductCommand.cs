@@ -15,6 +15,7 @@ public class AddSizeSpecificationToProductCommand : IRequest<int>, IMapFrom<AddS
     {
         profile.CreateMap<AddSizeSpecificationToProductCommand, ProductSizeSpecification>()
             .ForMember(x => x.SizeId, map => map.MapFrom(src => src.SizeId))
-            .ForMember(x => x.Price, map => map.MapFrom(src => src.Price));
+            .ForMember(x => x.Price, map => map.MapFrom(src => src.Price))
+            .IgnoreAllNonExisting();
     }
 }

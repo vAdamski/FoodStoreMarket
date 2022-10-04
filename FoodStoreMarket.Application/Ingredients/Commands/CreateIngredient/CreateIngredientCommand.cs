@@ -15,7 +15,8 @@ namespace FoodStoreMarket.Application.Ingredients.Commands.CreateIngredient
 		{
 			profile.CreateMap<CreateIngredientCommand,Ingredient>()
 				.ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
-				.ForMember(x => x.MenuId, map => map.MapFrom(src => src.MenuId));
+				.ForMember(x => x.MenuId, map => map.MapFrom(src => src.MenuId))
+				.IgnoreAllNonExisting();
 		}
 	}
 }

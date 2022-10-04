@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FoodStoreMarket.Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using FoodStoreMarket.Common;
 
 namespace FoodStoreMarket.Application.Common.Middleware
 {
@@ -38,18 +39,7 @@ namespace FoodStoreMarket.Application.Common.Middleware
 
             var result = string.Empty;
 
-            switch (exception)
-            {
-                case ObjectNotExistInDbException _:
-                    code = HttpStatusCode.BadRequest;
-                    break;
-                case DbUpdateException _:
-                    code = HttpStatusCode.InternalServerError;
-                    break;
-                case ValidationException _:
-                    code = HttpStatusCode.BadRequest;
-                    break;
-            }
+            code = ExceptionHttpCode.GetHttpCodeFormException(exception);
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;

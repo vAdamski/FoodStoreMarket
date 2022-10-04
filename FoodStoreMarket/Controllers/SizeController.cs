@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.Sizes.Commands.AddNewSize;
+using FoodStoreMarket.Application.Sizes.Commands.CreateSize;
 using FoodStoreMarket.Application.Sizes.Commands.DeleteSize;
-using FoodStoreMarket.Application.Sizes.Commands.EditSize;
+using FoodStoreMarket.Application.Sizes.Commands.UpdateSize;
 using FoodStoreMarket.Application.Sizes.Queries.GetSizeDetail;
 using FoodStoreMarket.Application.Sizes.Queries.GetSizesInRestaurant;
 using Microsoft.AspNetCore.Cors;
@@ -63,7 +63,7 @@ public class SizeController : BaseController
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    public async Task<ActionResult<int>> PostAsync([FromBody]AddNewSizeCommand productTypeCommand)
+    public async Task<ActionResult<int>> PostAsync([FromBody]CreateSizeCommand productTypeCommand)
     {
         if (productTypeCommand == null)
         {
@@ -84,7 +84,7 @@ public class SizeController : BaseController
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<int>> PatchAsync([FromBody]EditSizeCommand  productTypeCommand)
+    public async Task<ActionResult<int>> PatchAsync([FromBody]UpdateSizeCommand  productTypeCommand)
     {
         var id = await Mediator.Send(productTypeCommand);
         

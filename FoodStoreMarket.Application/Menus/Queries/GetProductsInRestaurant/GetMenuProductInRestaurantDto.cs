@@ -17,6 +17,7 @@ public class GetMenuProductInRestaurantDto : IMapFrom<Product>
     {
         profile.CreateMap<Product, GetMenuProductInRestaurantDto>()
             .ForMember(x => x.ProductId, map => map.MapFrom(src => src.Id))
-            .ForMember(x => x.ProductName, map => map.MapFrom(src => src.ProductSpecification.Name));
+            .ForMember(x => x.ProductName, map => map.MapFrom(src => src.ProductSpecification.Name))
+            .IgnoreAllNonExisting();
     }
 }

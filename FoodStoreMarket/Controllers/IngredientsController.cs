@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Ingredients.Queries.GetIngredientDetails;
-using FoodStoreMarket.Application.Ingredients.Commands.EditIngredient;
 using FoodStoreMarket.Application.Ingredients.Queries.GetAllIngredientsInRestaurant;
+using FoodStoreMarket.Application.Ingredients.Commands.UpdateIngredient;
 
 namespace FoodStoreMarket.Api.Controllers
 {
@@ -106,7 +106,7 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> PatchAsync([FromBody] EditIngredientCommand editIngredientCommand)
+        public async Task<ActionResult> PatchAsync([FromBody] UpdateIngredientCommand editIngredientCommand)
         {
             var response = await Mediator.Send(editIngredientCommand);
 

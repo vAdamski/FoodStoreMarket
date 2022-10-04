@@ -32,7 +32,8 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant
                 .ForPath(x => x.Adres.HouseNumber, map => map.MapFrom(src => src.HouseNumber))
                 .ForPath(x => x.Adres.FlatNumber, map => map.MapFrom(src => src.FlatNumber))
                 .ForPath(x => x.Adres.PhoneNumber, map => map.MapFrom(src => src.PhoneNumber))
-                .ForPath(x => x.Adres.Email, map => map.MapFrom(src => src.Email));
+                .ForPath(x => x.Adres.Email, map => map.MapFrom(src => src.Email))
+                .IgnoreAllNonExisting();
         }
     }
 }

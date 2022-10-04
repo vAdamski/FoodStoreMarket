@@ -12,6 +12,7 @@ public class IngredientDto : IMapFrom<Ingredient>
     public void Mapping(Profile profile)
     {
         profile.CreateMap<Ingredient, IngredientDto>()
-            .ForMember(x => x.Name, map => map.MapFrom(src => src.Name));
+            .ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
+            .IgnoreAllNonExisting();
     }
 }

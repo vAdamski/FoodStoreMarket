@@ -1,8 +1,8 @@
 ﻿namespace FoodStoreMarket.Application.Interfaces;
 
-public class ICurrentUserService
+public interface ICurrentUserService
 { 
-    public string Email { get; set; } 
-    public bool IsAuthenticated { get; set; }
-    public string Role { get; set; }
+    string Email { get; set; } 
+    bool IsAuthenticated { get; set; }
+    string Role { get; set; }
 }

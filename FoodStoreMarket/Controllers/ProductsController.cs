@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.Products.Commands.AddNewProduct;
+using FoodStoreMarket.Application.Products.Commands.CreateProduct;
 using FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
 using FoodStoreMarket.Application.Products.Queries.GetProduct;
 
@@ -61,7 +61,7 @@ namespace FoodStoreMarket.Api.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<ActionResult> PostAsync([FromBody]AddNewProductCommand command)
+        public async Task<ActionResult> PostAsync([FromBody]CreateProductCommand command)
         {
             if (command == null)
             {
