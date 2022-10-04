@@ -17,7 +17,7 @@ namespace FoodStoreMarket.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -93,27 +93,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("RestaurantSpecificationId");
 
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(1945),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2157),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
-            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Indegriment", b =>
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Ingredient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,6 +115,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
@@ -144,42 +129,74 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Indegriments");
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("Ingredients");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3270),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2306),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Mutton meat",
-                            Price = 0m,
+                            Name = "Cheese",
                             StatusId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3277),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2308),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Chicken meat",
-                            Price = 0m,
+                            Name = "Sauce",
                             StatusId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3282),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2310),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Salad",
-                            Price = 0m,
+                            Name = "Pepper",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2312),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ham",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2313),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Mushrooms",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2315),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Pineapple",
                             StatusId = 1
                         });
                 });
@@ -227,7 +244,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3192),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2110),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantId = 1,
                             StatusId = 1
@@ -279,78 +297,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasIndex("OpeningClosingSpecificationId");
 
                     b.ToTable("OpeningClosingHours");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2344),
-                            Day = "Monday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2552),
-                            Day = "Tuesday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2691),
-                            Day = "Wednesday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2825),
-                            Day = "Thursday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3016),
-                            Day = "Friday",
-                            IsOpen = true,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3163),
-                            Day = "Saturday",
-                            IsOpen = false,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3170),
-                            Day = "Sunday",
-                            IsOpen = false,
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OpeningClosingSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", b =>
@@ -391,16 +337,6 @@ namespace FoodStoreMarket.Persistance.Migrations
                         .IsUnique();
 
                     b.ToTable("OpeningClosingSpecifications");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(2318),
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
-                            StatusId = 1
-                        });
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Order", b =>
@@ -503,19 +439,278 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3210),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2334),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ProductSpecificationId = 1,
                             StatusId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3219),
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2336),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2338),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2339),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2341),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2343),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2344),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StatusId = 1
+                        });
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeSpecification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductSpecificationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductSpecificationId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizeSpecifications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2992),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 20.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2998),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 25.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3000),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 30.0,
+                            ProductSpecificationId = 1,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3001),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 22.0,
                             ProductSpecificationId = 2,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3003),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 27.0,
+                            ProductSpecificationId = 2,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3004),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 33.0,
+                            ProductSpecificationId = 2,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3006),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 25.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3008),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 30.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 2,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3009),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 35.0,
+                            ProductSpecificationId = 3,
+                            SizeId = 3,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3011),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 7.0,
+                            ProductSpecificationId = 4,
+                            SizeId = 4,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3012),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 9.0,
+                            ProductSpecificationId = 4,
+                            SizeId = 5,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3014),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 7.0,
+                            ProductSpecificationId = 5,
+                            SizeId = 4,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3016),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 8.0,
+                            ProductSpecificationId = 7,
+                            SizeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3017),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 8.0,
+                            ProductSpecificationId = 6,
+                            SizeId = 6,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(3019),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 10.0,
+                            ProductSpecificationId = 6,
+                            SizeId = 7,
                             StatusId = 1
                         });
                 });
@@ -555,10 +750,15 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductTypeId");
 
                     b.ToTable("ProductSpecifications");
 
@@ -566,21 +766,159 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3241),
-                            Description = "Kebab w Tortilli",
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2362),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Kebab",
+                            Name = "PIZZA #1",
                             ProductId = 1,
+                            ProductTypeId = 1,
                             StatusId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(3250),
-                            Description = "Fizzy Drink",
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2364),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pepsi",
+                            Name = "PIZZA #2",
                             ProductId = 2,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2366),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "PIZZA #3",
+                            ProductId = 3,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2368),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Cola",
+                            ProductId = 4,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2370),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sprite",
+                            ProductId = 5,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2372),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Zatecky",
+                            ProductId = 6,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2374),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "",
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Lech",
+                            ProductId = 7,
+                            ProductTypeId = 1,
+                            StatusId = 1
+                        });
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("ProductTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2221),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Pizza",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2225),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Drink",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2227),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeName = "Beer",
                             StatusId = 1
                         });
                 });
@@ -605,26 +943,16 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Property<string>("InactivatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MenuId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RestaurantSpecificationId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantSpecificationId")
-                        .IsUnique();
 
                     b.ToTable("Restaurants");
 
@@ -632,10 +960,9 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(1630),
-                            MenuId = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(1992),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            RestaurantSpecificationId = 1,
                             StatusId = 1
                         });
                 });
@@ -685,18 +1012,147 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RestaurantId")
+                        .IsUnique();
+
                     b.ToTable("RestaurantSpecifications");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 1, 2, 3, 44, 34, 853, DateTimeKind.Local).AddTicks(1758),
-                            Description = "Best Kebab in Lodz",
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2127),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            Description = "Pizzeria na osiedlu",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "BestKebab",
-                            OpeningClosingSpecificationId = 1,
+                            Name = "Pizzeria #1",
                             RestaurantId = 1,
+                            StatusId = 1
+                        });
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Inactivated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InactivatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SizeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2247),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Small 26cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2250),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Medium 32cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2252),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 1,
+                            SizeName = "Big 42cm",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2253),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 2,
+                            SizeName = "500ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2255),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 2,
+                            SizeName = "850ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2257),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 3,
+                            SizeName = "300ml",
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(2022, 9, 10, 3, 8, 36, 601, DateTimeKind.Local).AddTicks(2285),
+                            CreatedBy = "ALICESMITH@EMAIL.COM",
+                            MenuId = 1,
+                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ProductTypeId = 3,
+                            SizeName = "500ml",
                             StatusId = 1
                         });
                 });
@@ -749,19 +1205,76 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.ToTable("WorkingHours");
                 });
 
-            modelBuilder.Entity("IndegrimentProductSpecification", b =>
+            modelBuilder.Entity("IngredientProductSpecification", b =>
                 {
-                    b.Property<int>("IndegrimentsId")
+                    b.Property<int>("IngredientsId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductSpecificationsId")
                         .HasColumnType("int");
 
-                    b.HasKey("IndegrimentsId", "ProductSpecificationsId");
+                    b.HasKey("IngredientsId", "ProductSpecificationsId");
 
                     b.HasIndex("ProductSpecificationsId");
 
-                    b.ToTable("IndegrimentProductSpecification");
+                    b.ToTable("IngredientProductSpecification", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 1
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 1
+                        },
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 3,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 4,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 5,
+                            ProductSpecificationsId = 2
+                        },
+                        new
+                        {
+                            IngredientsId = 1,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 2,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 4,
+                            ProductSpecificationsId = 3
+                        },
+                        new
+                        {
+                            IngredientsId = 6,
+                            ProductSpecificationsId = 3
+                        });
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -909,30 +1422,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    EmployeeId = 1,
-                                    City = "Lodz",
-                                    Email = "mateusz.nowak@gmail.com",
-                                    FlatNumber = "1",
-                                    HouseNumber = "10",
-                                    PhoneNumber = "112233445",
-                                    PostCode = "94-042",
-                                    Street = "Rajdowa"
-                                },
-                                new
-                                {
-                                    EmployeeId = 2,
-                                    City = "Lodz",
-                                    Email = "mariusz.gruszka@gmail.com",
-                                    FlatNumber = "44",
-                                    HouseNumber = "80",
-                                    PhoneNumber = "987654321",
-                                    PostCode = "94-042",
-                                    Street = "Retkinska"
-                                });
                         });
 
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.PersonName", "PersonName", b1 =>
@@ -956,20 +1445,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    EmployeeId = 1,
-                                    FirstName = "Mateusz",
-                                    LastName = "Nowak"
-                                },
-                                new
-                                {
-                                    EmployeeId = 2,
-                                    FirstName = "Mariusz",
-                                    LastName = "Gruszka"
-                                });
                         });
 
                     b.Navigation("Adres");
@@ -979,13 +1454,23 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("RestaurantSpecification");
                 });
 
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Ingredient", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+                });
+
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
                 {
                     b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
                         .WithOne("Menu")
                         .HasForeignKey("FoodStoreMarket.Domain.Entities.Menu", "RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Restaurant");
                 });
@@ -1018,43 +1503,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("OpeningClosingHoursId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OpeningClosingHoursId = 1,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 2,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 3,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 4,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 5,
-                                    Hour = 20,
-                                    Minute = 0,
-                                    Secound = 0
-                                });
                         });
 
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Time", "OpeningTime", b1 =>
@@ -1077,43 +1525,6 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("OpeningClosingHoursId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OpeningClosingHoursId = 1,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 2,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 3,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 4,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                },
-                                new
-                                {
-                                    OpeningClosingHoursId = 5,
-                                    Hour = 8,
-                                    Minute = 0,
-                                    Secound = 0
-                                });
                         });
 
                     b.Navigation("ClosingTime");
@@ -1202,26 +1613,62 @@ namespace FoodStoreMarket.Persistance.Migrations
 
                     b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
                         .WithOne("Product")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId");
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Product", "ProductSpecificationId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Menu");
 
                     b.Navigation("ProductSpecification");
                 });
 
-            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSizeSpecification", b =>
                 {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantSpecification")
-                        .WithOne("Restaurant")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.Restaurant", "RestaurantSpecificationId")
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductSpecification", "ProductSpecification")
+                        .WithMany("ProductSizeSpecifications")
+                        .HasForeignKey("ProductSpecificationId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Size", "Size")
+                        .WithMany("ProductSizeSpecifications")
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("RestaurantSpecification");
+                    b.Navigation("ProductSpecification");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductType", "ProductType")
+                        .WithMany("ProductSpecifications")
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("ProductTypes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
                 {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
+                        .WithOne("RestaurantSpecification")
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Adres", "Adres", b1 =>
                         {
                             b1.Property<int>("RestaurantSpecificationId")
@@ -1272,15 +1719,37 @@ namespace FoodStoreMarket.Persistance.Migrations
                                 {
                                     RestaurantSpecificationId = 1,
                                     City = "Lodz",
-                                    Email = "bestkebab@gmail.com",
-                                    HouseNumber = "16",
+                                    Email = "PIZZERIA@GMAIL.COM",
+                                    FlatNumber = "",
+                                    HouseNumber = "1",
                                     PhoneNumber = "123456789",
-                                    PostCode = "94-042",
-                                    Street = "Olimpijska"
+                                    PostCode = "94-000",
+                                    Street = "al.Politechniki"
                                 });
                         });
 
                     b.Navigation("Adres");
+
+                    b.Navigation("Restaurant");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Menu", "Menu")
+                        .WithMany("Sizes")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FoodStoreMarket.Domain.Entities.ProductType", "ProductType")
+                        .WithMany("Sizes")
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+
+                    b.Navigation("ProductType");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.WorkingHours", b =>
@@ -1294,11 +1763,11 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("IndegrimentProductSpecification", b =>
+            modelBuilder.Entity("IngredientProductSpecification", b =>
                 {
-                    b.HasOne("FoodStoreMarket.Domain.Entities.Indegriment", null)
+                    b.HasOne("FoodStoreMarket.Domain.Entities.Ingredient", null)
                         .WithMany()
-                        .HasForeignKey("IndegrimentsId")
+                        .HasForeignKey("IngredientsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1331,7 +1800,13 @@ namespace FoodStoreMarket.Persistance.Migrations
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Menu", b =>
                 {
+                    b.Navigation("Ingredients");
+
+                    b.Navigation("ProductTypes");
+
                     b.Navigation("Products");
+
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", b =>
@@ -1342,11 +1817,22 @@ namespace FoodStoreMarket.Persistance.Migrations
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductSpecification", b =>
                 {
                     b.Navigation("Product");
+
+                    b.Navigation("ProductSizeSpecifications");
+                });
+
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.ProductType", b =>
+                {
+                    b.Navigation("ProductSpecifications");
+
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Restaurant", b =>
                 {
                     b.Navigation("Menu");
+
+                    b.Navigation("RestaurantSpecification");
                 });
 
             modelBuilder.Entity("FoodStoreMarket.Domain.Entities.RestaurantSpecification", b =>
@@ -1354,9 +1840,11 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.Navigation("Employees");
 
                     b.Navigation("OpeningClosingSpecification");
+                });
 
-                    b.Navigation("Restaurant")
-                        .IsRequired();
+            modelBuilder.Entity("FoodStoreMarket.Domain.Entities.Size", b =>
+                {
+                    b.Navigation("ProductSizeSpecifications");
                 });
 #pragma warning restore 612, 618
         }

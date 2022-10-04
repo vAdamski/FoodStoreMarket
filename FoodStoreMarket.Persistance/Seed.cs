@@ -1,6 +1,7 @@
 ﻿using System;
 using FoodStoreMarket.Domain.Entities;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodStoreMarket.Persistance
@@ -9,351 +10,599 @@ namespace FoodStoreMarket.Persistance
     {
         public static void SeedData(this ModelBuilder modelBuilder)
         {
-            #region RestaurantSeed
+            SeedRestaurant(modelBuilder);
+            SeedMenu(modelBuilder);
+            SeedRestaurantSpecification(modelBuilder);
+            SeedProductType(modelBuilder);
+            SeedSize(modelBuilder);
+            SeedIngredients(modelBuilder);
+            SeedProduct(modelBuilder);
+            SeedProductSpecification(modelBuilder);
+            SeedProductSizeSpecification(modelBuilder);
+        }
+
+        
+        private static void SeedRestaurant(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Restaurant>(r =>
             {
                 r.HasData(new Restaurant()
                 {
                     Id = 1,
                     StatusId = 1,
-                    RestaurantSpecificationId = 1,
-                    MenuId = 1,
-                    Created = DateTime.Now
+                    Created = DateTime.Now,
+                    CreatedBy = "ALICESMITH@EMAIL.COM"
                 });
             });
-            #endregion
-
-            #region RestaurantSpecificationSeed
+        }
+        private static void SeedMenu(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Menu>(m =>
+            {
+                m.HasData(new Menu()
+                {
+                    Id = 1,
+                    RestaurantId = 1,
+                    StatusId = 1,
+                    Created = DateTime.Now,
+                    CreatedBy = "ALICESMITH@EMAIL.COM"
+                });
+            });
+        }
+        private static void SeedRestaurantSpecification(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<RestaurantSpecification>(rs =>
             {
                 rs.HasData(new RestaurantSpecification()
                 {
                     Id = 1,
                     RestaurantId = 1,
-                    OpeningClosingSpecificationId = 1,
+                    Name = "Pizzeria #1",
+                    Description = "Pizzeria na osiedlu",
                     StatusId = 1,
                     Created = DateTime.Now,
-                    Name = "BestKebab",
-                    Description = "Best Kebab in Lodz"
+                    CreatedBy = "ALICESMITH@EMAIL.COM"
                 });
+
                 rs.OwnsOne(rs => rs.Adres).HasData(new
                 {
                     RestaurantSpecificationId = 1,
                     City = "Lodz",
-                    PostCode = "94-042",
-                    Street = "Olimpijska",
-                    HouseNumber = "16",
+                    PostCode = "94-000",
+                    Street = "al.Politechniki",
+                    HouseNumber = "1",
+                    FlatNumber = "",
                     PhoneNumber = "123456789",
-                    Email = "bestkebab@gmail.com"
+                    Email = "PIZZERIA@GMAIL.COM"
                 });
             });
-            #endregion
-
-            #region EmployeeSeed
-            modelBuilder.Entity<Employee>(e =>
+        }
+        private static void SeedProductType(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductType>(pt =>
             {
-                //First employee
-                e.HasData(new Employee()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    RestaurantSpecificationId = 1
-                });
-                e.OwnsOne(e => e.PersonName).HasData(new
-                {
-                    EmployeeId = 1,
-                    FirstName = "Mateusz",
-                    LastName = "Nowak"
-                });
-                e.OwnsOne(e => e.Adres).HasData(new
-                {
-                    EmployeeId = 1,
-                    City = "Lodz",
-                    PostCode = "94-042",
-                    Street = "Rajdowa",
-                    HouseNumber = "10",
-                    FlatNumber = "1",
-                    PhoneNumber = "112233445",
-                    Email = "mateusz.nowak@gmail.com"
-                });
-
-                //Secound emp
-                e.HasData(new Employee()
-                {
-                    Id = 2,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    RestaurantSpecificationId = 1
-                });
-                e.OwnsOne(e => e.PersonName).HasData(new
-                {
-                    EmployeeId = 2,
-                    FirstName = "Mariusz",
-                    LastName = "Gruszka"
-                });
-                e.OwnsOne(e => e.Adres).HasData(new
-                {
-                    EmployeeId = 2,
-                    City = "Lodz",
-                    PostCode = "94-042",
-                    Street = "Retkinska",
-                    HouseNumber = "80",
-                    FlatNumber = "44",
-                    PhoneNumber = "987654321",
-                    Email = "mariusz.gruszka@gmail.com"
-                });
+                pt.HasData(
+                    //PIZZA PRODUCT TYPE
+                    new ProductType()
+                    {
+                        Id = 1,
+                        MenuId = 1,
+                        ProductTypeName = "Pizza",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //DRINK PRODUCT TYPE (Cola, Sprite, etc.)
+                    new ProductType()
+                    {
+                        Id = 2,
+                        MenuId = 1,
+                        ProductTypeName = "Drink",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new ProductType()
+                    {
+                        Id = 3,
+                        MenuId = 1,
+                        ProductTypeName = "Beer",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    }
+                );
             });
-            #endregion
-
-            #region OpeningClosingSpecificationSeed
-            modelBuilder.Entity<OpeningClosingSpecification>(ocs =>
+        }
+        private static void SeedSize(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Size>(s =>
             {
-                ocs.HasData(new OpeningClosingSpecification()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    RestaurantSpecificationId = 1
-                });
+                s.HasData(
+                    //PIZZAS SIZE SEED
+                    new Size()
+                    {
+                        Id = 1,
+                        MenuId = 1,
+                        ProductTypeId = 1,
+                        SizeName = "Small 26cm",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Size()
+                    {
+                        Id = 2,
+                        MenuId = 1,
+                        ProductTypeId = 1,
+                        SizeName = "Medium 32cm",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Size()
+                    {
+                        Id = 3,
+                        MenuId = 1,
+                        ProductTypeId = 1,
+                        SizeName = "Big 42cm",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //DRINK SIZE SEED
+                    new Size()
+                    {
+                        Id = 4,
+                        MenuId = 1,
+                        ProductTypeId = 2,
+                        SizeName = "500ml",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Size()
+                    {
+                        Id = 5,
+                        MenuId = 1,
+                        ProductTypeId = 2,
+                        SizeName = "850ml",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //BEER SIZE SEED
+                    new Size()
+                    {
+                        Id = 6,
+                        MenuId = 1,
+                        ProductTypeId = 3,
+                        SizeName = "300ml",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Size()
+                    {
+                        Id = 7,
+                        MenuId = 1,
+                        ProductTypeId = 3,
+                        SizeName = "500ml",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    }
+                );
             });
-            #endregion
-
-            #region OpeningClosingHoursSeed
-            modelBuilder.Entity<OpeningClosingHours>(och =>
+        }
+        private static void SeedIngredients(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Ingredient>(i =>
             {
-                //Monday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Monday",
-                    IsOpen = true,
-                });
-                och.OwnsOne(och => och.OpeningTime).HasData(new
-                {
-                    OpeningClosingHoursId = 1,
-                    Hour = 8,
-                    Minute = 0,
-                    Secound = 0
-                });
-                och.OwnsOne(och => och.ClosingTime).HasData(new
-                {
-                    OpeningClosingHoursId = 1,
-                    Hour = 20,
-                    Minute = 0,
-                    Secound = 0
-                });
-
-                //Tuesday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 2,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Tuesday",
-                    IsOpen = true,
-                });
-                och.OwnsOne(och => och.OpeningTime).HasData(new
-                {
-                    OpeningClosingHoursId = 2,
-                    Hour = 8,
-                    Minute = 0,
-                    Secound = 0
-                });
-                och.OwnsOne(och => och.ClosingTime).HasData(new
-                {
-                    OpeningClosingHoursId = 2,
-                    Hour = 20,
-                    Minute = 0,
-                    Secound = 0
-                });
-
-                //Wednesday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 3,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Wednesday",
-                    IsOpen = true,
-                });
-                och.OwnsOne(och => och.OpeningTime).HasData(new
-                {
-                    OpeningClosingHoursId = 3,
-                    Hour = 8,
-                    Minute = 0,
-                    Secound = 0
-                });
-                och.OwnsOne(och => och.ClosingTime).HasData(new
-                {
-                    OpeningClosingHoursId = 3,
-                    Hour = 20,
-                    Minute = 0,
-                    Secound = 0
-                });
-
-                //Thursday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 4,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Thursday",
-                    IsOpen = true,
-                });
-                och.OwnsOne(och => och.OpeningTime).HasData(new
-                {
-                    OpeningClosingHoursId = 4,
-                    Hour = 8,
-                    Minute = 0,
-                    Secound = 0
-                });
-                och.OwnsOne(och => och.ClosingTime).HasData(new
-                {
-                    OpeningClosingHoursId = 4,
-                    Hour = 20,
-                    Minute = 0,
-                    Secound = 0
-                });
-
-                //Friday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 5,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Friday",
-                    IsOpen = true,
-                });
-                och.OwnsOne(och => och.OpeningTime).HasData(new
-                {
-                    OpeningClosingHoursId = 5,
-                    Hour = 8,
-                    Minute = 0,
-                    Secound = 0
-                });
-                och.OwnsOne(och => och.ClosingTime).HasData(new
-                {
-                    OpeningClosingHoursId = 5,
-                    Hour = 20,
-                    Minute = 0,
-                    Secound = 0
-                });
-
-                //Saturday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 6,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Saturday",
-                    IsOpen = false,
-                });
-
-                //Sunday
-                och.HasData(new OpeningClosingHours()
-                {
-                    Id = 7,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    OpeningClosingSpecificationId = 1,
-                    Day = "Sunday",
-                    IsOpen = false,
-                });
+                i.HasData(
+                    new Ingredient()
+                    {
+                        Id= 1,
+                        MenuId = 1,
+                        Name = "Cheese",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Ingredient()
+                    {
+                        Id= 2,
+                        MenuId = 1,
+                        Name = "Sauce",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Ingredient()
+                    {
+                        Id= 3,
+                        MenuId = 1,
+                        Name = "Pepper",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Ingredient()
+                    {
+                        Id= 4,
+                        MenuId = 1,
+                        Name = "Ham",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Ingredient()
+                    {
+                        Id= 5,
+                        MenuId = 1,
+                        Name = "Mushrooms",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Ingredient()
+                    {
+                        Id= 6,
+                        MenuId = 1,
+                        Name = "Pineapple",
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    }
+                );
             });
-            #endregion
-
-            #region MenuSeed
-            modelBuilder.Entity<Menu>(m =>
-            {
-                m.HasData(new Menu()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    RestaurantId = 1
-                });
-            });
-            #endregion
-
+        }
+        private static void SeedProduct(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<Product>(p =>
             {
-                p.HasData(new Product()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    ProductSpecificationId = 1,
-                    Created = DateTime.Now,
-                    MenuId = 1
-                });
-
-                p.HasData(new Product()
-                {
-                    Id = 2,
-                    StatusId = 1,
-                    ProductSpecificationId = 2,
-                    Created = DateTime.Now,
-                    MenuId = 1
-                });
+                p.HasData(
+                    //PIZZAS
+                    new Product()
+                    {
+                        Id = 1,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Product()
+                    {
+                        Id = 2,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Product()
+                    {
+                        Id = 3,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //DRINKS
+                    new Product()
+                    {
+                        Id = 4,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Product()
+                    {
+                        Id = 5,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //BEER
+                    new Product()
+                    {
+                        Id = 6,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    new Product()
+                    {
+                        Id = 7,
+                        MenuId = 1,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    }
+                );
             });
-
+        }
+        private static void SeedProductSpecification(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<ProductSpecification>(ps =>
             {
-                ps.HasData(new ProductSpecification()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    ProductId = 1,
-                    Name = "Kebab",
-                    Description = "Kebab w Tortilli"
-                });
-
-                ps.HasData(new ProductSpecification()
-                {
-                    Id = 2,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    ProductId = 2,
-                    Name = "Pepsi",
-                    Description = "Fizzy Drink"
-                });
+                ps.HasData(
+                   new ProductSpecification()
+                   {
+                       Id = 1,
+                       ProductId = 1,
+                       Name = "PIZZA #1",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 2,
+                       ProductId = 2,
+                       Name = "PIZZA #2",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 3,
+                       ProductId = 3,
+                       Name = "PIZZA #3",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 4,
+                       ProductId = 4,
+                       Name = "Cola",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 5,
+                       ProductId = 5,
+                       Name = "Sprite",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 6,
+                       ProductId = 6,
+                       Name = "Zatecky",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   },
+                   new ProductSpecification()
+                   {
+                       Id = 7,
+                       ProductId = 7,
+                       Name = "Lech",
+                       Description = "",
+                       ProductTypeId = 1,
+                       StatusId = 1,
+                       Created = DateTime.Now,
+                       CreatedBy = "ALICESMITH@EMAIL.COM"
+                   }
+                );
+                ps.HasMany(ps => ps.Ingredients)
+                    .WithMany(i => i.ProductSpecifications)
+                    .UsingEntity(j => j.ToTable("IngredientProductSpecification")
+                        .HasData(new[]
+                            {
+                                //PIZZA #1
+                                new {IngredientsId = 1, ProductSpecificationsId = 1},
+                                new {IngredientsId = 2, ProductSpecificationsId = 1},
+                                //PIZZA #2                                  
+                                new {IngredientsId = 1, ProductSpecificationsId = 2},
+                                new {IngredientsId = 2, ProductSpecificationsId = 2},
+                                new {IngredientsId = 3, ProductSpecificationsId = 2},
+                                new {IngredientsId = 4, ProductSpecificationsId = 2},
+                                new {IngredientsId = 5, ProductSpecificationsId = 2},
+                                //PIZZA #2                                  
+                                new {IngredientsId = 1, ProductSpecificationsId = 3},
+                                new {IngredientsId = 2, ProductSpecificationsId = 3},
+                                new {IngredientsId = 4, ProductSpecificationsId = 3},
+                                new {IngredientsId = 6, ProductSpecificationsId = 3},
+                            }));
             });
-
-            modelBuilder.Entity<Indegriment>(i =>
+            
+            
+        }
+        private static void SeedProductSizeSpecification(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductSizeSpecification>(pss =>
             {
-                i.HasData(new Indegriment()
-                {
-                    Id = 1,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    Name = "Mutton meat"
-                });
-
-                i.HasData(new Indegriment()
-                {
-                    Id = 2,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    Name = "Chicken meat"
-                });
-
-                i.HasData(new Indegriment()
-                {
-                    Id = 3,
-                    StatusId = 1,
-                    Created = DateTime.Now,
-                    Name = "Salad"
-                });
-
+                pss.HasData
+                (
+                    //PIZZA #1 Small
+                    new ProductSizeSpecification()
+                    {
+                        Id = 1,
+                        ProductSpecificationId = 1,
+                        SizeId = 1,
+                        Price = 20.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #1 Medium
+                    new ProductSizeSpecification()
+                    {
+                        Id = 2,
+                        ProductSpecificationId = 1,
+                        SizeId = 2,
+                        Price = 25.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #1 Big
+                    new ProductSizeSpecification()
+                    {
+                        Id = 3,
+                        ProductSpecificationId = 1,
+                        SizeId = 3,
+                        Price = 30.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #2 Small
+                    new ProductSizeSpecification()
+                    {
+                        Id = 4,
+                        ProductSpecificationId = 2,
+                        SizeId = 1,
+                        Price = 22.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #2 Medium
+                    new ProductSizeSpecification()
+                    {
+                        Id = 5,
+                        ProductSpecificationId = 2,
+                        SizeId = 2,
+                        Price = 27.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #2 Big
+                    new ProductSizeSpecification()
+                    {
+                        Id = 6,
+                        ProductSpecificationId = 2,
+                        SizeId = 3,
+                        Price = 33.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #3 Small
+                    new ProductSizeSpecification()
+                    {
+                        Id = 7,
+                        ProductSpecificationId = 3,
+                        SizeId = 1,
+                        Price = 25.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #3 Medium
+                    new ProductSizeSpecification()
+                    {
+                        Id = 8,
+                        ProductSpecificationId = 3,
+                        SizeId = 2,
+                        Price = 30.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //PIZZA #3 Big
+                    new ProductSizeSpecification()
+                    {
+                        Id = 9,
+                        ProductSpecificationId = 3,
+                        SizeId = 3,
+                        Price = 35.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //COLA 500ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 10,
+                        ProductSpecificationId = 4,
+                        SizeId = 4,
+                        Price = 7.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //COLA 850ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 11,
+                        ProductSpecificationId = 4,
+                        SizeId = 5,
+                        Price = 9.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //SPRITE 500ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 12,
+                        ProductSpecificationId = 5,
+                        SizeId = 4,
+                        Price = 7.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //LECH 500ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 13,
+                        ProductSpecificationId = 7,
+                        SizeId = 1,
+                        Price = 8.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //ZATECKY 300ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 14,
+                        ProductSpecificationId = 6,
+                        SizeId = 6,
+                        Price = 8.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    },
+                    //ZATECKY 500ml
+                    new ProductSizeSpecification()
+                    {
+                        Id = 15,
+                        ProductSpecificationId = 6,
+                        SizeId = 7,
+                        Price = 10.00,
+                        StatusId = 1,
+                        Created = DateTime.Now,
+                        CreatedBy = "ALICESMITH@EMAIL.COM"
+                    }
+                );
             });
         }
     }

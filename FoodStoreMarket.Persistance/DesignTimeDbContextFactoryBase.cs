@@ -8,7 +8,7 @@ namespace FoodStoreMarket.Persistance
 {
     public abstract class DesignTimeDbContextFactoryBase<TContext> : IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
-        private const string ConnectionString = "FoodStoreMarketDatabasePC";
+        private string ConnectionString = ConnectionStringDbContext.GetConnectionStringByPlatform();
         private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
         public TContext CreateDbContext(string[] args)

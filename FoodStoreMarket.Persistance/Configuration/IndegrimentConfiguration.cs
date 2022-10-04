@@ -5,12 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FoodStoreMarket.Persistance.Configuration
 {
-    public class IndegrimentConfiguration : IEntityTypeConfiguration<Indegriment>
+    public class IndegrimentConfiguration : IEntityTypeConfiguration<Ingredient>
     {
-        public void Configure(EntityTypeBuilder<Indegriment> builder)
+        public void Configure(EntityTypeBuilder<Ingredient> builder)
         {
             builder.Property(i => i.Name).HasMaxLength(30).IsRequired();
-            builder.Property(i => i.Price).IsRequired();
         }
     }
 }

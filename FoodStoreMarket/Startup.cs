@@ -3,18 +3,23 @@ using FoodStoreMarket.Infrastructure;
 using FoodStoreMarket.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Service;
+using IdentityModel;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Any;
+using Serilog;
 
 namespace FoodStoreMarket
 {
@@ -34,19 +39,45 @@ namespace FoodStoreMarket
             services.AddInfrastructure(Configuration);
             services.AddApplication();
 
-
-
             services.AddCors(options =>
             {
-                options.AddPolicy(name: "MyAllowSecificOrigins",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin();
-                    });
+                options.AddPolicy("AllowAll", poliicy => poliicy.AllowAnyOrigin());
             });
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(typeof(ICurrentUserService), typeof(CurrnetUserService));
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            services.AddAuthentication("bearer")
+                .AddJwtBearer("bearer", options =>
+                {
+                    options.Authority = "https://localhost:5001";
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateAudience = false
+                    };
+                });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows()
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow()
+                        {
+                            AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                            TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                            Scopes = new Dictionary<string, string>
+                            {
+                                {"api1", "Full access"},
+                                {"user", "User info"},
+                                {"openid", "openid" },
+                                {"roles", "User role"}
+                            }
+                        }
+                    }
+                });
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Title = "FoodStoreMarket",
@@ -64,8 +95,24 @@ namespace FoodStoreMarket
                         Url = new Uri("https://example.com/license")
                     }
                 });
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
                 var filePath = Path.Combine(AppContext.BaseDirectory, "FoodStoreMarket.Api.xml");
                 c.IncludeXmlComments(filePath);
+            });
+
+            services.AddAuthorization(optionns =>
+            {
+                optionns.AddPolicy("admin", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api1", JwtClaimTypes.Role);
+                    policy.RequireRole("admin");
+                });
+                optionns.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api1");
+                });
             });
         }
 
@@ -78,20 +125,34 @@ namespace FoodStoreMarket
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodStoreMarket"));
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodStoreMarket");
+                c.OAuthClientId("swagger");
+                c.OAuthClientSecret("secret");
+                c.OAuth2RedirectUrl("https://localhost:44376/swagger/oauth2-redirect.html");
+                c.OAuthUsePkce();
+            });
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+
+            app.UseSerilogRequestLogging();
+            
             app.UseRouting();
 
             app.UseCors();
 
             app.UseAuthorization();
 
+            app.UseMiddlewareApplication();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization("ApiScope");
             });
+
         }
     }
 }

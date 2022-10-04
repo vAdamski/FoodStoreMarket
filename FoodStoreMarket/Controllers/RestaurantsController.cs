@@ -1,15 +1,14 @@
 ﻿using FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants;
 using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
+using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
 
 namespace FoodStoreMarket.Api.Controllers
 {
     [Route("api/restaurants")]
-    [EnableCors("MyAllowSecificOrigins")]
     public class RestaurantsController : BaseController
     {
         /// <summary>
@@ -18,12 +17,8 @@ namespace FoodStoreMarket.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> GetByIdAsync(int id)
+        [AllowAnonymous]
+        public async Task<ActionResult> GetById(int id)
         {
             var vm = await Mediator.Send(new GetRestaurantDetailQuery() { RestaurantId = id });
 
@@ -35,11 +30,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Policy = "admin")]
         public async Task<ActionResult> GetAllAsync()
         {
             var vm = await Mediator.Send(new GetRestaurantsQuery { });
@@ -52,23 +43,17 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [Authorize]
         public async Task<ActionResult<int>> PostAsync([FromBody]CreateRestaurantCommand restaurantCommand)
         {
-            var vm = restaurantCommand;
-
-            var id = await Mediator.Send(vm);
-
-            if (id == null)
+            if (restaurantCommand == null)
             {
-                return NotFound();
+                return BadRequest();
             }
+            
+            var responseId = await Mediator.Send(restaurantCommand);
 
-            // Implement Created
-            return Ok(id);
+            return CreatedAtAction(nameof(GetById), new {id = responseId}, restaurantCommand);
         }
 
         /// <summary>
@@ -76,10 +61,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPatch]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize]
         public async Task<ActionResult> PatchAsync()
         {
             return null;
@@ -91,12 +73,11 @@ namespace FoodStoreMarket.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize]
         public async Task<ActionResult> DeleteAsync(int id)
         {
-            return null;
+            await Mediator.Send(new DeleteRestaurantCommand() { IdRestaurantToDelete = id });
+            return Ok();
         }
     }
 }

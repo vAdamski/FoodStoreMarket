@@ -6,23 +6,34 @@
 
   <ItemGroup>
     <None Remove="Interfaces\" />
+    <None Remove="Products\" />
+    <None Remove="Products\Commands\" />
+    <None Remove="Products\Commands\AddNewProduct\" />
+    <None Remove="Indegriments\" />
+    <None Remove="Ingredients\Command\" />
+    <None Remove="Ingredients\Commands\AddNewIndegriment\" />
+    <None Remove="Ingredients\Commands\DeleteIngrediment\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.1.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodStoreMarket.Common\FoodStoreMarket.Common.csproj" />
     <ProjectReference Include="..\FoodStoreMarket.Domain\FoodStoreMarket.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />
-    <Folder Include="Common\Exceptions\" />
-    <Folder Include="Restaurants\Commands\DeleteRestaurant\" />
+    <Folder Include="Restaurants\Commands\UpdateRestaurant\" />
   </ItemGroup>
 </Project>
