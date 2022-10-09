@@ -73,7 +73,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult> DeleteAsync(int id)
         {
             await Mediator.Send(new DeleteRestaurantCommand() { IdRestaurantToDelete = id });

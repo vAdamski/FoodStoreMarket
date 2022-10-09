@@ -25,29 +25,31 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
 
             DeleteRestaurantData(restaurantData);
 
+            await _context.SaveChangesAsync(cancellationToken);
+
             return Unit.Value;
         }
 
         private async Task<Restaurant> GetAllRestaurantData(int restaurantId, CancellationToken cancellationToken)
         {
             var data = await _context.Restaurants
-                .Where(r => r.Id == restaurantId)
-                .Include(r => r.Menu)
-                .ThenInclude(m => m.Products)
-                .ThenInclude(p => p.ProductSpecification)
-                .ThenInclude(ps => ps.ProductSizeSpecifications)
-                .ThenInclude(pss => pss.Size)
-                .Include(r => r.Menu)
-                .ThenInclude(m => m.Ingredients)
-                .Include(r => r.Menu)
-                .ThenInclude(m => m.ProductTypes)
-                .Include(r => r.RestaurantSpecification)
-                .ThenInclude(rs => rs.OpeningClosingSpecification)
-                .ThenInclude(ocs => ocs.OpeningClosingHours)
-                .Include(r => r.RestaurantSpecification)
-                .ThenInclude(rs => rs.Employees)
-                .ThenInclude(e => e.WorkingHours)
-                .FirstOrDefaultAsync(cancellationToken);
+                            .Where(r => r.Id == restaurantId)
+                            .Include(r => r.Menu)
+                            .ThenInclude(m => m.Products)
+                            .ThenInclude(p => p.ProductSpecification)
+                            .ThenInclude(ps => ps.ProductSizeSpecifications)
+                            .ThenInclude(pss => pss.Size)
+                            .Include(r => r.Menu)
+                            .ThenInclude(m => m.Ingredients)
+                            .Include(r => r.Menu)
+                            .ThenInclude(m => m.ProductTypes)
+                            .Include(r => r.RestaurantSpecification)
+                            .ThenInclude(rs => rs.OpeningClosingSpecification)
+                            .ThenInclude(ocs => ocs.OpeningClosingHours)
+                            .Include(r => r.RestaurantSpecification)
+                            .ThenInclude(rs => rs.Employees)
+                            .ThenInclude(e => e.WorkingHours)
+                            .FirstOrDefaultAsync(cancellationToken);
 
             return data;
         }
@@ -78,8 +80,24 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
             });
 
             ProductSizeSpecificationDelete(productSizeSpec);
+            RestaurantSpecificationDelete(restaurant.RestaurantSpecification);
+            OpeningClosingSpecificationDelete(restaurant.RestaurantSpecification.OpeningClosingSpecification);
 
+            var openingClosingHours = restaurant.RestaurantSpecification.OpeningClosingSpecification.OpeningClosingHours;
+            OpeningClosingHoursDelete(openingClosingHours);
 
+            var employees = restaurant.RestaurantSpecification.Employees;
+
+            EmployeesDelete(employees);
+
+            var workingHours = new List<WorkingHours>();
+
+            employees.ForEach(e =>
+            {
+                workingHours.AddRange(e.WorkingHours);
+            });
+
+            WorkkingHoursDelete(workingHours);
         }
 
         private void RestaurantDelete(Restaurant restaurant)
@@ -120,6 +138,31 @@ namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
         private void ProductSizeSpecificationDelete(List<ProductSizeSpecification> productSizeSpecifications)
         {
             _context.ProductSizeSpecifications.RemoveRange(productSizeSpecifications);
+        }
+
+        private void RestaurantSpecificationDelete(RestaurantSpecification restaurantSpecification)
+        {
+            _context.RestaurantSpecifications.Remove(restaurantSpecification);
+        }
+
+        private void OpeningClosingSpecificationDelete(OpeningClosingSpecification openingClosingSpecification)
+        {
+            _context.OpeningClosingSpecifications.Remove(openingClosingSpecification);
+        }
+
+        private void OpeningClosingHoursDelete(List<OpeningClosingHours> openingClosingHours)
+        {
+            _context.OpeningClosingHours.RemoveRange(openingClosingHours);
+        }
+
+        private void EmployeesDelete(List<Employee> employees)
+        {
+            _context.Employees.RemoveRange(employees);
+        }
+
+        private void WorkkingHoursDelete(List<WorkingHours> workingHours)
+        {
+            _context.WorkingHours.RemoveRange(workingHours);
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Application.UnitTests.Common;
+﻿using System.Threading;
+using Application.UnitTests.Common;
 using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
+using FoodStoreMarket.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
@@ -27,13 +29,49 @@ public class DeleteRestaurantHandlerTests : CommandTestBase, IClassFixture<Comma
 
         _handler.Handle(command, CancellationToken.None);
 
-        var resultRestaurant =
-            await _context.Restaurants.FirstOrDefaultAsync(x => x.Id == restaurantIdToDelete && x.StatusId == 0);
-        
-        var resultRestaurantSpecification =
-            await _context.Restaurants.FirstOrDefaultAsync(x => x.Id == restaurantIdToDelete && x.StatusId == 0);
-        
-        var result =
-            await _context.Restaurants.FirstOrDefaultAsync(x => x.Id == restaurantIdToDelete && x.StatusId == 0);
+        var restaurant = _context.Restaurants
+                .Where(r => r.Id == restaurantIdToDelete)
+                .Include(r => r.Menu)
+                .ThenInclude(m => m.Products)
+                .ThenInclude(p => p.ProductSpecification)
+                .ThenInclude(ps => ps.ProductSizeSpecifications)
+                .ThenInclude(pss => pss.Size)
+                .Include(r => r.Menu)
+                .ThenInclude(m => m.Ingredients)
+                .Include(r => r.Menu)
+                .ThenInclude(m => m.ProductTypes)
+                .Include(r => r.RestaurantSpecification)
+                .ThenInclude(rs => rs.OpeningClosingSpecification)
+                .ThenInclude(ocs => ocs.OpeningClosingHours)
+                .Include(r => r.RestaurantSpecification)
+                .ThenInclude(rs => rs.Employees)
+                .ThenInclude(e => e.WorkingHours)
+                .FirstOrDefault();
+
+        restaurant.ShouldNotBeNull();
+
+        //Restaurant Status check
+        restaurant.StatusId.ShouldBe(0);
+
+        //Menu Ststus check
+        restaurant.Menu.StatusId.ShouldBe(0);
+
+        restaurant.Menu.Products.ForEach(p => p.StatusId.ShouldBe(0));
+
+        restaurant.Menu.Products.ForEach(p =>
+        {
+            p.ProductSpecification.StatusId.ShouldBe(0);
+        });
+
+        restaurant.Menu.Ingredients.ForEach(i => i.StatusId.ShouldBe(0));
+
+        restaurant.Menu.ProductTypes.ForEach(pt => pt.StatusId.ShouldBe(0));
+
+        restaurant.Menu.Sizes.ForEach(s => s.StatusId.ShouldBe(0));
+
+        restaurant.Menu.Sizes.ForEach(s =>
+        {
+            s.ProductSizeSpecifications.ForEach(pss => pss.StatusId.ShouldBe(0));
+        });
     }
 }
