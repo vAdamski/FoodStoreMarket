@@ -43,7 +43,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<int>> PostAsync([FromBody]CreateRestaurantCommand restaurantCommand)
         {
             if (restaurantCommand == null)
@@ -61,7 +61,7 @@ namespace FoodStoreMarket.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPatch]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult> PatchAsync()
         {
             return null;

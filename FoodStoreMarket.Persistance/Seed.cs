@@ -267,6 +267,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 1,
                         MenuId = 1,
+                        ProductSpecificationId = 1,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -275,6 +276,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 2,
                         MenuId = 1,
+                        ProductSpecificationId = 2,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -283,6 +285,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 3,
                         MenuId = 1,
+                        ProductSpecificationId = 3,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -292,6 +295,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 4,
                         MenuId = 1,
+                        ProductSpecificationId = 4,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -300,6 +304,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 5,
                         MenuId = 1,
+                        ProductSpecificationId = 5,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -309,6 +314,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 6,
                         MenuId = 1,
+                        ProductSpecificationId = 6,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"
@@ -317,6 +323,7 @@ namespace FoodStoreMarket.Persistance
                     {
                         Id = 7,
                         MenuId = 1,
+                        ProductSpecificationId = 7,
                         StatusId = 1,
                         Created = DateTime.Now,
                         CreatedBy = "ALICESMITH@EMAIL.COM"

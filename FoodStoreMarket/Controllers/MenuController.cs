@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 using FoodStoreMarket.Application.Products.Queries.GetProduct;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ namespace FoodStoreMarket.Api.Controllers;
 /// End-point to menage menu in restaurant
 /// </summary>
 [Route("api/menu")]
+[AllowAnonymous]
 public class MenuController : BaseController
 {
     /// <summary>

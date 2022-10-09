@@ -26,7 +26,8 @@ public class GetMenuInRestaurantQueryHandler : IRequestHandler<GetMenuInRestaura
         try
         {
             var restaurant = await _context.Restaurants
-                .Where(x => x.Id == request.RestaurantId && x.StatusId == 1).Include(x => x.Menu).FirstOrDefaultAsync(cancellationToken);
+                .Where(x => x.Id == request.RestaurantId && x.StatusId == 1)
+                .Include(x => x.Menu).FirstOrDefaultAsync(cancellationToken);
         
             if (restaurant?.Menu == null)
             {
