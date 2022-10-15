@@ -9,7 +9,11 @@ namespace FoodStoreMarket.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
-
+            builder
+                .HasOne<Restaurant>(m => m.Restaurant)
+                .WithOne(r => r.Menu)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
