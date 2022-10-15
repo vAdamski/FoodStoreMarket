@@ -95,13 +95,18 @@ public class GetRestaurantDetailQueryHandlerTests
     }
     
     [Fact]
-    public async Task Handle_GivenRestaurantIdIsNull_ShouldReturnBadRequest()
+    public async Task Handle_GivenRestaurantIdIsLowerThenZero_ShouldReturnBadRequest()
     {
         try
         {
             var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
-    
-            var result = await handler.Handle(null,
+
+            var query = new GetRestaurantDetailQuery()
+            {
+                RestaurantId = -1
+            };
+            
+            var result = await handler.Handle(query,
                 CancellationToken.None);
         
             result.ShouldBeNull();
@@ -110,6 +115,54 @@ public class GetRestaurantDetailQueryHandlerTests
         {
             var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
             code.ShouldBe(400);
+        }
+    }
+    
+    [Fact]
+    public async Task Handle_GivenRestaurantIdIsZero_ShouldReturnBadRequest()
+    {
+        try
+        {
+            var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+
+            var query = new GetRestaurantDetailQuery()
+            {
+                RestaurantId = 0
+            };
+            
+            var result = await handler.Handle(query,
+                CancellationToken.None);
+        
+            result.ShouldBeNull();
+        }
+        catch (Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(400);
+        }
+    }
+    
+    [Fact]
+    public async Task Handle_GivenRestaurantIdWithNotExistingEntity_NotFound()
+    {
+        try
+        {
+            var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
+
+            var query = new GetRestaurantDetailQuery()
+            {
+                RestaurantId = 9
+            };
+            
+            var result = await handler.Handle(query,
+                CancellationToken.None);
+        
+            result.ShouldBeNull();
+        }
+        catch (Exception exception)
+        {
+            var code = (int)ExceptionHttpCode.GetHttpCodeFormException(exception);
+            code.ShouldBe(404);
         }
     }
 }

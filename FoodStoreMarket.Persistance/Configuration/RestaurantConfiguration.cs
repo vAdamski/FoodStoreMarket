@@ -13,14 +13,14 @@ namespace FoodStoreMarket.Persistance.Configuration
                 .HasOne<RestaurantSpecification>(r => r.RestaurantSpecification)
                 .WithOne(rs => rs.Restaurant)
                 .HasForeignKey<RestaurantSpecification>(rs => rs.RestaurantId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false);
 
             builder
                 .HasOne<Menu>(r => r.Menu)
                 .WithOne(m => m.Restaurant)
                 .HasForeignKey<Menu>(m => m.RestaurantId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false);
         }
     }

@@ -22,7 +22,8 @@ namespace FoodStoreMarket.Persistance.Configuration
                 .HasOne(rs => rs.OpeningClosingSpecification)
                 .WithOne(ocs => ocs.RestaurantSpecification)
                 .HasForeignKey<OpeningClosingSpecification>(ocs => ocs.RestaurantSpecificationId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Property(rs => rs.Name).HasMaxLength(255).IsRequired();
             builder.OwnsOne(rs => rs.Adres).Property(a => a.City).HasMaxLength(255).IsRequired();
