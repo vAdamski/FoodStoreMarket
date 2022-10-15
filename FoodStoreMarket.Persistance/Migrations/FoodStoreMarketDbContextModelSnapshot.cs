@@ -142,7 +142,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4170),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6708),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -152,7 +152,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4170),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6710),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -162,7 +162,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4180),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6711),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -172,7 +172,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4180),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6713),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -182,7 +182,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4180),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6715),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -192,7 +192,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4190),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6716),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -244,7 +244,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(3820),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6509),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RestaurantId = 1,
@@ -439,7 +439,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4220),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6732),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -449,7 +449,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4240),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6734),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -459,7 +459,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4240),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6736),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -469,7 +469,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4240),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6737),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -479,7 +479,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4250),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6739),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -489,7 +489,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4250),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6741),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -499,7 +499,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4260),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6742),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -558,7 +558,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6730),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7392),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 20.0,
@@ -569,7 +569,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6750),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7398),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 25.0,
@@ -580,7 +580,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6750),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7400),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30.0,
@@ -591,7 +591,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6750),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7402),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 22.0,
@@ -602,7 +602,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6760),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7404),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 27.0,
@@ -613,7 +613,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6760),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7405),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 33.0,
@@ -624,7 +624,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6760),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7407),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 25.0,
@@ -635,7 +635,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 8,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6770),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7408),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 30.0,
@@ -646,7 +646,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 9,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6770),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7410),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 35.0,
@@ -657,7 +657,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 10,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6770),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7411),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 7.0,
@@ -668,7 +668,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 11,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6780),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7413),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 9.0,
@@ -679,7 +679,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 12,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6780),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7414),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 7.0,
@@ -690,7 +690,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 13,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6780),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7416),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 8.0,
@@ -701,7 +701,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 14,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6790),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7417),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 8.0,
@@ -712,7 +712,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 15,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(6790),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(7419),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 10.0,
@@ -773,7 +773,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4640),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6758),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -785,7 +785,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4670),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6761),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -797,7 +797,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4680),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6762),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -809,7 +809,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4690),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6764),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -821,7 +821,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4690),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6766),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -833,7 +833,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4700),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6768),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -845,7 +845,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4710),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6770),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -901,7 +901,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4070),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6651),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -911,7 +911,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4080),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6655),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -921,7 +921,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4080),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6656),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -967,7 +967,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(3620),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6400),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StatusId = 1
@@ -1028,7 +1028,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(3860),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6527),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             Description = "Pizzeria na osiedlu",
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1088,7 +1088,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4110),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6676),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1099,7 +1099,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4110),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6678),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1110,7 +1110,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4120),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6680),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1121,7 +1121,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4120),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6682),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1132,7 +1132,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4120),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6684),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1143,7 +1143,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4130),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6685),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1154,7 +1154,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                         new
                         {
                             Id = 7,
-                            Created = new DateTime(2022, 10, 9, 13, 29, 43, 881, DateTimeKind.Local).AddTicks(4130),
+                            Created = new DateTime(2022, 10, 10, 2, 11, 15, 150, DateTimeKind.Local).AddTicks(6687),
                             CreatedBy = "ALICESMITH@EMAIL.COM",
                             MenuId = 1,
                             Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1477,7 +1477,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
                         .WithOne("Menu")
                         .HasForeignKey("FoodStoreMarket.Domain.Entities.Menu", "RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Restaurant");
                 });
@@ -1545,7 +1545,8 @@ namespace FoodStoreMarket.Persistance.Migrations
                 {
                     b.HasOne("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantSpecification")
                         .WithOne("OpeningClosingSpecification")
-                        .HasForeignKey("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", "RestaurantSpecificationId");
+                        .HasForeignKey("FoodStoreMarket.Domain.Entities.OpeningClosingSpecification", "RestaurantSpecificationId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("RestaurantSpecification");
                 });
@@ -1674,7 +1675,7 @@ namespace FoodStoreMarket.Persistance.Migrations
                     b.HasOne("FoodStoreMarket.Domain.Entities.Restaurant", "Restaurant")
                         .WithOne("RestaurantSpecification")
                         .HasForeignKey("FoodStoreMarket.Domain.Entities.RestaurantSpecification", "RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.OwnsOne("FoodStoreMarket.Domain.ValueObjects.Adres", "Adres", b1 =>
                         {
