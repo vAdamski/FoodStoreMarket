@@ -20,16 +20,13 @@ namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
 
         public GetRestaurantsQueryHandler(
             IFoodStoreMarketDbContext foodStoreMarketDbContext,
-            IMapper mapper,
-            ICurrentUserService currentUserService)
+            IMapper mapper)
         {
             _context = foodStoreMarketDbContext;
             _mapper = mapper;
-            _currentUserService = currentUserService;
         }
         public async Task<RestaurantsVm> Handle(GetRestaurantsQuery request, CancellationToken cancellationToken)
         {
-            Console.WriteLine($"Role: {_currentUserService.Role}");
             var restaurants = await _context.Restaurants.Where(x => x.StatusId == 1).ToListAsync(cancellationToken);
 
             var restaurantsVm = new RestaurantsVm();

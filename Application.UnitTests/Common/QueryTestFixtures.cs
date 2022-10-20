@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
+using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Persistance;
 
 namespace Application.UnitTests.Common;

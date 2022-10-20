@@ -17,12 +17,6 @@ public static class FoodStoreMarketDbContextFactory
         currentUserMock.Setup(m => m.Email).Returns("test@test.com");
         currentUserMock.Setup(m => m.IsAuthenticated).Returns(true);
 
-        // var currentUserService = new ICurrentUserService
-        // {
-        //     Email = "TEST@EMAIL.COM", 
-        //     IsAuthenticated = true
-        // };
-
         var options = new DbContextOptionsBuilder<FoodStoreMarketDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
 
