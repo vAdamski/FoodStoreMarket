@@ -56,7 +56,7 @@ public class GetRestaurantDetailQueryHandlerTests
     {
         try
         {
-            var restaurantId = 2;
+            var restaurantId = 99;
     
             var handler = new GetRestaurantDetailQueryHandler(_context, _mapper);
     
