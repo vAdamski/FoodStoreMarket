@@ -1,0 +1,419 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/WebApi.IntegrationTest/WebApi.IntegrationTest.csproj": {}
+  },
+  "projects": {
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/FoodStoreMarket.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/FoodStoreMarket.Application.csproj",
+        "projectName": "FoodStoreMarket.Application",
+        "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/FoodStoreMarket.Application.csproj",
+        "packagesPath": "/Users/adamludwiczak/.nuget/packages/",
+        "outputPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/adamludwiczak/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/FoodStoreMarket.Common.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/FoodStoreMarket.Common.csproj"
+              },
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/FoodStoreMarket.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/FoodStoreMarket.Common.csproj",
+        "projectName": "FoodStoreMarket.Common",
+        "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/FoodStoreMarket.Common.csproj",
+        "packagesPath": "/Users/adamludwiczak/.nuget/packages/",
+        "outputPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/adamludwiczak/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj",
+        "projectName": "FoodStoreMarket.Domain",
+        "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj",
+        "packagesPath": "/Users/adamludwiczak/.nuget/packages/",
+        "outputPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/adamludwiczak/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/FoodStoreMarket.Persistance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/FoodStoreMarket.Persistance.csproj",
+        "projectName": "FoodStoreMarket.Persistance",
+        "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/FoodStoreMarket.Persistance.csproj",
+        "packagesPath": "/Users/adamludwiczak/.nuget/packages/",
+        "outputPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/adamludwiczak/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/FoodStoreMarket.Application.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Application/FoodStoreMarket.Application.csproj"
+              },
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Domain/FoodStoreMarket.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/adamludwiczak/Projects/FoodStoreMarket/WebApi.IntegrationTest/WebApi.IntegrationTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/adamludwiczak/Projects/FoodStoreMarket/WebApi.IntegrationTest/WebApi.IntegrationTest.csproj",
+        "projectName": "WebApi.IntegrationTest",
+        "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/WebApi.IntegrationTest/WebApi.IntegrationTest.csproj",
+        "packagesPath": "/Users/adamludwiczak/.nuget/packages/",
+        "outputPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/WebApi.IntegrationTest/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/adamludwiczak/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/FoodStoreMarket.Persistance.csproj": {
+                "projectPath": "/Users/adamludwiczak/Projects/FoodStoreMarket/FoodStoreMarket.Persistance/FoodStoreMarket.Persistance.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
