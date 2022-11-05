@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
+using Microsoft.AspNetCore;
+using System.Reflection;
 
 namespace FoodStoreMarket
 {
@@ -22,7 +24,7 @@ namespace FoodStoreMarket
             try
             {
                 Log.Information("Application is starting up");
-                CreateHostBuilder(args).Build().Run();
+                CreateHostBuilder(args).UseSerilog().Build().Run();
             }
             catch (Exception e)
             {
@@ -34,12 +36,28 @@ namespace FoodStoreMarket
             }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IWebHostBuilder CreateHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var env = hostingContext.HostingEnvironment;
+                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsetings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsetings.Local.json", optional: true, reloadOnChange: true);
+
+                if (env.IsDevelopment())
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
+                    config.AddUserSecrets(appAssembly, optional: true);
+                }
+
+                config.AddEnvironmentVariables();
+
+                if (args != null)
+                {
+                    config.AddCommandLine(args);
+                }
+            })
+            .UseStartup<Startup>();
     }
 }
