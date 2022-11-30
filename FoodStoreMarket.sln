@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Api", "FoodStoreMarket\FoodStoreMarket.Api.csproj", "{B7B131B6-54E0-41B6-B67D-5C328F5C2574}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4EB81940-CFBD-472D-89E9-96AE438933CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{19B224B7-8FCC-4E5E-9415-0699E3C125FA}"
@@ -21,11 +19,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Persistance", "FoodStoreMarket.Persistance\FoodStoreMarket.Persistance.csproj", "{4473FBB0-5681-431D-9084-306992947CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{065B1229-DE7B-4E27-9451-89C113B4B753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{065B1229-DE7B-4E27-9451-89C113B4B753}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3B4E941F-71FB-4408-B57C-98306EF786A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "Application.UnitTests\Application.UnitTests.csproj", "{37A94864-5707-4153-834E-7B1D720F5955}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Application.UnitTests\Application.UnitTests.csproj", "{37A94864-5707-4153-834E-7B1D720F5955}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Api", "FoodStoreMarket.Api\FoodStoreMarket.Api.csproj", "{253E68FD-B13F-412E-9D0C-F65568120ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Server", "FoodStoreMarket\Server\FoodStoreMarket.Server.csproj", "{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Client", "FoodStoreMarket\Client\FoodStoreMarket.Client.csproj", "{7C4332AD-6D5F-4229-883C-C1EC88953A10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Shared", "FoodStoreMarket\Shared\FoodStoreMarket.Shared.csproj", "{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +39,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B7B131B6-54E0-41B6-B67D-5C328F5C2574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7B131B6-54E0-41B6-B67D-5C328F5C2574}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7B131B6-54E0-41B6-B67D-5C328F5C2574}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7B131B6-54E0-41B6-B67D-5C328F5C2574}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FA06AA0-8760-4D7C-B97B-2B5FC808082F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9FA06AA0-8760-4D7C-B97B-2B5FC808082F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA06AA0-8760-4D7C-B97B-2B5FC808082F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,18 +67,37 @@ Global
 		{37A94864-5707-4153-834E-7B1D720F5955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A94864-5707-4153-834E-7B1D720F5955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A94864-5707-4153-834E-7B1D720F5955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{253E68FD-B13F-412E-9D0C-F65568120ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{253E68FD-B13F-412E-9D0C-F65568120ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{253E68FD-B13F-412E-9D0C-F65568120ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{253E68FD-B13F-412E-9D0C-F65568120ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4332AD-6D5F-4229-883C-C1EC88953A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4332AD-6D5F-4229-883C-C1EC88953A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4332AD-6D5F-4229-883C-C1EC88953A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4332AD-6D5F-4229-883C-C1EC88953A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B7B131B6-54E0-41B6-B67D-5C328F5C2574} = {4EB81940-CFBD-472D-89E9-96AE438933CF}
 		{9FA06AA0-8760-4D7C-B97B-2B5FC808082F} = {19B224B7-8FCC-4E5E-9415-0699E3C125FA}
 		{B3BC0178-9544-447C-8E35-6D7DED954420} = {19B224B7-8FCC-4E5E-9415-0699E3C125FA}
 		{68640CB5-F26D-4B29-A822-5489222C16E7} = {19B224B7-8FCC-4E5E-9415-0699E3C125FA}
 		{32065B26-2760-4D98-8094-3DA86B0D26B2} = {F80F1F9C-5C96-4129-852F-2D580EC47B82}
 		{4473FBB0-5681-431D-9084-306992947CC9} = {F80F1F9C-5C96-4129-852F-2D580EC47B82}
 		{37A94864-5707-4153-834E-7B1D720F5955} = {3B4E941F-71FB-4408-B57C-98306EF786A8}
+		{253E68FD-B13F-412E-9D0C-F65568120ED4} = {4EB81940-CFBD-472D-89E9-96AE438933CF}
+		{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C} = {4EB81940-CFBD-472D-89E9-96AE438933CF}
+		{7C4332AD-6D5F-4229-883C-C1EC88953A10} = {4EB81940-CFBD-472D-89E9-96AE438933CF}
+		{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE} = {4EB81940-CFBD-472D-89E9-96AE438933CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA6C4A6D-C383-4157-A0E2-6561896EDB24}
