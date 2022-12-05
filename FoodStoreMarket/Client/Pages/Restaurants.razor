@@ -1,0 +1,29 @@
+﻿@page "/restaurants"
+@using FoodStoreMarket.Client.Components
+@using FoodStoreMarket.Client.Models;
+
+<h1>List of restaurants</h1>
+<a href="addRestaurant">Add new restaurant</a>
+<RestaurantsTable Restaurants="@restaurants"></RestaurantsTable>
+
+
+@code {
+    private List<RestaurantDto> restaurants;
+
+    protected override async Task OnInitializedAsync()
+    {
+        restaurants = new List<RestaurantDto>
+        {
+            new RestaurantDto()
+            {
+                Name = "Test #1",
+                Description = "Opis #1"
+            },
+            new RestaurantDto()
+            {
+                Name = "Test #2",
+                Description = "Opis #2"
+            }
+        };
+    }
+}

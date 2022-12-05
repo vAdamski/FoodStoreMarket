@@ -27,11 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Api", "FoodStoreMarket.Api\FoodStoreMarket.Api.csproj", "{253E68FD-B13F-412E-9D0C-F65568120ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Server", "FoodStoreMarket\Server\FoodStoreMarket.Server.csproj", "{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Server", "FoodStoreMarket\Server\FoodStoreMarket.Server.csproj", "{E7BE3BF5-D15B-4B37-AA64-AF2169EEAC3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Client", "FoodStoreMarket\Client\FoodStoreMarket.Client.csproj", "{7C4332AD-6D5F-4229-883C-C1EC88953A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Client", "FoodStoreMarket\Client\FoodStoreMarket.Client.csproj", "{7C4332AD-6D5F-4229-883C-C1EC88953A10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodStoreMarket.Shared", "FoodStoreMarket\Shared\FoodStoreMarket.Shared.csproj", "{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodStoreMarket.Shared", "FoodStoreMarket\Shared\FoodStoreMarket.Shared.csproj", "{2AA2C7A2-1B7C-4B8A-A155-2D74DD886CAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

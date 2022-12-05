@@ -1,0 +1,87 @@
+﻿@page "/addRestaurant"
+@using FoodStoreMarket.Client.Models
+@using System.Text.Json;
+
+<h3>Restaurant Form</h3>
+
+<EditForm EditContext="editContext" OnValidSubmit="HandleValidSubmit" @onreset="HandleReset">
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Name</label>
+            <InputText @bind-Value="model.Name" class="form-control"/>
+            <ValidationMessage For="@(() => model.Name)"/>
+        </div>
+        <div class="form-group col">
+            <label>Description</label>
+            <InputText @bind-Value="model.Description" class="form-control" />
+            <ValidationMessage For="@(() => model.Description)" />
+        </div>
+        <div class="form-group col">
+            <label>City</label>
+            <InputText @bind-Value="model.City" class="form-control" />
+            <ValidationMessage For="@(() => model.City)" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Post Code</label>
+            <InputText @bind-Value="model.PostCode" class="form-control" />
+            <ValidationMessage For="@(() => model.PostCode)"/>
+        </div>
+        <div class="form-group col">
+            <label>Street</label>
+            <InputText @bind-Value="model.Street" class="form-control" />
+            <ValidationMessage For="@(() => model.Street)" />
+        </div>
+        <div class="form-group col">
+            <label>House Number</label>
+            <InputText @bind-Value="model.HouseNumber" class="form-control" />
+            <ValidationMessage For="@(() => model.HouseNumber)" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Flat Number</label>
+            <InputText @bind-Value="model.FlatNumber" class="form-control"/>
+            <ValidationMessage For="@(() => model.FlatNumber)"/>
+        </div>
+        <div class="form-group col">
+            <label>Phone Number</label>
+            <InputText @bind-Value="model.PhoneNumber" class="form-control" />
+            <ValidationMessage For="@(() => model.PhoneNumber)" />
+        </div>
+        <div class="form-group col">
+            <label>Email</label>
+            <InputText @bind-Value="model.Email" class="form-control" />
+            <ValidationMessage For="@(() => model.Email)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-warning">Reset</button>
+</EditForm>
+
+@code {
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    private RestaurantsForm model = new RestaurantsForm();
+    private EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(model);
+    }
+
+    private void HandleValidSubmit()
+    {
+        var modelJson = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true });
+        JSRuntime.InvokeVoidAsync("alert", $"SUCCESS!! :-) \n\n{modelJson}");
+    }
+
+    private void HandleReset()
+    {
+        model = new RestaurantsForm();
+        editContext = new EditContext(model);
+    }
+}

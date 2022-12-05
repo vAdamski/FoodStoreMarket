@@ -1,0 +1,48 @@
+﻿@using FoodStoreMarket.Client.Models;
+@implements IAsyncDisposable
+
+<h3>RestaurantsTable</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Restaurants)
+        {
+            <tr>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.Description</td>
+                <td><button @onclick="() => SayHi(restaurant.Name)">Przywitaj</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public List<RestaurantDto> Restaurants { get; set; }
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    private Task<IJSObjectReference> _module;
+    private Task<IJSObjectReference> Module => _module ??= JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/restaurant.js").AsTask();
+
+    async Task SayHi(string name)
+    {
+        var module = await Module;
+        await module.InvokeVoidAsync("sayHi", name);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_module != null)
+        {
+            var module = await _module;
+            await module.DisposeAsync();
+        }
+    }
+}

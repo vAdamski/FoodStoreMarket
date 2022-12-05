@@ -20,7 +20,7 @@ namespace IdentityServer
                     name: "user",
                     userClaims: new[] {JwtClaimTypes.Email}),
                 new IdentityResource(
-                    name: "roles",
+                    name: "role",
                     userClaims: new[] {JwtClaimTypes.Role})
            };
     
@@ -55,12 +55,25 @@ namespace IdentityServer
                     
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     ClientSecrets = {new Secret("secret".Sha256())},
-                    AllowedScopes = {"api1", "user", "openid", "roles"},
+                    AllowedScopes = {"api1", "user", "openid", "role"},
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = {"https://localhost:44376/swagger/oauth2-redirect.html"},
                     AllowedCorsOrigins = {"https://localhost:44376"}
+                }, 
+
+                new Client()
+                {
+                    ClientId = "blazor",
+                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+                    AllowedScopes = { "api1", "user", "openid", "role", "profile" },
+                    AllowedCorsOrigins = { "https://localhost:5000" },
+                    RedirectUris = { "https://localhost:5000/authentication/login-callback" },
+                    PostLogoutRedirectUris = { "https://localhost:5000" },
+                    Enabled = true
                 }
             };
     }

@@ -73,7 +73,7 @@ namespace FoodStoreMarket
                                 {"api1", "Full access"},
                                 {"user", "User info"},
                                 {"openid", "openid" },
-                                {"roles", "User role"}
+                                {"role", "User role"}
                             }
                         }
                     }
@@ -105,7 +105,7 @@ namespace FoodStoreMarket
                 optionns.AddPolicy("admin", policy =>
                 {
                     policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api1", JwtClaimTypes.Role);
+                    policy.RequireClaim("scope", "api1", JwtClaimTypes.Role, "user");
                     policy.RequireRole("admin");
                 });
                 optionns.AddPolicy("ApiScope", policy =>
