@@ -53,7 +53,9 @@ namespace FoodStoreMarket
                     options.Authority = "https://localhost:5001";
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        NameClaimType = JwtClaimTypes.Name,
+                        RoleClaimType = JwtClaimTypes.Role
                     };
                 });
             services.AddControllers();
@@ -105,7 +107,7 @@ namespace FoodStoreMarket
                 optionns.AddPolicy("admin", policy =>
                 {
                     policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api1", JwtClaimTypes.Role, "user");
+                    policy.RequireClaim("scope", "api1");
                     policy.RequireRole("admin");
                 });
                 optionns.AddPolicy("ApiScope", policy =>
