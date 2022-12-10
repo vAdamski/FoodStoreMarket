@@ -72,7 +72,7 @@ namespace IdentityServer
                     AllowedScopes = { "api1", "user", "openid", "role", "profile" },
                     AllowedCorsOrigins = { "https://localhost:5000" },
                     RedirectUris = { "https://localhost:5000/authentication/login-callback" },
-                    PostLogoutRedirectUris = { "https://localhost:5000" },
+                    PostLogoutRedirectUris = { "https://localhost:5000/" },
                     Enabled = true
                 }
             };
