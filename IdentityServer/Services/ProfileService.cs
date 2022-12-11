@@ -28,7 +28,8 @@ public sealed class ProfileService : IProfileService
 
             var claims = new List<Claim>()
             {
-                new Claim("Email", user.Email)
+                new Claim("Email", user.Email),
+                new Claim("name", user.UserName)
             };
             
             var roles = await _userMgr.GetRolesAsync(user);
