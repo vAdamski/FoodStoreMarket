@@ -41,7 +41,11 @@ namespace FoodStoreMarket
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", poliicy => poliicy.AllowAnyOrigin());
+                options.AddPolicy("CORS", policy => policy.WithOrigins(new string[] 
+                { 
+                    "https://localhost:5000",
+                    "https://localhost:44376" 
+                }));
             });
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -144,7 +148,7 @@ namespace FoodStoreMarket
             
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors("CORS");
 
             app.UseAuthorization();
 

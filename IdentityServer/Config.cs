@@ -45,7 +45,8 @@ namespace IdentityServer
                     AllowedScopes = {"api1", "user"},
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
-                    AllowAccessTokensViaBrowser = true
+                    AllowAccessTokensViaBrowser = true,
+                    Enabled = false
                 },
                 
                 new Client()
@@ -60,7 +61,8 @@ namespace IdentityServer
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris = {"https://localhost:44376/swagger/oauth2-redirect.html"},
-                    AllowedCorsOrigins = {"https://localhost:44376"}
+                    AllowedCorsOrigins = {"https://localhost:44376"},
+                    Enabled= true
                 }, 
 
                 new Client()
@@ -70,9 +72,9 @@ namespace IdentityServer
                     RequirePkce = true,
                     RequireClientSecret = false,
                     AllowedScopes = { "api1", "user", "openid", "role", "profile" },
-                    AllowedCorsOrigins = { "https://localhost:5000" },
+                    AllowedCorsOrigins = { "https://localhost:5000", "https://localhost:44376" },
                     RedirectUris = { "https://localhost:5000/authentication/login-callback" },
-                    PostLogoutRedirectUris = { "https://localhost:5000/" },
+                    PostLogoutRedirectUris = { "https://localhost:5000/authentication/logout-callback" },
                     Enabled = true
                 }
             };

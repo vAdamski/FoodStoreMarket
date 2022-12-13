@@ -1,0 +1,35 @@
+﻿@page "/restaurant"
+@using FoodStoreMarket.Client.Models
+@inject HttpClient Http
+
+<AuthorizeView>
+    <Authorized>
+        @if (restaurant == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <h3>Restaurant Deails</h3>
+            <div class="card" style="width:18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@restaurant.Name</h5>
+                    <p class="card-text">@restaurant.Description</p>
+                    <a href="#" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+        }
+    </Authorized>
+    <NotAuthorized>
+        <p>Not authorized</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private RestaurantDetailVm restaurant;
+
+    protected override async Task OnInitializedAsync()
+    {
+        restaurant = await Http.GetFromJsonAsync<RestaurantDetailVm>("https://localhost:44376/api/restaurants/1");
+    }
+}
