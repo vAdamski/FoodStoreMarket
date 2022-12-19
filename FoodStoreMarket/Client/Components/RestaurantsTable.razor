@@ -1,4 +1,4 @@
-﻿@using FoodStoreMarket.Client.Models;
+﻿@using FoodStoreMarket.Shared.Models.Restaurant.Queries.GetAllRestaurants;
 @implements IAsyncDisposable
 
 <h3>RestaurantsTable</h3>
@@ -11,20 +11,27 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var restaurant in Restaurants)
+        @if (RestaurantsVm?.Restaurants.Count != null)
         {
-            <tr>
-                <td>@restaurant.Name</td>
-                <td>@restaurant.Description</td>
-                <td><button @onclick="() => SayHi(restaurant.Name)">Przywitaj</button></td>
-            </tr>
+            @foreach (var restaurant in RestaurantsVm?.Restaurants)
+            {
+                <tr>
+                    <td>@restaurant.Name</td>
+                    <td>@restaurant.Description</td>
+                    <td><button @onclick="() => SayHi(restaurant.Name)">Przywitaj</button></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <a>No restaurants have been found</a>
         }
     </tbody>
 </table>
 
 @code {
     [Parameter]
-    public List<RestaurantDto> Restaurants { get; set; }
+    public RestaurantsVm RestaurantsVm { get; set; }
     [Inject]
     public IJSRuntime JSRuntime { get; set; }
 
