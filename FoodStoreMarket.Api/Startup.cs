@@ -44,7 +44,8 @@ namespace FoodStoreMarket
                 options.AddPolicy("CORS", policy => policy.WithOrigins(new string[] 
                 { 
                     "https://localhost:5000",
-                    "https://localhost:44376" 
+                    "https://localhost:44376",
+                    "https://localhost:4449"
                 }));
             });
 

@@ -20,6 +20,7 @@
 }
 
 <p>Is a admin: @isAdmin</p>
+<p>User have role: @role</p>
 
 <AuthorizeView Roles="admin">
     <p>You can only see this if you're an Admin or Superuser.</p>
@@ -38,7 +39,7 @@
 
         if (user.Identity.IsAuthenticated)
         {
-            isAdmin = user.IsInRole("role");
+            isAdmin = user.IsInRole("admin");
             authMessage = $"{user.Identity.Name} is authenticated.";
             claims = user.Claims;
             role =

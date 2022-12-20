@@ -23,5 +23,7 @@ builder.Services.AddOidcAuthentication(options =>
 {
     builder.Configuration.Bind("oidc", options.ProviderOptions);
 });
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
 
 await builder.Build().RunAsync();
