@@ -43,7 +43,7 @@
             authMessage = $"{user.Identity.Name} is authenticated.";
             claims = user.Claims;
             role =
-                $"Role: {user.FindFirst(c => c.Type == ClaimTypes.Role)?.Value}";
+                $"{user.FindFirst(c => c.Type == ClaimTypes.Role)?.Value}";
         }
         else
         {
