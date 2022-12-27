@@ -6,15 +6,10 @@ using MediatR;
 
 namespace FoodStoreMarket.Application.Ingredients.Commands.UpdateIngredient;
 
-public class UpdateIngredientCommand : IRequest<bool>, IMapFrom<UpdateIngredientCommand>
+public class UpdateIngredientCommand : IRequest<bool>
 {
     public int Id { get; set; }
     public string Name { get; set; }
 
-    public void Mapping(Profile profile)
-    {
-        profile.CreateMap<UpdateIngredientCommand, Ingredient>()
-            .ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
-            .IgnoreAllNonExisting();
-    }
+    
 }

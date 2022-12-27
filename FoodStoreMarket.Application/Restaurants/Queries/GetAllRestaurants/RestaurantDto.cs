@@ -9,17 +9,9 @@ using System.Threading.Tasks;
 
 namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants
 {
-    public class RestaurantDto : IMapFrom<Restaurant>
+    public class RestaurantDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
-
-
-        public void Mapping(Profile profile)
-        {
-            profile.CreateMap<Restaurant, RestaurantDto>()
-                .ForMember(x => x.Name, map => map.MapFrom(src => src.RestaurantSpecification.Name))
-                .ForMember(x => x.Description, map => map.MapFrom(src => src.RestaurantSpecification.Description));
-        }
     }
 }
