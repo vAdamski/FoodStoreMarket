@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.DeleteRestaurant;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
 

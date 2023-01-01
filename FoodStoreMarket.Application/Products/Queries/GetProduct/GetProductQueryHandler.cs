@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.Products.Queries.GetProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

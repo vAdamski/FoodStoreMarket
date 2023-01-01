@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FoodStoreMarket.Domain.Entities;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.Restaurants.Queries.GetRestaurantDetail;
 
 namespace FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail
 {

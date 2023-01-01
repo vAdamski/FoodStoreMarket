@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FoodStoreMarket.Shared.Models.Products.Queries.GetProduct;
+using MediatR;
 
 namespace FoodStoreMarket.Application.Products.Queries.GetProduct;
 

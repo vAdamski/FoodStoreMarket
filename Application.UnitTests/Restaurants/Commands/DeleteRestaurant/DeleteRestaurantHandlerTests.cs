@@ -2,6 +2,7 @@
 using Application.UnitTests.Common;
 using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.DeleteRestaurant;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;

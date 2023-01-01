@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using FoodStoreMarket.Application.Products.Commands.CreateProduct;
 using FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
 using FoodStoreMarket.Application.Products.Queries.GetProduct;
+using FoodStoreMarket.Shared.Models.Products.Commands.CreateProduct;
+using FoodStoreMarket.Shared.Models.Products.Commands.DeleteProductCommand;
 
 namespace FoodStoreMarket.Api.Controllers
 {

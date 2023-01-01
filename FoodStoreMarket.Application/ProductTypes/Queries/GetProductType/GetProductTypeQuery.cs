@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FoodStoreMarket.Shared.Models.ProductTypes.Queries.GetProductType;
+using MediatR;
 
 namespace FoodStoreMarket.Application.ProductTypes.Queries.GetProductType;
 

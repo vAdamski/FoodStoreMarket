@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Shared.Models.ProductTypes.Commands.CreateProductType;
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType
 {

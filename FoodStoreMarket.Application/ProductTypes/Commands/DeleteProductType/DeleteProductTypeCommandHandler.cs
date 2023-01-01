@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.ProductTypes.Commands.DeleteProductType;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

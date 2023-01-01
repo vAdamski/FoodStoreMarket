@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
+using FoodStoreMarket.Shared.Models.Ingredients.Commands.UpdateIngredient;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

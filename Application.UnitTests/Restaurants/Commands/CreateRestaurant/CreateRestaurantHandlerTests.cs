@@ -2,6 +2,7 @@
 using AutoMapper;
 using FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
 using FoodStoreMarket.Common;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.CreateRestaurant;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 

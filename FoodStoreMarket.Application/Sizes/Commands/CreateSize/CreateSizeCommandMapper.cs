@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FoodStoreMarket.Application.Common.Mappings;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Shared.Models.Sizes.Commands.CreateSize;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.CreateSize
 {

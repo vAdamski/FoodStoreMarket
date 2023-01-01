@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.ProductTypes.Commands.UpdateProductType;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

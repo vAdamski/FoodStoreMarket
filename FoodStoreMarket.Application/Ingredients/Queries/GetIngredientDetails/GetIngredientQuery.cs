@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FoodStoreMarket.Shared.Models.Ingredients.Queries.GetIngredientDetails;
+using MediatR;
 
 namespace FoodStoreMarket.Application.Ingredients.Queries.GetIngredientDetails;
 

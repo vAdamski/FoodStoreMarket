@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using FluentValidation;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.CreateRestaurant;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant;
 

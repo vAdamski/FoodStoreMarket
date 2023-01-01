@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.Products.Commands.DeleteProductCommand;
 
 namespace FoodStoreMarket.Application.Products.Commands.DeleteProductCommand;
 
-public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
+public class DeleteProductCommandValidator : AbstractValidator<Shared.Models.Products.Commands.DeleteProductCommand.DeleteProductCommand>
 {
     public DeleteProductCommandValidator()
     {

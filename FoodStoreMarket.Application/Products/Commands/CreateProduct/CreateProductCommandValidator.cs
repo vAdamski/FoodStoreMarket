@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.Products.Commands.CreateProduct;
 
 namespace FoodStoreMarket.Application.Products.Commands.CreateProduct;
 

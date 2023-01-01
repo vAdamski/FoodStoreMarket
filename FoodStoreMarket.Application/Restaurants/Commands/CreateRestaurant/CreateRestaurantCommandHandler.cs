@@ -6,6 +6,7 @@ using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
 using FoodStoreMarket.Domain.Exceptions;
 using FoodStoreMarket.Domain.ValueObjects;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.CreateRestaurant;
 using MediatR;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.CreateRestaurant

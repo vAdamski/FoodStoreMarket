@@ -4,6 +4,7 @@ using AutoMapper;
 using FoodStoreMarket.Application.Restaurants.Queries.GetRestaurantDetail;
 using FoodStoreMarket.Common;
 using FoodStoreMarket.Persistance;
+using FoodStoreMarket.Shared.Models.Restaurants.Queries.GetRestaurantDetail;
 using Shouldly;
 
 namespace Application.UnitTests.Restaurants.Queries.GetRestaurantDetail;

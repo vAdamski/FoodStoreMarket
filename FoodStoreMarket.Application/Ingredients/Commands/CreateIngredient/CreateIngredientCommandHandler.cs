@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Shared.Models.Ingredients.Commands.CreateIngredient;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

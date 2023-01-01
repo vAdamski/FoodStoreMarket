@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using FoodStoreMarket.Application.Ingredients.Queries.GetIngredientDetails;
 using FoodStoreMarket.Application.Ingredients.Queries.GetAllIngredientsInRestaurant;
 using FoodStoreMarket.Application.Ingredients.Commands.UpdateIngredient;
+using FoodStoreMarket.Shared.Models.Ingredients.Commands.CreateIngredient;
+using FoodStoreMarket.Shared.Models.Ingredients.Commands.DeleteIngredient;
+using FoodStoreMarket.Shared.Models.Ingredients.Commands.UpdateIngredient;
 
 namespace FoodStoreMarket.Api.Controllers
 {

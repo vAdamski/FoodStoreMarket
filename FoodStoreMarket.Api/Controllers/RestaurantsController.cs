@@ -5,6 +5,8 @@ using FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.CreateRestaurant;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.DeleteRestaurant;
 
 namespace FoodStoreMarket.Api.Controllers
 {

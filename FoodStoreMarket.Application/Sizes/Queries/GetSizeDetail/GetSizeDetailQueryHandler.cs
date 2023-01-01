@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.Sizes.Queries.GetSizeDetail;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

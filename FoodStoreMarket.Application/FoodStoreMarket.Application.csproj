@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FoodStoreMarket.Common\FoodStoreMarket.Common.csproj" />
     <ProjectReference Include="..\FoodStoreMarket.Domain\FoodStoreMarket.Domain.csproj" />
+    <ProjectReference Include="..\FoodStoreMarket\Shared\FoodStoreMarket.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

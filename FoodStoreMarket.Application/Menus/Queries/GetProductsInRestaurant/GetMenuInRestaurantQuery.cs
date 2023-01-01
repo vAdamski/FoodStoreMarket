@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FoodStoreMarket.Shared.Models.Menus.Queries.GetProductsInRestaurant;
+using MediatR;
 
 namespace FoodStoreMarket.Application.Menus.Queries.GetProductsInRestaurant;
 

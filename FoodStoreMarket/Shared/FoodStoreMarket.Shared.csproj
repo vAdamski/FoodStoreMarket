@@ -11,7 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Restaurant\Commands\DeleteRestaurant\" />
-    <Folder Include="Models\Restaurant\Commands\UpdateRestaurant\" />
+    <Folder Include="Models\Restaurants\Commands\UpdateRestaurant" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
   </ItemGroup>
 </Project>

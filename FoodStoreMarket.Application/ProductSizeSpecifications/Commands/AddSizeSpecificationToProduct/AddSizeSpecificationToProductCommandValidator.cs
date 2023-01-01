@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.ProductSizeSpecifications.Commands.AddSizeSpecificationToProduct;
 
 namespace FoodStoreMarket.Application.ProductSizeSpecifications.Commands.AddSizeSpecificationToProduct;
 

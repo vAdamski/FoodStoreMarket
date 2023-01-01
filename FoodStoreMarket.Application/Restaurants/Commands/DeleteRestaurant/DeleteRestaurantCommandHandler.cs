@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Domain.Entities;
+using FoodStoreMarket.Shared.Models.Restaurants.Commands.DeleteRestaurant;
 
 namespace FoodStoreMarket.Application.Restaurants.Commands.DeleteRestaurant
 {

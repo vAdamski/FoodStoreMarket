@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.Sizes.Commands.DeleteSize;
 
 namespace FoodStoreMarket.Application.Sizes.Commands.DeleteSize;
 

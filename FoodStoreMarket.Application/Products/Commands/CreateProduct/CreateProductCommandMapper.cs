@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FoodStoreMarket.Shared.Models.Products.Commands.CreateProduct;
 
 namespace FoodStoreMarket.Application.Products.Commands.CreateProduct
 {

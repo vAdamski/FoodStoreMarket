@@ -2,6 +2,7 @@
 using AutoMapper;
 using FoodStoreMarket.Application.ProductTypes.Commands.CreateProductType;
 using FoodStoreMarket.Common;
+using FoodStoreMarket.Shared.Models.ProductTypes.Commands.CreateProductType;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 

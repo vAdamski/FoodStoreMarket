@@ -6,6 +6,7 @@ using AutoMapper;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Entities;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.ProductSizeSpecifications.Commands.AddSizeSpecificationToProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

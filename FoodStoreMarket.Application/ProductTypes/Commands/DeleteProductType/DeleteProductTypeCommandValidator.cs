@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.ProductTypes.Commands.DeleteProductType;
 
 namespace FoodStoreMarket.Application.ProductTypes.Commands.DeleteProductType;
 

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.Interfaces;
 using FoodStoreMarket.Domain.Exceptions;
+using FoodStoreMarket.Shared.Models.Sizes.Commands.DeleteSize;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

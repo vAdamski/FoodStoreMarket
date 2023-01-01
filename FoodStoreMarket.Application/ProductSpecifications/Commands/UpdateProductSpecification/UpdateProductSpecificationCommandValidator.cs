@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FoodStoreMarket.Shared.Models.ProductSpecifications.Commands.UpdateProductSpecification;
 
 namespace FoodStoreMarket.Application.ProductSpecifications.Commands.UpdateProductSpecification;
 

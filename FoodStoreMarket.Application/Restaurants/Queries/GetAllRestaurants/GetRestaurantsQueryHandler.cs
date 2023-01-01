@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using FoodStoreMarket.Shared.Models.Restaurants.Queries.GetAllRestaurants;
 using Microsoft.AspNetCore.Http;
 
 namespace FoodStoreMarket.Application.Restaurants.Queries.GetAllRestaurants

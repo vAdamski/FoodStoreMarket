@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using FoodStoreMarket.Application.ProductSpecifications.Commands.UpdateProductSpecification;
+using FoodStoreMarket.Shared.Models.ProductSpecifications.Commands.UpdateProductSpecification;
 
 namespace FoodStoreMarket.Api.Controllers;
 

@@ -1,6 +1,7 @@
 ﻿@page "/addRestaurant"
 @using System.Text.Json;
-@using FoodStoreMarket.Shared.Models.Restaurant.Commands.CreateRestaurant;
+@using FoodStoreMarket.Shared.Models.Restaurants.Commands.CreateRestaurant
+@using Microsoft.AspNetCore.Components
 
 <h3>Restaurant Form</h3>
 
@@ -65,7 +66,7 @@
     [Inject]
     private IJSRuntime JSRuntime { get; set; }
 
-    private RestaurantsForm model = new RestaurantsForm();
+    private CreateRestaurantCommand model = new CreateRestaurantCommand();
     private EditContext editContext;
 
     protected override void OnInitialized()
@@ -81,7 +82,7 @@
 
     private void HandleReset()
     {
-        model = new RestaurantsForm();
+        model = new CreateRestaurantCommand();
         editContext = new EditContext(model);
     }
 }

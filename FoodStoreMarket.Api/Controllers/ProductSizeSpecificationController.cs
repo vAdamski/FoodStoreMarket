@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FoodStoreMarket.Application.ProductSizeSpecifications.Commands.AddSizeSpecificationToProduct;
+using FoodStoreMarket.Shared.Models.ProductSizeSpecifications.Commands.AddSizeSpecificationToProduct;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
